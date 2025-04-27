@@ -1,0 +1,37 @@
+@import 'variables';
+@import 'fonts';
+
+.category {
+  margin: 0 auto;
+  font-family: "Monrope";
+  width: 80%;
+  margin: 0 auto;
+
+
+  &__title {
+    margin: 20px 0;
+  }
+
+  &__form {
+    padding: 20px;
+    background: $primary-color;
+    border-radius: 8px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 10px;
+    margin-bottom: 50px;
+  }
+
+  &__form--info {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  &__form-btn {
+    display: flex;
+    justify-content: end;
+    padding: 40px 0 20px 0;
+  }
+
+
+}
+

@@ -1,0 +1,10 @@
+@import 'variables';
+
+button {
+  background: $secondary-color;
+  color: $primary-color;
+  border: none;
+  padding: 10px 50px;
+  border-radius: 8px;
+  cursor: pointer;
+}

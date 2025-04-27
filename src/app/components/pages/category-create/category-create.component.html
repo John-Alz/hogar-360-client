@@ -1,0 +1,20 @@
+<section class="category">
+  <h2 class="category__title">Crear Categoría</h2>
+  <form action="" class="category__form">
+    <div class="category__form--info">
+      <div>
+        <app-form-field [label]="'Nombre de la Categoría'">
+          <app-input class="category__input" [type]="'text'" [placeholder]="'Escribe el nombre de la categoría (máximo 50 caracteres)'"></app-input>
+        </app-form-field>
+      </div>
+      <div>
+        <app-form-field [label]="'Descripción'">
+          <app-textarea  [placeholder]="'Enter category description'"></app-textarea>
+        </app-form-field>
+      </div>
+    </div>
+    <div class="category__form-btn" >
+      <app-button [text]="'Crear'" (buttonClick)="sendData()"></app-button>
+    </div>
+  </form>
+</section>

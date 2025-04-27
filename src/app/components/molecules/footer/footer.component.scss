@@ -1,0 +1,62 @@
+@import 'variables';
+@import 'fonts';
+
+
+.footer {
+  font-family: "Poppins";
+  padding: 50px 0 0 0;
+  border-top: 2px solid $border-color;
+  background: $primary-color;
+
+  &__main-container {
+    display: flex;
+    justify-content: space-between;
+    width: 90%;
+  margin: 0 auto;
+  }
+
+  &__heading--main{
+    font-size: 20px;
+    color: $secondary-color;
+    margin-bottom: 17px;
+  }
+
+  &__heading{
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 17px;
+  }
+  &__section--items {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    color: $text-color;
+  }
+
+  &__item {
+    display: flex;
+    gap: 10px;
+  }
+
+  &__social-icons {
+    display: flex;
+    gap: 15px;
+  }
+
+  &__icon {
+    color: $text-color;
+
+  }
+
+
+  &__rights--container {
+    border-top: 2px solid $border-color;
+    text-align: center;
+    width: 90%;
+    margin: 32px auto;
+    padding: 30px 0 0 0;
+    color: $text-color;
+  }
+
+
+}
