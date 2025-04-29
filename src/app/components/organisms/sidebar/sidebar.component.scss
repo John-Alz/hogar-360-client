@@ -5,6 +5,11 @@
   width: 255px;
   height: 100vh;
   padding: 10px;
+  background: $primary-color;
+
+  &__item {
+    margin: 40px;
+  }
 
 }
 

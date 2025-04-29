@@ -1,8 +1,25 @@
 @import 'variables';
 
+
+.container {
+  position: relative;
+}
+
 .textarea {
   padding: 14px 7px;
   width: 100%;
   border-radius: 8px;
   border: 2px solid $border-color;
+  resize: none;
+}
+
+.textarea::placeholder {
+  font-size: 16px;
+}
+.count {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  padding: 8px;
+  color: $text-color;
 }

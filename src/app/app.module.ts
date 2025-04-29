@@ -9,6 +9,11 @@ import { AtomsModule } from './components/atoms/atoms.module';
 import { MoleculesModule } from './components/molecules/molecules.module';
 import { OrganismsModule } from './components/organisms/organisms.module';
 import { PagesModule } from './components/pages/pages.module';
+import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { LayoutsModule } from './components/layouts/layouts.module';
+import { RouterModule } from '@angular/router';
+
 
 
 
@@ -19,12 +24,16 @@ import { PagesModule } from './components/pages/pages.module';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    RouterModule,
     HttpClientModule,
     FontAwesomeModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot(),
     AtomsModule,
     MoleculesModule,
     OrganismsModule,
-    PagesModule
+    PagesModule,
+    LayoutsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

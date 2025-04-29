@@ -5,20 +5,28 @@ import { LabelComponent } from '../atoms/label/label.component';
 import { InputComponent } from '../atoms/input/input.component';
 import { AtomsModule } from '../atoms/atoms.module';
 import { MoleculesModule } from '../molecules/molecules.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { OrganismsModule } from '../organisms/organisms.module';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 
 
 @NgModule({
   declarations: [
-    CategoryCreateComponent
+    CategoryCreateComponent,
+    DashboardComponent
   ],
   imports: [
     CommonModule,
     AtomsModule,
-    MoleculesModule
+    MoleculesModule,
+    OrganismsModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
    exports: [
-    CategoryCreateComponent
+    CategoryCreateComponent,
+    DashboardComponent
    ]
 })
 export class PagesModule { }
