@@ -1,21 +1,27 @@
 
-  <form action="" class="categoryForm">
+  <form [formGroup]="categoryForm"  class="categoryForm">
     <div class="categoryForm__info">
       <div>
         <app-form-field [label]="'Nombre de la Categoría'">
-          <app-input [formControl]="name" class="category__input" [type]="'text'" [placeholder]="'Escribe el nombre de la categoría (máximo 50 caracteres)'"></app-input>
+          <app-input class="category__input" [control]="categoryName"  [type]="'text'" [placeholder]="'Escribe el nombre de la categoría (máximo 50 caracteres)'"></app-input>
         </app-form-field>
+        <div class="categoryForm__errros" *ngIf="categoryName?.touched && categoryName?.invalid">
+          <small class="categoryForm__errros--item" *ngIf="categoryName?.errors?.['required']">El nombre es obligatorio.</small>
+          <small class="categoryForm__errros--item" *ngIf="categoryName?.errors?.['maxlength']">El nombre no puede tener mas de 50 caracteres.</small>
+        </div>
       </div>
       <div>
         <app-form-field [label]="'Descripción'">
-          <app-textarea [formControl]="description"  [placeholder]="'Enter category description'"></app-textarea>
+          <app-textarea [control]="categoryDescription"  [placeholder]="'Enter category description'"></app-textarea>
         </app-form-field>
+        <div class="categoryForm__errros" *ngIf="categoryDescription?.touched && categoryDescription?.invalid">
+          <small class="categoryForm__errros--item" *ngIf="categoryDescription?.errors?.['required']">La descripcion es obligatoria.</small>
+          <small class="categoryForm__errros--item" *ngIf="categoryDescription?.errors?.['maxlength']">la descripcion no puede tener mas de 90 caracteres.</small>
+        </div>
       </div>
     </div>
     <div class="categoryForm__btn" >
-      <app-button [text]="'Crear'" (buttonClick)="sendData()"></app-button>
+      <app-button [text]="'Crear'" (buttonClick)="sendData()"  ></app-button>
     </div>
   </form>
 
-{{name.value}}
-{{description.value}}

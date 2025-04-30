@@ -6,6 +6,7 @@ import { CategoryFormComponent } from './category-form/category-form.component';
 import { AtomsModule } from '../atoms/atoms.module';
 import { AppRoutingModule } from 'src/app/app-routing.module';
 import { RouterModule } from '@angular/router';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -17,6 +18,8 @@ import { RouterModule } from '@angular/router';
   imports: [
     CommonModule,
     AppRoutingModule,
+    ReactiveFormsModule,
+    FormsModule,
     RouterModule,
     AtomsModule,
     MoleculesModule

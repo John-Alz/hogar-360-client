@@ -1,13 +1,17 @@
-import { Component, Input } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { Component, forwardRef, Input } from '@angular/core';
+import { ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
   selector: 'app-input',
   templateUrl: './input.component.html',
-  styleUrls: ['./input.component.scss']
+  styleUrls: ['./input.component.scss'],
 })
 export class InputComponent {
   @Input() type: string = "text";
   @Input() placeholder!: string;
-  @Input() formControl!: FormControl;
+  @Input() value!: string;
+  @Input() control!: FormControl;
+
+
+
 }

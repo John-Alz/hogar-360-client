@@ -5,6 +5,8 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { SidebarLinkComponent } from './sidebar-link/sidebar-link.component';
 import { AtomsModule } from '../atoms/atoms.module';
 import { FormFieldComponent } from './form-field/form-field.component';
+import { RouterModule } from '@angular/router';
+import { AppRoutingModule } from 'src/app/app-routing.module';
 
 
 
@@ -17,6 +19,8 @@ import { FormFieldComponent } from './form-field/form-field.component';
   ],
   imports: [
     CommonModule,
+    RouterModule,
+    AppRoutingModule,
     AtomsModule
   ],
   exports: [

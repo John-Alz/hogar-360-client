@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { Category } from '../models/category';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,7 @@ export class CategoryService {
 
   constructor(private http: HttpClient) { }
 
-  postData(data: any): Observable<any>{
-    return this.http.post(this.apiUrl, data);
+  postData(data: Category): Observable<Category>{
+    return this.http.post<Category>(this.apiUrl, data);
   }
 }

@@ -1,10 +1,11 @@
 import { TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
+import { LayoutsModule } from './components/layouts/layouts.module';
 
 describe('AppComponent', () => {
   beforeEach(() => TestBed.configureTestingModule({
-    imports: [RouterTestingModule],
+    imports: [RouterTestingModule, LayoutsModule],
     declarations: [AppComponent]
   }));
 
@@ -26,4 +27,9 @@ describe('AppComponent', () => {
     const compiled = fixture.nativeElement as HTMLElement;
     expect(compiled.querySelector('.content span')?.textContent).toContain('hogar-360-client app is running!');
   });
+
+  it('debería funcionar Jest', () => {
+    expect(1 + 1).toBe(2);
+  });
 });
+

@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-text',
@@ -7,4 +7,7 @@ import { Component, Input } from '@angular/core';
 })
 export class TextComponent {
   @Input() text: string = '';
+  @Input() active: boolean = false;
+  @Input() class: string = '';
+
 }

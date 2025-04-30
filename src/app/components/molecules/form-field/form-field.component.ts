@@ -8,4 +8,5 @@ import { text } from '@fortawesome/fontawesome-svg-core';
 })
 export class FormFieldComponent {
   @Input() label!: string;
+  @Input() formControlName!: string;
 }
