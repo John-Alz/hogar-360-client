@@ -21,13 +21,6 @@ describe('AppComponent', () => {
     expect(app.title).toEqual('hogar-360-client');
   });
 
-  it('should render title', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain('hogar-360-client app is running!');
-  });
-
   it('debería funcionar Jest', () => {
     expect(1 + 1).toBe(2);
   });

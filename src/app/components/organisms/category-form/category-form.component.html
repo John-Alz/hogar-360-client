@@ -5,7 +5,7 @@
         <app-form-field [label]="'Nombre de la Categoría'">
           <app-input class="category__input" [control]="categoryName"  [type]="'text'" [placeholder]="'Escribe el nombre de la categoría (máximo 50 caracteres)'"></app-input>
         </app-form-field>
-        <div class="categoryForm__errros" *ngIf="categoryName?.touched && categoryName?.invalid">
+        <div class="categoryForm__errros" *ngIf="categoryName?.touched && categoryName?.invalid" >
           <small class="categoryForm__errros--item" *ngIf="categoryName?.errors?.['required']">El nombre es obligatorio.</small>
           <small class="categoryForm__errros--item" *ngIf="categoryName?.errors?.['maxlength']">El nombre no puede tener mas de 50 caracteres.</small>
         </div>

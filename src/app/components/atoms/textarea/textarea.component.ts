@@ -10,7 +10,7 @@ export class TextareaComponent {
   @Input() text!: string;
   @Input() placeholder!: string;
   @Input() value!: string;
-  @Input() control!: FormControl;
+  @Input() control!: FormControl<string | null>;
 
 
   count = 0;

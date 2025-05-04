@@ -6,12 +6,8 @@ import { IconDefinition } from '@fortawesome/fontawesome-svg-core'
   templateUrl: './icon.component.html',
   styleUrls: ['./icon.component.scss']
 })
-export class IconComponent implements OnInit {
+export class IconComponent {
   @Input() icon: any;
   @Input() class: string = '';
-  iconClass: string = '';
 
-  ngOnInit(): void {
-    this.iconClass = this.class;
-  }
 }

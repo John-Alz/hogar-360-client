@@ -15,8 +15,14 @@ export class CategoryFormComponent {
 
   constructor(private categoryService: CategoryService, private toastr: ToastrService, private fb: FormBuilder) {
     this.categoryForm = this.fb.group({
-      name: ['', [Validators.required, Validators.maxLength(50)]],
-      description: ['', [Validators.required, Validators.maxLength(90)]]
+      name: new FormControl('', [
+        Validators.required,
+        Validators.maxLength(50),
+      ]),
+      description: new FormControl('', [
+        Validators.required,
+        Validators.maxLength(90),
+      ]),
     })
   }
 
@@ -30,8 +36,8 @@ export class CategoryFormComponent {
 
   sendData(): void {
 
-    if(this.categoryName.hasError("required") || this.categoryDescription.hasError("required")) {
-      this.toastr.warning("Debes llenar todos  los campos requeridos.")
+    if(!this.categoryForm.valid) {
+      this.categoryForm.markAllAsTouched();
       return;
     }
 
@@ -48,11 +54,10 @@ export class CategoryFormComponent {
       },
       error: (e) => {
         console.log(e.error);
-        this.toastr.error("No se pudo crear la categoria.")
+        const backendMessage = e.error?.message ||"No se pudo crear la categoria.";
+        this.toastr.error(backendMessage)
       }
     })
-
-
 
   }
 

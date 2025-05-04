@@ -10,8 +10,9 @@
   box-sizing: border-box;
 }
 
-body {
+body, html {
   background: $background-color;
+  height: 100%;
 }
 
 .toast-message {
