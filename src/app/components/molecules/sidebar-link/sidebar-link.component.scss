@@ -1,0 +1,31 @@
+@import 'variables';
+@import 'fonts';
+
+.sidebarlink {
+  display: flex;
+  gap: 12px;
+  margin-top: 10px;
+  cursor: pointer;
+  padding: 15px 10px;
+  border-radius: 8px;
+  font-family: "Monrope";
+
+}
+
+.sidebarlink:hover {
+  background: $background-sideLink;
+}
+
+.active {
+  background: $background-sideLink;
+
+  .sidebarlink__icon {
+    color: $secondary-color;
+  }
+
+  .sidebarlink__text {
+    color: $secondary-color;
+  }
+
+}
+

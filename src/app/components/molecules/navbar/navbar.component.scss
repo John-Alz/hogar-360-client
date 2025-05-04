@@ -1,0 +1,43 @@
+@import 'variables';
+@import 'fonts';
+
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: "Monrope";
+  padding: 10px;
+  border-bottom: 2px solid $border-color;
+  background: $primary-color;
+
+  &__title {
+    color: $secondary-color;
+    font-size: 20px;
+    font-weight: bold;
+  }
+
+  &__title--highlight {
+    color: $thrid-color;
+    font-weight: normal;
+  }
+
+  &__right-container {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+  }
+
+  &__welcome {
+    font-size: 16px;
+  }
+
+  &__icon-user {
+    width: 50px;
+    height: 50px;
+  }
+
+
+
+
+}

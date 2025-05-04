@@ -1,1 +1,20 @@
 /* You can add global styles to this file, and also import other style files */
+@import 'fonts';
+@import 'variables';
+@import 'ngx-toastr/toastr';
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body, html {
+  background: $background-color;
+  height: 100%;
+}
+
+.toast-message {
+  font-family: "Monrope";
+}

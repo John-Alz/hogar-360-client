@@ -1,0 +1,12 @@
+@import "variables";
+
+.sidebar {
+  border-right: 2px solid $border-color;
+  width: 255px;
+  height: 100vh;
+  padding: 10px;
+  background: $primary-color;
+
+}
+
+
