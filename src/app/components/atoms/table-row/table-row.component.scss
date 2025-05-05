@@ -1,0 +1,18 @@
+@import 'variables';
+
+  .table__cell {
+    padding: 10px;
+
+    &-actions {
+      padding: 10px;
+      display: flex;
+      justify-content: end;
+    }
+
+
+    &-actions--delete {
+      color: $delete-color;
+    }
+
+
+  }

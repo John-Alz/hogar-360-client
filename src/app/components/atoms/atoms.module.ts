@@ -3,12 +3,12 @@ import { CommonModule } from '@angular/common';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 import { IconComponent } from './icon/icon.component';
-import { TextComponent } from './text/text.component';
 import { LabelComponent } from './label/label.component';
 import { InputComponent } from './input/input.component';
 import { TextareaComponent } from './textarea/textarea.component';
 import { ButtonComponent } from './button/button.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { TableRowComponent } from './table-row/table-row.component';
 
 
 
@@ -16,12 +16,12 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     IconComponent,
-    TextComponent,
     LabelComponent,
     InputComponent,
     LabelComponent,
     TextareaComponent,
-    ButtonComponent
+    ButtonComponent,
+    TableRowComponent
   ],
   imports: [
     CommonModule,
@@ -31,11 +31,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
   ],
   exports: [
     IconComponent,
-    TextComponent,
     InputComponent,
     LabelComponent,
     TextareaComponent,
-    ButtonComponent
+    ButtonComponent,
+    TableRowComponent
   ]
 })
 export class AtomsModule { }
