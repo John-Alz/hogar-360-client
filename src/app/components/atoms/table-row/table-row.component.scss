@@ -2,12 +2,9 @@
 
   .table__cell {
     padding: 10px;
+    border-bottom: 2px solid $border-color;
 
-    &-actions {
-      padding: 10px;
-      display: flex;
-      justify-content: end;
-    }
+
 
 
     &-actions--delete {
@@ -15,4 +12,20 @@
     }
 
 
+  }
+
+  .table__cell:last-child {
+    display: flex;
+    justify-content: end;
+  }
+
+  .table__cell td:last-child {
+    border: none;
+  }
+
+
+  @media(max-width: 650px) {
+    .table__cell {
+      font-size: 13px;
+    }
   }

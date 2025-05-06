@@ -60,3 +60,19 @@
   }
 
 }
+
+
+@media(max-width: 720px) {
+  .footer {
+
+  &__main-container {
+    flex-direction: column;
+  }
+
+  &__section {
+    margin-top: 20px;
+  }
+
+  }
+
+}

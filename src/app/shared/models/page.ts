@@ -1,7 +1,7 @@
 export interface Page<T> {
   content: T[];
   pageNumber: number;
-  pageSie: number;
+  pageSize: number;
   totalPages: number;
   totalElements: number;
 }

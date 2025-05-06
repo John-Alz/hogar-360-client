@@ -16,6 +16,12 @@ describe('TableRowComponent', () => {
   });
 
   it('should create', () => {
+    component.category = {
+      id: 1,
+    name: 'Test Category',
+    description: 'Test description'
+    }
+    fixture.detectChanges();
     expect(component).toBeTruthy();
   });
 });

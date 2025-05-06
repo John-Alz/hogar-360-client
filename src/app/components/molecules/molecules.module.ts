@@ -6,6 +6,7 @@ import { AtomsModule } from '../atoms/atoms.module';
 import { FormFieldComponent } from './form-field/form-field.component';
 import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from 'src/app/app-routing.module';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 
 
@@ -18,6 +19,7 @@ import { AppRoutingModule } from 'src/app/app-routing.module';
   imports: [
     CommonModule,
     RouterModule,
+    FontAwesomeModule,
     AppRoutingModule,
     AtomsModule
   ],

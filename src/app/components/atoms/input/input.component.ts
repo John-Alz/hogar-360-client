@@ -11,6 +11,7 @@ export class InputComponent {
   @Input() placeholder!: string;
   @Input() value!: string;
   @Input() control!: FormControl;
+  @Input() class!: string;
 
 
 

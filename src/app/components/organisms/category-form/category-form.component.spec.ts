@@ -17,15 +17,15 @@ describe('CategoryFormComponent', () => {
 
   beforeEach(async () => {
 
-    mockToastr = {warning: jest.fn(), success: jest.fn(), error: jest.fn()};
-    mockCategoryService = {postData: jest.fn().mockReturnValue(of({message: 'ok'}))}
+    mockToastr = { warning: jest.fn(), success: jest.fn(), error: jest.fn() };
+    mockCategoryService = { postData: jest.fn().mockReturnValue(of({ message: 'ok' })) }
 
     await TestBed.configureTestingModule({
       imports: [AtomsModule, MoleculesModule, HttpClientTestingModule, ToastrModule.forRoot(), ReactiveFormsModule],
       declarations: [CategoryFormComponent],
       providers: [
-        {provide: ToastrService, useValue: mockToastr},
-        {provide: CategoryService, useValue: mockCategoryService},
+        { provide: ToastrService, useValue: mockToastr },
+        { provide: CategoryService, useValue: mockCategoryService },
       ]
     });
     fixture = TestBed.createComponent(CategoryFormComponent);
@@ -50,7 +50,7 @@ describe('CategoryFormComponent', () => {
   });
 
   it('debería manejar errores del servicio al crear una categoría', () => {
-    mockCategoryService.postData.mockReturnValue(throwError(() => ({error: 'error inesperado.'})));
+    mockCategoryService.postData.mockReturnValue(throwError(() => ({ error: 'error inesperado.' })));
 
     component.categoryForm.controls['name'].setValue('Casas de lujo.');
     component.categoryForm.controls['description'].setValue('Casa de lujo equipadad con utima tecnologia.');
@@ -104,6 +104,15 @@ describe('CategoryFormComponent', () => {
     const errorElement = fixture.nativeElement.querySelector('.categoryForm__errros--item');
     expect(errorElement.textContent).toContain('la descripcion no puede tener mas de 90 caracteres.');
 
+  });
+
+  it('Deberia mostar errores su se envia un form vacio.', () => {
+    const markAllAsTouchedSpy = jest.spyOn(component.categoryForm, 'markAllAsTouched');
+    component.categoryForm.controls['name'].setValue('');
+    component.categoryForm.controls['description'].setValue('');
+    component.sendData();
+    expect(markAllAsTouchedSpy).toHaveBeenCalled();
+    expect(mockCategoryService.postData).not.toHaveBeenCalled();
   });
 
 
