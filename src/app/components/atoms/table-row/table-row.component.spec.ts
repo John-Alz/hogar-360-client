@@ -12,15 +12,15 @@ describe('TableRowComponent', () => {
     });
     fixture = TestBed.createComponent(TableRowComponent);
     component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
-
-  it('should create', () => {
     component.category = {
       id: 1,
     name: 'Test Category',
     description: 'Test description'
     }
+    fixture.detectChanges();
+  });
+
+  it('should create cell', () => {
     fixture.detectChanges();
     expect(component).toBeTruthy();
   });
