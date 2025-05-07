@@ -1,0 +1,76 @@
+@import 'variables';
+
+.categories {
+
+
+  &__title {
+    margin-bottom: 20px;
+  }
+
+  &__table--container {
+    overflow-x: auto;
+  }
+
+  &__table {
+    border-spacing: 0;
+    width: 100%;
+    text-align: left;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.05);
+    min-width: 700px;
+  }
+
+
+  &__table-header {
+    background: $background-color;
+    border-radius: 28px;
+    text-align: left;
+  }
+
+  &__table-header th:last-child {
+    text-align: right;
+  }
+
+  &__table-header-item {
+    padding: 10px;
+    color: $table-head-color;
+  }
+
+
+  &__table-body {
+    background: $primary-color;
+  }
+
+
+
+}
+
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  margin-top: 30px;
+
+  &__button {
+    background: $primary-color;
+    border: 1px solid $border-color;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 8px;
+    font-size: 16px;
+
+    &.selected {
+      background: $secondary-color;
+      color: $primary-color;
+    }
+
+    &.invisible {
+      display: none;
+    }
+
+  }
+}
+
+

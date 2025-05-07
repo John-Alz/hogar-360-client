@@ -10,6 +10,7 @@
 
   &__main-container {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
     width: 90%;
   margin: 0 auto;
@@ -58,5 +59,20 @@
     color: $text-color;
   }
 
+}
+
+
+@media(max-width: 720px) {
+  .footer {
+
+  &__main-container {
+    flex-direction: column;
+  }
+
+  &__section {
+    margin-top: 20px;
+  }
+
+  }
 
 }

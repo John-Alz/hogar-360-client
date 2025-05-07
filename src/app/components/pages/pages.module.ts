@@ -19,7 +19,6 @@ import { DashboardComponent } from './dashboard/dashboard.component';
   imports: [
     CommonModule,
     AtomsModule,
-    MoleculesModule,
     OrganismsModule,
     FormsModule,
     ReactiveFormsModule

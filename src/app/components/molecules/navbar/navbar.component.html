@@ -1,4 +1,13 @@
 <nav class="navbar">
+  <div class="navbar__menu">
+    <button (click)="toggleService.toggle()">
+      <fa-icon *ngIf="(data$ | async); else showX" [icon]="faXmark" size="2x"></fa-icon>
+      <ng-template #showX>
+        <fa-icon [icon]="faBars" size="2x"></fa-icon>
+      </ng-template>
+    </button>
+
+  </div>
   <div class="navbar__left-container">
     <p class="navbar__title">Hogar <span class="navbar__title--highlight">360</span></p>
   </div>

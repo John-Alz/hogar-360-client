@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
-import { faTag, faHome, faUsers, faGear, faGauge } from '@fortawesome/free-solid-svg-icons'
+import { faTag, faHome, faUsers, faGear, faGauge, faT } from '@fortawesome/free-solid-svg-icons'
+import { ToggleService } from 'src/app/shared/services/toggle/toggle.service';
+import { navData } from './nav-data'
 
 
 @Component({
@@ -13,4 +15,12 @@ export class SidebarComponent {
   faUsers = faUsers;
   faGear = faGear;
   faGauge = faGauge;
+
+  data = navData
+
+  collapse$ = this.toggleService.toggleState$;
+
+  constructor(public toggleService: ToggleService){}
+
+
 }

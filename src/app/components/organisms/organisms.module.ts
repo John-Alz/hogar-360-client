@@ -7,13 +7,15 @@ import { AtomsModule } from '../atoms/atoms.module';
 import { AppRoutingModule } from 'src/app/app-routing.module';
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CategoryListComponent } from './category-list/category-list.component';
 
 
 
 @NgModule({
   declarations: [
     SidebarComponent,
-    CategoryFormComponent
+    CategoryFormComponent,
+    CategoryListComponent
   ],
   imports: [
     CommonModule,
@@ -26,7 +28,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
   ],
   exports: [
     SidebarComponent,
-    CategoryFormComponent
+    CategoryFormComponent,
+    CategoryListComponent
   ]
 })
 export class OrganismsModule { }

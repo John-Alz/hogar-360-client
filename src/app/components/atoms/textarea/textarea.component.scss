@@ -13,6 +13,10 @@
   resize: none;
 }
 
+.textarea--error {
+  border: 1px solid red;
+}
+
 .textarea::placeholder {
   font-size: 16px;
   font-family: "Monrope";
@@ -24,3 +28,18 @@
   padding: 8px;
   color: $text-color;
 }
+
+.count--error {
+  color: red;
+}
+
+@media(max-width: 650px) {
+  .textarea::placeholder {
+    font-size: 13px;
+  }
+
+  .count {
+    font-size: 13px;
+  }
+}
+

@@ -3,4 +3,7 @@
 [placeholder]="placeholder"
 [formControl]="control"
 class="input"
+[ngClass]="{
+  'input--error': control.touched && control.invalid
+}"
 />

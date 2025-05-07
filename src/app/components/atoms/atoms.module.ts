@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 import { IconComponent } from './icon/icon.component';
-import { TextComponent } from './text/text.component';
 import { LabelComponent } from './label/label.component';
 import { InputComponent } from './input/input.component';
 import { TextareaComponent } from './textarea/textarea.component';
@@ -16,7 +15,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     IconComponent,
-    TextComponent,
     LabelComponent,
     InputComponent,
     LabelComponent,
@@ -31,7 +29,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
   ],
   exports: [
     IconComponent,
-    TextComponent,
     InputComponent,
     LabelComponent,
     TextareaComponent,
