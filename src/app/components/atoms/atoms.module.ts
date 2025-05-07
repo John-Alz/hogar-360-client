@@ -8,7 +8,6 @@ import { InputComponent } from './input/input.component';
 import { TextareaComponent } from './textarea/textarea.component';
 import { ButtonComponent } from './button/button.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { TableRowComponent } from './table-row/table-row.component';
 
 
 
@@ -20,8 +19,7 @@ import { TableRowComponent } from './table-row/table-row.component';
     InputComponent,
     LabelComponent,
     TextareaComponent,
-    ButtonComponent,
-    TableRowComponent
+    ButtonComponent
   ],
   imports: [
     CommonModule,
@@ -34,8 +32,7 @@ import { TableRowComponent } from './table-row/table-row.component';
     InputComponent,
     LabelComponent,
     TextareaComponent,
-    ButtonComponent,
-    TableRowComponent
+    ButtonComponent
   ]
 })
 export class AtomsModule { }

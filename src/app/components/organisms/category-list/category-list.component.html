@@ -1,17 +1,7 @@
 <section class="categories" *ngIf="pageResponse | async as categories">
   <h2 class="categories__title">Categorías existentes</h2>
   <div class="categories__table--container">
-    <table class="categories__table">
-      <thead class="categories__table-header">
-        <th class="categories__table-header-item">ID</th>
-        <th class="categories__table-header-item">Nombre</th>
-        <th class="categories__table-header-item">Descripcion</th>
-        <th class="categories__table-header-item">Acciones</th>
-      </thead>
-      <tbody class="categories__table-body" >
-        <tr app-table-row *ngFor="let category of categories.content" [category]="category" class="categories__table-row" ></tr>
-      </tbody>
-    </table>
+    <app-table [info]="info"></app-table>
   </div>
 
   <div class="pagination">

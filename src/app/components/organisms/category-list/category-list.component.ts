@@ -17,6 +17,11 @@ export class CategoryListComponent implements OnInit {
   prev = faChevronLeft;
   next = faChevronRight;
 
+  info: {headers: string[], data: Category[]} = {
+    headers: ["ID", "Nombre", "Descripcion"],
+    data: []
+  }
+
   pageResponse!: Observable<Page<Category>>;
 
   page = 0;
@@ -25,8 +30,6 @@ export class CategoryListComponent implements OnInit {
   pages: number[] = [];
 
   private categoryService = inject(CategoryService);
-
-  categories: any[] = [];
 
   ngOnInit(): void {
     this.getCategories();
@@ -43,7 +46,9 @@ export class CategoryListComponent implements OnInit {
       this.page--;
       this.getCategories();
     }
+
   }
+
 
   nextPage(): void {
     if(this.page < this.totalPages - 1) {
@@ -56,8 +61,12 @@ export class CategoryListComponent implements OnInit {
     this.pageResponse = this.categoryService.getData(this.page, this.size).pipe(map((data) => {
       this.totalPages = data.totalPages;
       this.pages = Array.from({ length: this.totalPages }, (_, i) => i);
-      console.log(data); return data;
+      this.info.data = data.content;
+      return data;
     }));
   }
+
+
+
 
 }

@@ -7,6 +7,7 @@ import { FormFieldComponent } from './form-field/form-field.component';
 import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from 'src/app/app-routing.module';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { TableComponent } from './table/table.component';
 
 
 
@@ -14,7 +15,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
   declarations: [
     FooterComponent,
     NavbarComponent,
-    FormFieldComponent
+    FormFieldComponent,
+    TableComponent
   ],
   imports: [
     CommonModule,
@@ -26,7 +28,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
   exports: [
     FooterComponent,
     NavbarComponent,
-    FormFieldComponent
+    FormFieldComponent,
+    TableComponent
   ]
 })
 export class MoleculesModule { }
