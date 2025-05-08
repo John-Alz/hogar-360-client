@@ -1,0 +1,21 @@
+<form  class="locationForm" *ngIf="pageResponse | async as cities">
+  <div class="locationForm__info">
+    <div>
+      <app-form-field [label]="'Nombre del barrio'">
+        <app-input class="location__input"  [type]="'text'" [control]="barrio" [placeholder]="'Escribe el nombre de la categoría (máximo 50 caracteres)'"></app-input>
+      </app-form-field>
+    </div>
+    <div>
+      <app-form-field [label]="'Ingresa el id de la ciudad'">
+        <select>
+          <option *ngFor="let city of cities.content" >{{city.name}}</option>
+        </select>
+      </app-form-field>
+    </div>
+  </div>
+  <div class="locationForm__btn" >
+    <app-button [text]="'Crear'"  ></app-button>
+  </div>
+</form>
+
+

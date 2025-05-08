@@ -8,13 +8,15 @@ import { MoleculesModule } from '../molecules/molecules.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { OrganismsModule } from '../organisms/organisms.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { LocationComponent } from './location/location.component';
 
 
 
 @NgModule({
   declarations: [
     CategoryCreateComponent,
-    DashboardComponent
+    DashboardComponent,
+    LocationComponent
   ],
   imports: [
     CommonModule,
