@@ -1,4 +1,4 @@
-import { faGauge, faGear, faHome, faTag, faUsers } from "@fortawesome/free-solid-svg-icons";
+import { faGauge, faGear, faHome, faLocationDot, faTag, faUsers } from "@fortawesome/free-solid-svg-icons";
 
 export const navData = [
   {
@@ -15,18 +15,24 @@ export const navData = [
   },
   {
     id: 3,
+    icon: faLocationDot,
+    label: 'Ubicaciones',
+    link: '/ubicaciones'
+  },
+  {
+    id: 4,
     icon: faHome,
     label: 'Propiedades',
     link: '/properties'
   },
   {
-    id: 4,
+    id: 5,
     icon: faUsers,
     label: 'Usuarios',
     link: '/users'
   },
   {
-    id: 5,
+    id: 6,
     icon: faGear,
     label: 'Configuración',
     link: '/configuration'

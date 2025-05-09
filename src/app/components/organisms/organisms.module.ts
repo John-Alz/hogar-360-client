@@ -8,6 +8,8 @@ import { AppRoutingModule } from 'src/app/app-routing.module';
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CategoryListComponent } from './category-list/category-list.component';
+import { LocationFormComponent } from './location-form/location-form.component';
+import { LocationListComponent } from './location-list/location-list.component';
 
 
 
@@ -15,7 +17,9 @@ import { CategoryListComponent } from './category-list/category-list.component';
   declarations: [
     SidebarComponent,
     CategoryFormComponent,
-    CategoryListComponent
+    CategoryListComponent,
+    LocationFormComponent,
+    LocationListComponent
   ],
   imports: [
     CommonModule,
@@ -29,7 +33,9 @@ import { CategoryListComponent } from './category-list/category-list.component';
   exports: [
     SidebarComponent,
     CategoryFormComponent,
-    CategoryListComponent
+    CategoryListComponent,
+    LocationFormComponent,
+    LocationListComponent
   ]
 })
 export class OrganismsModule { }

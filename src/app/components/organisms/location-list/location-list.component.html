@@ -1,0 +1,6 @@
+<section class="locations" *ngIf="pageResponseLocations | async locations">
+  <h2 class="locations__title">Ubicaciones existentes</h2>
+  <div class="locations__table--container">
+    <app-table [info]="info" ></app-table>
+  </div>
+</section>

@@ -12,7 +12,7 @@
       </div>
       <div>
         <app-form-field [label]="'Descripción'">
-          <app-textarea [control]="categoryDescription"  [placeholder]="'Enter category description'"></app-textarea>
+          <app-textarea [control]="categoryDescription"  [placeholder]="'Ingrese la descripcion de la categoria.'"></app-textarea>
         </app-form-field>
         <div class="categoryForm__errros" *ngIf="categoryDescription?.touched && categoryDescription?.invalid">
           <small class="categoryForm__errros--item" *ngIf="categoryDescription?.errors?.['required']">La descripcion es obligatoria.</small>
