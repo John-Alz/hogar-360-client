@@ -1,0 +1,49 @@
+@import 'variables';
+@import 'fonts';
+
+
+.locationForm {
+  padding: 20px;
+  background: $primary-color;
+  border-radius: 8px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 2px 5px;
+  margin-bottom: 50px;
+
+  &__info {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+&__btn {
+  display: flex;
+  justify-content: end;
+  padding: 40px 0 20px 0;
+}
+
+&__errros {
+  height: 1px;
+}
+
+&__errros--item {
+color: red;
+}
+
+&__select {
+  padding: 14px 7px;
+  border-radius: 8px;
+  border: 2px solid $border-color;
+}
+
+
+}
+
+
+
+@media(max-width: 650px) {
+  .locationForm {
+    &__btn {
+      padding: 20px 0 0 0;
+    }
+  }
+}

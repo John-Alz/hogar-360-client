@@ -1,0 +1,5 @@
+<select class="select" [formControl]="control">
+  <option class="select__option" value="" selected disabled>Selecciona</option>
+  <option class="select__option" *ngFor="let item of data"
+    value="{{item.id}}">{{item.name}}</option>
+</select>
