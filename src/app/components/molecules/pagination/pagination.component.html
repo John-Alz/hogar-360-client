@@ -1,0 +1,5 @@
+ <section class="pagination">
+    <button class="pagination__button" [disabled]="page === 0" (click)="prevPage()" [class.invisible]="page === 0"><app-icon [icon]="prev"/></button>
+    <button class="pagination__button" *ngFor="let p of pages" (click)="goPage(p)" [disabled]="p === page" [class.selected]="p === page">{{p + 1}}</button>
+    <button class="pagination__button" [disabled]="page === totalPages - 1" (click)="nextPage()" [class.invisible]="page === totalPages - 1"><app-icon [icon]="next"/></button>
+  </section>

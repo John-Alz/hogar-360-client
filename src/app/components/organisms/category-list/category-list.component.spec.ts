@@ -57,42 +57,4 @@ describe('CategoryListComponent', () => {
     })
   });
 
-  it('Debería ir a la página siguiente si es posible', () => {
-    component.totalPages = 3;
-    component.page =  0;
-    const spy = jest.spyOn(component, 'getCategories');
-    component.nextPage();
-    expect(component.page).toBe(1);
-    expect(spy).toHaveBeenCalled();
-  });
-
-  it('No debería pasar a la página siguiente si ya está en la última', () => {
-    component.totalPages = 2;
-    component.page = 1;
-    const spy = jest.spyOn(component, 'getCategories');
-    component.nextPage();
-    expect(component.page).toBe(1)
-    expect(spy).not.toHaveBeenCalled();
-  });
-
-  it('Debería ir a la página anterior si es posible', () => {
-    component.page = 1;
-    const spy = jest.spyOn(component, 'getCategories');
-    component.prevPage();
-    expect(component.page).toBe(0);
-    expect(spy).toHaveBeenCalled();
-  });
-
-  it('Debería ir a la página seleccionada usando goPage()', () => {
-    const spy = jest.spyOn(component, "getCategories");
-    component.goPage(2);
-    expect(component.page).toBe(2);
-    expect(spy).toHaveBeenCalled();
-  });
-
-
-
-
-
-
 });

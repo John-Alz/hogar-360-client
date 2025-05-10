@@ -1,0 +1,23 @@
+@import 'variables';
+
+.order-select {
+    background: #F9FBFF;
+  padding: 10px 7px;
+  border-radius: 8px;
+  border: 2px solid $border-color;
+  color: $text-color;
+
+  &__label {
+    font-size: 13px;
+  }
+
+  &__dropdown {
+    background: transparent;
+    border: none;
+  }
+
+  &order-select__option {
+    font-weight: bold;
+  }
+
+}

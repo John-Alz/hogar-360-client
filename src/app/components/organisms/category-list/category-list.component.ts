@@ -17,9 +17,22 @@ export class CategoryListComponent implements OnInit {
   prev = faChevronLeft;
   next = faChevronRight;
 
-  info: {headers: string[], data: Category[]} = {
-    headers: ["ID", "Nombre", "Descripcion"],
-    data: []
+  info: { headers: object[], data: Category[] } = {
+    headers: [
+      {
+        key: 'id',
+        header: 'ID'
+      },
+      {
+        key: 'name',
+        header: 'Nombre'
+      },
+      {
+        key: 'description',
+        header: 'Descripcion'
+      },
+    ],
+    data: [] as Category[]
   }
 
   pageResponse!: Observable<Page<Category>>;
@@ -35,27 +48,11 @@ export class CategoryListComponent implements OnInit {
     this.getCategories();
   }
 
-
-  goPage(pageNumber: number): void {
-    this.page = pageNumber;
+  onPageChanged(newPage: number): void {
+    this.page = newPage;
     this.getCategories();
   }
 
-  prevPage(): void {
-    if(this.page > 0) {
-      this.page--;
-      this.getCategories();
-    }
-
-  }
-
-
-  nextPage(): void {
-    if(this.page < this.totalPages - 1) {
-      this.page++;
-      this.getCategories();
-    }
-  }
 
   getCategories(): void {
     this.pageResponse = this.categoryService.getData(this.page, this.size).pipe(map((data) => {

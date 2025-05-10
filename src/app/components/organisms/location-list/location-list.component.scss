@@ -1,0 +1,20 @@
+@import 'variables';
+
+.locations {
+
+
+  &__title {
+    margin-bottom: 20px;
+  }
+
+  &__table--container {
+    overflow-x: auto;
+  }
+
+  &__filters {
+    display        : flex;
+    justify-content: end;
+    gap            : 15px;
+  }
+
+}
