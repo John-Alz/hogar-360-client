@@ -57,4 +57,12 @@ describe('CategoryListComponent', () => {
     })
   });
 
+  it('Debe cambiar la pagia y llamar a getCategories', () => {
+    const spy = jest.spyOn(component, 'getCategories');
+    let newPage = 2;
+    component.onPageChanged(newPage);
+    expect(spy).toHaveBeenCalled();
+    expect(component.page).toBe(newPage);
+  });
+
 });

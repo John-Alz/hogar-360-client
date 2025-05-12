@@ -9,7 +9,7 @@ import { Department } from '../../models/department';
 })
 export class DepartmentService {
 
-   private apiUrl: string = 'http://localhost:8081/api/v1/department?page=0&size=10';
+   private apiUrl: string = 'http://localhost:8081/api/v1/department';
 
     constructor(private http: HttpClient) { }
 
