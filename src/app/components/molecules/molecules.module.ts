@@ -8,6 +8,10 @@ import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from 'src/app/app-routing.module';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { TableComponent } from './table/table.component';
+import { PaginationComponent } from './pagination/pagination.component';
+import { SearchbarComponent } from './searchbar/searchbar.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { OrderSelectComponent } from './order-select/order-select.component';
 
 
 
@@ -16,20 +20,27 @@ import { TableComponent } from './table/table.component';
     FooterComponent,
     NavbarComponent,
     FormFieldComponent,
-    TableComponent
+    TableComponent,
+    PaginationComponent,
+    SearchbarComponent,
+    OrderSelectComponent
   ],
   imports: [
     CommonModule,
     RouterModule,
     FontAwesomeModule,
     AppRoutingModule,
-    AtomsModule
+    AtomsModule,
+    ReactiveFormsModule
   ],
   exports: [
     FooterComponent,
     NavbarComponent,
     FormFieldComponent,
-    TableComponent
+    TableComponent,
+    PaginationComponent,
+    SearchbarComponent,
+    OrderSelectComponent
   ]
 })
 export class MoleculesModule { }

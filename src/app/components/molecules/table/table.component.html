@@ -1,13 +1,11 @@
 <table class="table">
   <thead class="table__header">
-      <th class="table__header-item" *ngFor="let header of info.headers">{{header}}</th>
+      <th class="table__header-item" *ngFor="let header of info.headers">{{header.header}}</th>
     <th class="table__header-item">Acciones</th>
   </thead>
   <tbody class="table__body">
     <tr class="table__row" *ngFor="let item of info.data">
-      <td class="table__cell" >#CAT-20250{{item.id}}</td>
-      <td class="table__cell">{{item.name}}</td>
-      <td class="table__cell">{{item.description}}</td>
+      <td class="table__cell" *ngFor="let header of info.headers" >{{item[header.key]}}</td>
       <td class="table__cell">
         <app-icon [icon]="faTrash" class="table__cell-actions--delete"></app-icon>
       </td>

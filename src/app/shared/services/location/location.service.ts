@@ -17,11 +17,10 @@ export class LocationService {
     return this.http.post<Location>(this.apiUrl, data);
   }
 
-  getLocations(page: number, size: number, searchBy: string, search: string, orderAsc: boolean) {
+  getLocations(page: number, size: number, search: string, orderAsc: boolean) {
     const params = new HttpParams()
       .set('page', page)
       .set('size', size)
-      .set('searchBy', searchBy)
       .set('search', search)
       .set('orderAsc', orderAsc)
 

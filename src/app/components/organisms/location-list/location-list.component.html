@@ -1,6 +1,17 @@
-<section class="locations" *ngIf="pageResponseLocations | async locations">
+<section class="locations">
   <h2 class="locations__title">Ubicaciones existentes</h2>
-  <div class="locations__table--container">
+  <div class="locations__filters">
+    <app-searchbar [control]="searchValue"></app-searchbar>
+    <app-order-select [control]="order" ></app-order-select>
+  </div>
+  <div class="locations__table--container" *ngIf="pageResponseLocations | async as locations">
     <app-table [info]="info" ></app-table>
   </div>
+  <app-pagination
+  [page]="page"
+  [pages]="pages"
+  [totalPages]="totalPages"
+  [getFunction]="getLocations.bind(this, search, orderAsc)"
+  (pageChange)="onPageChanged($event)">
+</app-pagination>
 </section>

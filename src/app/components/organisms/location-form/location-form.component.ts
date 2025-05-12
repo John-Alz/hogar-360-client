@@ -1,6 +1,5 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { cities } from './cities-data';
 import { map, Observable } from 'rxjs';
 import { Page } from 'src/app/shared/models/page';
 import { City } from 'src/app/shared/models/city';
@@ -39,8 +38,6 @@ export class LocationFormComponent implements OnInit {
   get locationCity(): FormControl {
     return this.locationForm.get('city') as FormControl;
   }
-
-  data = cities;
 
   page = 0;
   size = 10;
