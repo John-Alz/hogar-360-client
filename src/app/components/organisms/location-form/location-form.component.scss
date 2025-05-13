@@ -9,6 +9,10 @@
   box-shadow: rgba(0, 0, 0, 0.24) 0px 2px 5px;
   margin-bottom: 50px;
 
+  &__group {
+    border: none;
+  }
+
   &__info {
   display: flex;
   flex-direction: column;

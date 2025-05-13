@@ -13,13 +13,14 @@ import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LayoutsModule } from './components/layouts/layouts.module';
 import { RouterModule } from '@angular/router';
+import { ErrorMessagePipe } from './shared/pipes/error-message.pipe';
 
 
 
 
 @NgModule({
   declarations: [
-    AppComponent,
+    AppComponent
   ],
   imports: [
     BrowserModule,

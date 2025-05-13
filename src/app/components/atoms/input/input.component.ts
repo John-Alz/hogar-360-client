@@ -12,6 +12,7 @@ export class InputComponent {
   @Input() value!: string;
   @Input() control!: FormControl;
   @Input() class!: string;
+  @Input() errorMessage!: string;
 
 
 

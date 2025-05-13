@@ -2,7 +2,7 @@
 @import 'fonts';
 
 
-.categoryForm {
+.form {
   padding: 20px;
   background: $primary-color;
   border-radius: 8px;
@@ -11,7 +11,19 @@
 
    &__group {
     border: none;
+    display: flex;
+    gap: 2rem;
   }
+
+  &__group-select {
+    width: 100%;
+    border: none;
+  }
+
+  &__input-group {
+    width: 50%;
+  }
+
 
   &__info {
   display: flex;
@@ -37,8 +49,21 @@ color: red;
 
 
 
+@media(max-width: 750px) {
+  .form {
+    &__group {
+      flex-direction: column;
+    }
+
+    &__input-group {
+    width: 100%;
+  }
+  }
+}
+
+
 @media(max-width: 650px) {
-  .categoryForm {
+  .form{
     &__btn {
       padding: 20px 0 0 0;
     }

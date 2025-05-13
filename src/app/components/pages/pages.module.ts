@@ -9,6 +9,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { OrganismsModule } from '../organisms/organisms.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { LocationComponent } from './location/location.component';
+import { UsersComponent } from './users/users.component';
 
 
 
@@ -16,7 +17,8 @@ import { LocationComponent } from './location/location.component';
   declarations: [
     CategoryCreateComponent,
     DashboardComponent,
-    LocationComponent
+    LocationComponent,
+    UsersComponent
   ],
   imports: [
     CommonModule,
