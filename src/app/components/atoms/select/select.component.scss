@@ -5,4 +5,12 @@
   padding: 14px 7px;
   border-radius: 8px;
   border: 2px solid $border-color;
+
+  &__error {
+    border: 1px solid red;
+  }
+
+  &__errors {
+    color: red;
+  }
 }

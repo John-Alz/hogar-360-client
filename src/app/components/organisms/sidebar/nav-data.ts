@@ -29,7 +29,7 @@ export const navData = [
     id: 5,
     icon: faUsers,
     label: 'Usuarios',
-    link: '/users'
+    link: '/usuarios'
   },
   {
     id: 6,

@@ -1,0 +1,41 @@
+
+  <form class="form" [formGroup]="userForm">
+    <div class="form__info">
+      <fieldset class="form__group">
+        <app-form-field class="form__input-group" [label]="'Nombre'">
+          <app-input class="form__input"  [control]="firstName"  [type]="'text'" [placeholder]="'Escribe el nombre del usuario.'"></app-input>
+        </app-form-field>
+        <app-form-field class="form__input-group" [label]="'Apellido'">
+          <app-input class="form__input"  [control]="lastName" type="'text" [placeholder]="'Ingrese el apellido del usuario.'"></app-input>
+        </app-form-field>
+        <app-form-field class="form__input-group" [label]="'Fecha de nacimiento'">
+          <app-input class="form__input" [control]="birthDate"  [type]="'date'"></app-input>
+        </app-form-field>
+      </fieldset>
+      <fieldset class="form__group">
+        <app-form-field class="form__input-group" [label]="'Numero de identificacion'">
+          <app-input class="form__input" [control]="identityNumber"  [type]="'text'" [placeholder]="'Ingrese el numero de identificacion'"></app-input>
+        </app-form-field>
+        <app-form-field class="form__input-group" [label]="'Numero de telefono'">
+          <app-input class="form__input" [control]="phoneNumber" type="'text" [placeholder]="'Ingrese el numero de telefono'"></app-input>
+        </app-form-field>
+      </fieldset>
+      <fieldset class="form__group-select">
+        <app-form-field class="form__input-group" [label]="'Seleccione el role'">
+          <app-select [data]="dataRoles"[control]="roleId"></app-select>
+        </app-form-field>
+      </fieldset>
+      <fieldset class="form__group">
+        <app-form-field class="form__input-group" [label]="'Email'">
+          <app-input class="form__input" [control]="email" type="'email" [placeholder]="'Ingrese el email'"></app-input>
+        </app-form-field>
+        <app-form-field class="form__input-group" [label]="'Constrasena'">
+          <app-input class="form__input" [control]="password"  [type]="'password'" [placeholder]="'Ingrese la contrasena'"></app-input>
+        </app-form-field>
+      </fieldset>
+    </div>
+    <footer class="form__btn" >
+      <app-button [text]="'Guardar'" (buttonClick)="sendData()" ></app-button>
+    </footer>
+  </form>
+

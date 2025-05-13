@@ -9,6 +9,8 @@ import { TextareaComponent } from './textarea/textarea.component';
 import { ButtonComponent } from './button/button.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SelectComponent } from './select/select.component';
+import { ErrorMessagePipe } from 'src/app/shared/pipes/error-message.pipe';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 
 
@@ -27,7 +29,8 @@ import { SelectComponent } from './select/select.component';
     CommonModule,
     FontAwesomeModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    SharedModule
   ],
   exports: [
     IconComponent,
