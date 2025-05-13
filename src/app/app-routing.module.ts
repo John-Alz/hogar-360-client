@@ -4,12 +4,14 @@ import { CategoryCreateComponent } from './components/pages/category-create/cate
 import { DashboardComponent } from './components/pages/dashboard/dashboard.component';
 import { LocationComponent } from './components/pages/location/location.component';
 import { UsersComponent } from './components/pages/users/users.component';
+import { PropertiesComponent } from './components/pages/properties/properties.component';
 
 const routes: Routes = [
   {path: 'categories', component: CategoryCreateComponent},
   {path: 'dashboard', component: DashboardComponent},
   {path: 'ubicaciones', component: LocationComponent},
   {path: 'usuarios', component: UsersComponent},
+  {path: 'propiedades', component: PropertiesComponent},
 ];
 
 @NgModule({
