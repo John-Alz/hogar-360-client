@@ -62,7 +62,7 @@ describe('UserFormComponent', () => {
       password: 'password',
       roleId: 13
     });
-    expect(mockNotificationService.success).toHaveBeenCalledWith('Ubicacion creada.');
+    expect(mockNotificationService.success).toHaveBeenCalledWith('usuario creado.');
   });
 
 
@@ -82,7 +82,7 @@ describe('UserFormComponent', () => {
     expect(mockNotificationService.success).not.toHaveBeenCalled();
   });
 
-  it('debería manejar errores del servicio postLocation', () => {
+  it('debería manejar errores del servicio postUser', () => {
     mockUserService.postUser.mockReturnValueOnce(
       throwError(() => ({ error: { message: 'Error del backend' } }))
     );

@@ -11,6 +11,12 @@
   border-radius: 8px;
   border: 2px solid $border-color;
   resize: none;
+
+  &__errros {
+    color: red;
+    height: 1px;
+  }
+
 }
 
 .textarea--error {

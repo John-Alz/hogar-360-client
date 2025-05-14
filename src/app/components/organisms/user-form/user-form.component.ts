@@ -4,6 +4,7 @@ import { roles } from './roles';
 import { UserService } from 'src/app/shared/services/user/user.service';
 import { User } from 'src/app/shared/models/user';
 import { NotificationService } from 'src/app/shared/services/notification/notification.service';
+import { REGEX_PATTERN } from 'src/app/shared/constants/constants';
 
 @Component({
   selector: 'app-user-form',
@@ -13,10 +14,10 @@ import { NotificationService } from 'src/app/shared/services/notification/notifi
 export class UserFormComponent {
   firstName = new FormControl('', [Validators.required]);
   lastName = new FormControl('', [Validators.required]);
-  identityNumber = new FormControl('', [Validators.required, Validators.pattern(/^[0-9]+$/)]);
-  phoneNumber = new FormControl('', [Validators.required, Validators.pattern(/^\+?[0-9]{1,13}$/), Validators.maxLength(13)]);
+  identityNumber = new FormControl('', [Validators.required, Validators.pattern(REGEX_PATTERN.ONLY_NUMBERS)]);
+  phoneNumber = new FormControl('', [Validators.required, Validators.pattern(REGEX_PATTERN.PHONE_NUMBER), Validators.maxLength(13)]);
   birthDate = new FormControl('', [Validators.required]);
-  email = new FormControl('', [Validators.required, Validators.pattern(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/)]);
+  email = new FormControl('', [Validators.required, Validators.pattern(REGEX_PATTERN.EMAIL)]);
   password = new FormControl('', [Validators.required]);
   roleId = new FormControl('', [Validators.required]);
 
@@ -61,11 +62,11 @@ export class UserFormComponent {
 
     this.userService.postUser(payload).subscribe({
       next: (response) => {
-        this.notifyService.success("Ubicacion creada.")
+        this.notifyService.success("Usuario creado.")
         this.userForm.reset();
       },
       error: (e) => {
-        const backendMessage = e.error?.message ||"No se pudo crear la categoria.";
+        const backendMessage = e.error?.message ||"No se pudo crear el usuario.";
         this.notifyService.error(backendMessage)
       }
     });

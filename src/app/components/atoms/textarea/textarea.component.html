@@ -3,3 +3,8 @@
   [ngClass]="{'textarea--error' : control.touched && control.invalid }"></textarea>
 <p class="count" [ngClass]="{'count--error' : control.touched && control.invalid }" >{{count}}/90</p>
 </div>
+<div class="textarea__errros" *ngIf="control?.touched && control?.invalid">
+  <small class="textarea__errros--item"   *ngIf="control?.touched && control?.invalid && control?.errors">
+    {{control.errors | errorMessage}}
+  </small>
+</div>

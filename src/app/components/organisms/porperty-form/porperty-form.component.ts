@@ -29,7 +29,7 @@ export class PorpertyFormComponent implements OnInit {
   pages: number[] = [];
 
   name = new FormControl('', [Validators.required]);
-  description = new FormControl('', [Validators.required]);
+  description = new FormControl('', [Validators.required, Validators.maxLength(90)]);
   direction = new FormControl('', [Validators.required]);
   categoryId = new FormControl('', [Validators.required]);
   roomCount = new FormControl('', [Validators.required]);
@@ -75,6 +75,11 @@ export class PorpertyFormComponent implements OnInit {
 
   sendData(): void {
 
+    if (!this.propertyForm.valid) {
+      this.propertyForm.markAllAsTouched();
+      return;
+    }
+
     const payload: Property = {
       name: this.propertyForm.value.name,
       description: this.propertyForm.value.description,
@@ -88,6 +93,17 @@ export class PorpertyFormComponent implements OnInit {
     }
 
     console.log(payload);
+
+    this.propertyService.postProperty(payload).subscribe({
+      next: (response) => {
+        this.notifyService.success("Propiedad creada.")
+        this.propertyForm.reset();
+      },
+      error: (e) => {
+        const backendMessage = e.error?.message || "No se pudo crear la propiedad.";
+        this.notifyService.error(backendMessage);
+      }
+    });
 
 
   }
