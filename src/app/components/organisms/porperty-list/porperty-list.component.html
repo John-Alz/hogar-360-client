@@ -1,0 +1,17 @@
+<section class="properties">
+  <h2 class="properties__title">Ubicaciones existentes</h2>
+  <!-- <div class="properties__filters">
+    <app-searchbar [control]="searchValue"></app-searchbar>
+    <app-order-select [control]="order" ></app-order-select>
+  </div> -->
+  <div class="properties__table--container" *ngIf="pageResponseProperties | async as properties">
+    <app-table [info]="info" ></app-table>
+  </div>
+  <!-- <app-pagination
+  [page]="page"
+  [pages]="pages"
+  [totalPages]="totalPages"
+  [getFunction]="getproperties.bind(this, search, orderAsc)"
+  (pageChange)="onPageChanged($event)">
+</app-pagination> -->
+</section>
