@@ -23,7 +23,7 @@ describe('TableComponent', () => {
     component = fixture.componentInstance;
   });
 
-  it('debería renderizar los datos correctamente', () => {
+  it('should render the data correctly', () => {
     component.info = {
       headers: [
         { header: 'Nombre', key: 'name' },

@@ -19,7 +19,7 @@ describe('ButtonComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('debería emitir el evento buttonClick al hacer click', () => {
+  it('should emit the buttonClick event when clicked', () => {
     jest.spyOn(component.buttonClick, 'emit');
     const button = fixture.nativeElement.querySelector('button');
     button.click();

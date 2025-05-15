@@ -1,4 +1,4 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
 
 import { LocationListComponent } from './location-list.component';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
@@ -42,13 +42,13 @@ describe('LocationListComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('Debe inicializar y llamar a getLocations en ngOnInit', () => {
+  it('Sholud initialize and call getLocations in ngOnInit', () => {
     const spy = jest.spyOn(component, 'getLocations');
     component.ngOnInit();
     expect(spy).toHaveBeenCalledWith(component.search, component.orderAsc);
   });
 
-  it('Debe cambiar la pagia y llamar a getLocations', () => {
+  it('should to change the page and call get Locations', () => {
     const spy = jest.spyOn(component, 'getLocations');
     let newPage = 2;
     component.onPageChanged(newPage);
@@ -56,28 +56,31 @@ describe('LocationListComponent', () => {
     expect(component.page).toBe(newPage);
   });
 
-   it('Debería restablecer la página a 0 antes de llamar a getLocations cuando cambie serachValue', () => {
-  setTimeout(() => {
-    component.getLocations = jest.fn(() => {
-    expect(component.page).toBe(0); // <-- Aquí validas que fue seteado antes
-    return of(mockPage);
-  });
+it('should reset the page to 0, set search and call getLocations when searchValue changes', fakeAsync(() => {
+  component.getLocations = jest.fn();
 
   component.ngOnInit();
-  component.searchValue.setValue("test");
-  }, 350);
-});
+  component.page = 5; // valor previo para confirmar que lo reinicia
 
-  it('Debería restablecer la página a 0 antes de llamar a getLocations cuando cambie order', () => {
+  component.searchValue.setValue('test');
+  tick(300); // simula debounceTime
 
+  expect(component.page).toBe(0);
+  expect(component.search).toBe('test');
+  expect(component.getLocations).toHaveBeenCalledWith('test', component.orderAsc);
+}));
 
-  component.getLocations = jest.fn(() => {
-    expect(component.page).toBe(0); // <-- Aquí validas que fue seteado antes
-    return of(mockPage);
-  });
+it('should reset the page to 0, set orderAsc and call getLocations when order changes', () => {
+  component.getLocations = jest.fn();
 
   component.ngOnInit();
-  component.order.setValue('true');
+  component.page = 5; // valor previo para confirmar que lo reinicia
+
+  component.order.setValue('false'); // esto debería hacer orderAsc = false
+
+  expect(component.page).toBe(0);
+  expect(component.orderAsc).toBe(false);
+  expect(component.getLocations).toHaveBeenCalledWith(component.search, false);
 });
 
 

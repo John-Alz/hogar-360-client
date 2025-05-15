@@ -42,13 +42,13 @@ describe('CategoryListComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('Debe inicializar y llamar a getCategories en ngOnInit', () => {
+  it('Should initialize and call getCategories in ngOnInit', () => {
     const spy = jest.spyOn(component, 'getCategories');
     component.ngOnInit();
     expect(spy).toHaveBeenCalled();
   });
 
-  it('Debería llamar a getCategories y actualizar totalPages y pages', () => {
+  it('should call getCategories and update totalPages and pages', () => {
     component.getCategories();
     component.pageResponse.subscribe((res) => {
       expect(res.totalPages).toBe(3);
@@ -57,7 +57,7 @@ describe('CategoryListComponent', () => {
     })
   });
 
-  it('Debe cambiar la pagia y llamar a getCategories', () => {
+  it('Should page and call getCategories', () => {
     const spy = jest.spyOn(component, 'getCategories');
     let newPage = 2;
     component.onPageChanged(newPage);

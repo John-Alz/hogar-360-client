@@ -1,46 +1,50 @@
-
-  <form class="form" [formGroup]="propertyForm" *ngIf="pageResponseCategories | async as categories" >
-    <div class="form__info" *ngIf="pageResponseLocation | async as locations">
-      <fieldset class="form__group">
-        <app-form-field class="form__input-group" [label]="'Nombre'">
-          <app-input class="form__input" [control]="name" [type]="'text'" [placeholder]="'Escribe el nombre de la propiedad.'"></app-input>
-        </app-form-field>
-      </fieldset>
-      <fieldset class="form__group">
-        <app-form-field class="form__input-group" [label]="'Descripcion'">
-          <app-textarea [control]="description" placeholder="'Escriba la descripcion de la propiedad'"></app-textarea>
-        </app-form-field>
-      </fieldset>
-      <fieldset class="form__group">
-        <app-form-field class="form__input-group" [label]="'Direccion'">
-          <app-input class="form__input" [control]="direction" type="'text" [placeholder]="'Ingrese la direccion de la propiedad'"></app-input>
-        </app-form-field>
-      </fieldset>
-      <fieldset class="form__group">
-          <app-form-field class="form__input-group" [label]="'Cantidad de habitaciones'">
-          <app-input class="form__input" [control]="roomCount" type="'text" [placeholder]="'Ingrese las habitaciones'"></app-input>
-        </app-form-field>
-         <app-form-field class="form__input-group" [label]="'Cantidad de baños'">
-          <app-input class="form__input" [control]="bathroomCount" type="'text" [placeholder]="'Ingrese los baños'"></app-input>
-        </app-form-field>
-        <app-form-field class="form__input-group" [label]="'Precio'">
-          <app-input class="form__input" [control]="price"  [type]="'number'" [placeholder]="'Ingrese el precio de la propiedad'"></app-input>
-        </app-form-field>
-      </fieldset>
-       <fieldset class="form__group">
-        <app-form-field class="form__input-group" [label]="'Categoria'">
-          <app-select [control]="categoryId" [data]="categories.content"></app-select>
-        </app-form-field>
-        <app-form-field class="form__input-group" [label]="'Ubicacion'">
-          <app-select [control]="locationId" [data]="locations.content"></app-select>
-        </app-form-field>
-        <app-form-field class="form__input-group" [label]="'Fecha de activacion'">
-          <app-input class="form__input" [control]="activePublicationDate"  [type]="'date'" [placeholder]="'Ingrese el precio de la propiedad'"></app-input>
-        </app-form-field>
-      </fieldset>
-    </div>
-    <footer class="form__btn" >
-      <app-button [text]="'Guardar'" (buttonClick)="sendData()" ></app-button>
-    </footer>
-  </form>
-
+<form class="form" [formGroup]="propertyForm" *ngIf="pageResponseCategories | async as categories">
+  <div class="form__info" *ngIf="pageResponseLocation | async as locations">
+    <fieldset class="form__group">
+      <app-form-field class="form__input-group" [label]="'Nombre'">
+        <app-input class="form__input" [control]="name" [type]="'text'"
+          [placeholder]="'Escribe el nombre de la propiedad.'"></app-input>
+      </app-form-field>
+    </fieldset>
+    <fieldset class="form__group">
+      <app-form-field class="form__input-group" [label]="'Descripcion'">
+        <app-textarea [control]="description" placeholder="'Escriba la descripcion de la propiedad'"></app-textarea>
+      </app-form-field>
+    </fieldset>
+    <fieldset class="form__group">
+      <app-form-field class="form__input-group" [label]="'Direccion'">
+        <app-input class="form__input" [control]="direction" type="'text'"
+          [placeholder]="'Ingrese la direccion de la propiedad'"></app-input>
+      </app-form-field>
+    </fieldset>
+    <fieldset class="form__group">
+      <app-form-field class="form__input-group" [label]="'Cantidad de habitaciones'">
+        <app-input class="form__input" [control]="roomCount" type="'number'"
+          [placeholder]="'Ingrese las habitaciones'"></app-input>
+      </app-form-field>
+      <app-form-field class="form__input-group" [label]="'Cantidad de baños'">
+        <app-input class="form__input" [control]="bathroomCount" type="'number'"
+          [placeholder]="'Ingrese los baños'"></app-input>
+      </app-form-field>
+      <app-form-field class="form__input-group" [label]="'Precio'">
+        <app-input class="form__input" [control]="price" [type]="'number'"
+          [placeholder]="'Ingrese el precio de la propiedad'"></app-input>
+      </app-form-field>
+    </fieldset>
+    <fieldset class="form__group">
+      <app-form-field class="form__input-group" [label]="'Categoria'">
+        <app-select [control]="categoryId" [data]="categories.content"></app-select>
+      </app-form-field>
+      <app-form-field class="form__input-group" [label]="'Ubicacion'">
+        <app-select [control]="locationId" [data]="locations.content"></app-select>
+      </app-form-field>
+      <app-form-field class="form__input-group" [label]="'Fecha de activacion'">
+        <app-input class="form__input" [control]="activePublicationDate" [type]="'date'"
+          [placeholder]="'Ingrese el precio de la propiedad'"></app-input>
+      </app-form-field>
+    </fieldset>
+  </div>
+  <footer class="form__btn">
+    <app-button [text]="'Guardar'" (buttonClick)="sendData()"></app-button>
+  </footer>
+</form>

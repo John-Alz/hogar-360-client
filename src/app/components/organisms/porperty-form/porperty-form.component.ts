@@ -28,7 +28,7 @@ export class PorpertyFormComponent implements OnInit {
   totalPages = 1;
   pages: number[] = [];
 
-  name = new FormControl('', [Validators.required]);
+  name = new FormControl('', [Validators.required, Validators.maxLength(50)]);
   description = new FormControl('', [Validators.required, Validators.maxLength(90)]);
   direction = new FormControl('', [Validators.required]);
   categoryId = new FormControl('', [Validators.required]);

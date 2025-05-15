@@ -57,7 +57,7 @@ describe('LocationFormComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('debería llamar al servicio si el formulario es válido', () => {
+  it('should call the service if the form is valid', () => {
     component.locationForm.controls['barrio'].setValue('Barrio de test.');
     component.locationForm.controls['department'].setValue(1);
     component.locationForm.controls['city'].setValue(2);
@@ -71,7 +71,7 @@ describe('LocationFormComponent', () => {
     expect(mockNotificationService.success).toHaveBeenCalledWith('Ubicacion creada.');
   });
 
-  it('no debería llamar al servicio si el formulario es inválido', () => {
+  it('Should not call the service if the form is invalid.', () => {
     component.locationForm.controls['barrio'].setValue('');
     component.locationForm.controls['department'].setValue('');
     component.locationForm.controls['city'].setValue('');
@@ -82,7 +82,7 @@ describe('LocationFormComponent', () => {
     expect(mockNotificationService.success).not.toHaveBeenCalled();
   });
 
-  it('debería llamar a getCities cuando cambia department en ngOnInit', () => {
+  it('should call getCities when department changes in ngOnInit', () => {
     const spy = jest.spyOn(component, 'getCities');
     fixture.detectChanges();
 
@@ -91,7 +91,7 @@ describe('LocationFormComponent', () => {
     expect(spy).toHaveBeenCalledWith(5);
   });
 
-  it('debería manejar errores del servicio postLocation', () => {
+  it('should handle errors from the postLocation service', () => {
     mockLocationService.postLocation.mockReturnValueOnce(
       throwError(() => ({ error: { message: 'Error del backend' } }))
     );
@@ -105,7 +105,7 @@ describe('LocationFormComponent', () => {
     expect(mockNotificationService.error).toHaveBeenCalledWith('Error del backend');
   });
 
-  it('debería llamar a cityService.getData y asignar pageResponse y totalPages', (done) => {
+  it('should call cityService.getData and assign pageResponse and totalPages', (done) => {
   const fakeResponse = {
     content: [],
     pageNumber: 0,
