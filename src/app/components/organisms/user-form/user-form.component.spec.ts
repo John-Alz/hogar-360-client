@@ -40,7 +40,7 @@ describe('UserFormComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('debería llamar al servicio si el formulario es válido', () => {
+  it('Should call the service if the form is valid', () => {
     component.userForm.controls['firstName'].setValue('John');
     component.userForm.controls['lastName'].setValue('Angel');
     component.userForm.controls['identityNumber'].setValue(22664344);
@@ -62,11 +62,11 @@ describe('UserFormComponent', () => {
       password: 'password',
       roleId: 13
     });
-    expect(mockNotificationService.success).toHaveBeenCalledWith('Ubicacion creada.');
+    expect(mockNotificationService.success).toHaveBeenCalledWith('Usuario creado.');
   });
 
 
-  it('No debería llamar al servicio si el formulario es invalido', () => {
+  it('Should not call the service if the form is invalid.', () => {
     component.userForm.controls['firstName'].setValue('');
     component.userForm.controls['lastName'].setValue('');
     component.userForm.controls['identityNumber'].setValue('');
@@ -82,7 +82,7 @@ describe('UserFormComponent', () => {
     expect(mockNotificationService.success).not.toHaveBeenCalled();
   });
 
-  it('debería manejar errores del servicio postLocation', () => {
+  it('should handle errors from the postUser service', () => {
     mockUserService.postUser.mockReturnValueOnce(
       throwError(() => ({ error: { message: 'Error del backend' } }))
     );

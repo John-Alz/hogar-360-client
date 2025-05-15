@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http'
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http'
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -14,6 +14,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LayoutsModule } from './components/layouts/layouts.module';
 import { RouterModule } from '@angular/router';
 import { ErrorMessagePipe } from './shared/pipes/error-message.pipe';
+import { AuthInterceptor } from './core/interceptors/auth.interceptor';
 
 
 
@@ -36,7 +37,11 @@ import { ErrorMessagePipe } from './shared/pipes/error-message.pipe';
     PagesModule,
     LayoutsModule
   ],
-  providers: [],
+  providers: [{
+    provide: HTTP_INTERCEPTORS,
+    useClass: AuthInterceptor,
+    multi: true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

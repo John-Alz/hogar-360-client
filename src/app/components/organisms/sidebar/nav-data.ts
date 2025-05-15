@@ -23,7 +23,7 @@ export const navData = [
     id: 4,
     icon: faHome,
     label: 'Propiedades',
-    link: '/properties'
+    link: '/propiedades'
   },
   {
     id: 5,

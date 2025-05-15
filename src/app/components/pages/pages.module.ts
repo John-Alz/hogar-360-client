@@ -10,6 +10,7 @@ import { OrganismsModule } from '../organisms/organisms.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { LocationComponent } from './location/location.component';
 import { UsersComponent } from './users/users.component';
+import { PropertiesComponent } from './properties/properties.component';
 
 
 
@@ -18,7 +19,8 @@ import { UsersComponent } from './users/users.component';
     CategoryCreateComponent,
     DashboardComponent,
     LocationComponent,
-    UsersComponent
+    UsersComponent,
+    PropertiesComponent
   ],
   imports: [
     CommonModule,

@@ -1,9 +1,9 @@
 <select class="select" [ngClass]="{
   'select__error': control.touched && control.invalid
 }" [formControl]="control">
-  <option class="select__option" value="" selected disabled>Selecciona</option>
+  <option class="select__option" value="" selected disabled>Selecciona {{name}}</option>
   <option class="select__option" *ngFor="let item of data"
-    value="{{item.id}}">{{item.name}}</option>
+    value="{{item.id}}">{{item.name || item.barrio}}</option>
 </select>
 <div class="select__errors" *ngIf="control?.touched && control?.invalid">
   <small class="select__errors--item" *ngIf="control?.errors?.['required']">

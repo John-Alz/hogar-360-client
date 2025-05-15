@@ -38,7 +38,7 @@ describe('CategoryFormComponent', () => {
   });
 
 
-  it('debería llamar al servicio si el formulario es válido', () => {
+  it('You should call the service if the form is valid', () => {
     component.categoryForm.controls['name'].setValue('Casas de lujo.');
     component.categoryForm.controls['description'].setValue('Casa de lujo equipadad con utima tecnologia.');
 
@@ -49,7 +49,7 @@ describe('CategoryFormComponent', () => {
 
   });
 
-  it('debería manejar errores del servicio al crear una categoría', () => {
+  it('should handle service errors when creating a category', () => {
     mockCategoryService.postData.mockReturnValue(throwError(() => ({ error: 'error inesperado.' })));
 
     component.categoryForm.controls['name'].setValue('Casas de lujo.');
@@ -61,7 +61,7 @@ describe('CategoryFormComponent', () => {
 
   });
 
-  it('Debería mostrar un error si el nombre de la categoría está vacío', () => {
+  it('Should display an error if the category name is empty', () => {
     component.categoryForm.controls['name'].setValue('');
     component.categoryForm.controls['name'].markAsTouched();
 
@@ -72,7 +72,7 @@ describe('CategoryFormComponent', () => {
 
   });
 
-  it('Debería mostrar un error si el nombre de la categoría supera los 50 caracteres', () => {
+  it('Should display an error if the category name exceeds 50 characters', () => {
     component.categoryForm.controls['name'].setValue('a'.repeat(51));
     component.categoryForm.controls['name'].markAsTouched();
 
@@ -84,7 +84,7 @@ describe('CategoryFormComponent', () => {
   });
 
 
-  it('Debería mostrar un error si la descripcion de la categoría está vacío', () => {
+  it('It should show an error if the category description is empty', () => {
     component.categoryForm.controls['description'].setValue('');
     component.categoryForm.controls['description'].markAsTouched();
 
@@ -95,7 +95,7 @@ describe('CategoryFormComponent', () => {
 
   });
 
-  it('Debería mostrar un error si la descripcion de la categoría supera los 90 caracteres', () => {
+  it('It should show an error if the category description exceeds 90 characters.', () => {
     component.categoryForm.controls['description'].setValue('a'.repeat(91));
     component.categoryForm.controls['description'].markAsTouched();
 
@@ -106,7 +106,7 @@ describe('CategoryFormComponent', () => {
 
   });
 
-  it('Deberia mostar errores su se envia un form vacio.', () => {
+  it('Should display errors if an empty form is submitted.', () => {
     const markAllAsTouchedSpy = jest.spyOn(component.categoryForm, 'markAllAsTouched');
     component.categoryForm.controls['name'].setValue('');
     component.categoryForm.controls['description'].setValue('');

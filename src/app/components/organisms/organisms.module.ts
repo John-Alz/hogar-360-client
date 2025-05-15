@@ -11,6 +11,7 @@ import { CategoryListComponent } from './category-list/category-list.component';
 import { LocationFormComponent } from './location-form/location-form.component';
 import { LocationListComponent } from './location-list/location-list.component';
 import { UserFormComponent } from './user-form/user-form.component';
+import { PorpertyFormComponent } from './porperty-form/porperty-form.component';
 
 
 
@@ -21,7 +22,8 @@ import { UserFormComponent } from './user-form/user-form.component';
     CategoryListComponent,
     LocationFormComponent,
     LocationListComponent,
-    UserFormComponent
+    UserFormComponent,
+    PorpertyFormComponent
   ],
   imports: [
     CommonModule,
@@ -38,7 +40,8 @@ import { UserFormComponent } from './user-form/user-form.component';
     CategoryListComponent,
     LocationFormComponent,
     LocationListComponent,
-    UserFormComponent
+    UserFormComponent,
+    PorpertyFormComponent
   ]
 })
 export class OrganismsModule { }

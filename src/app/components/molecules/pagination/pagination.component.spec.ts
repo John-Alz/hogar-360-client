@@ -20,7 +20,7 @@ describe('PaginationComponent', () => {
     expect(component).toBeTruthy();
   });
 
- it('Debería ir a la página siguiente si es posible', () => {
+ it('You should go to the next page if possible.', () => {
   component.totalPages = 3;
   component.page = 0;
   const emitSpy = jest.spyOn(component.pageChange, 'emit');
@@ -31,7 +31,7 @@ describe('PaginationComponent', () => {
   expect(component.getFunction).toHaveBeenCalled();
 });
 
-it('No debería pasar a la página siguiente si ya está en la última', () => {
+it('You should not go to the next page if you are already on the last one.', () => {
   component.totalPages = 2;
   component.page = 1;
   const emitSpy = jest.spyOn(component.pageChange, 'emit');
@@ -42,7 +42,7 @@ it('No debería pasar a la página siguiente si ya está en la última', () => {
   expect(component.getFunction).not.toHaveBeenCalled();
 });
 
-it('Debería ir a la página anterior si es posible', () => {
+it('You should go to the previous page if possible.', () => {
   component.page = 1;
   const emitSpy = jest.spyOn(component.pageChange, 'emit');
 
@@ -52,7 +52,7 @@ it('Debería ir a la página anterior si es posible', () => {
   expect(component.getFunction).toHaveBeenCalled();
 });
 
-it('Debería ir a la página seleccionada usando goPage()', () => {
+it('You should go to the selected page using goPage()', () => {
   const emitSpy = jest.spyOn(component.pageChange, 'emit');
 
   component.goPage(2);

@@ -10,5 +10,6 @@ export class SelectComponent {
 
   @Input() data!: any[];
   @Input() control!: FormControl;
+  @Input() name!: string;
 
 }

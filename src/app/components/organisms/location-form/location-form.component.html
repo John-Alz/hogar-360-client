@@ -5,33 +5,18 @@
         <app-input class="location__input" [type]="'text'" [control]="locationBarrio"
           [placeholder]="'Escribe el nombre del barrio.'"></app-input>
       </app-form-field>
-      <div class="locationForm__errros" *ngIf="locationBarrio?.touched && locationBarrio?.invalid">
-        <small class="locationForm__errros--item" *ngIf="locationBarrio?.errors?.['required']">
-          El barrio es obligatorio.
-        </small>
-      </div>
     </fieldset>
 
     <fieldset class="locationForm__group" *ngIf="pageResponseDepartment | async as departments">
       <app-form-field [label]="'Seleccione un departamento'">
-        <app-select [data]="departments.content" [control]="locationDepartment"></app-select>
+        <app-select [name]="'un departamento'" [data]="departments.content" [control]="locationDepartment"></app-select>
       </app-form-field>
-      <div class="locationForm__errros" *ngIf="locationDepartment?.touched && locationDepartment?.invalid">
-        <small class="locationForm__errros--item" *ngIf="locationDepartment?.errors?.['required']">
-          Debe seleccionar un departamento
-        </small>
-      </div>
     </fieldset>
 
     <fieldset class="locationForm__group" *ngIf="pageResponse | async as cities">
       <app-form-field [label]="'Seleccione una ciudad'">
-        <app-select [data]="cities.content" [control]="locationCity"></app-select>
+        <app-select [name]="'una ciudad'" [data]="cities.content" [control]="locationCity"></app-select>
       </app-form-field>
-      <div class="locationForm__errros" *ngIf="locationCity?.touched && locationCity?.invalid">
-        <small class="locationForm__errros--item" *ngIf="locationCity?.errors?.['required']">
-          Debes seleccionar una ciudad.
-        </small>
-      </div>
     </fieldset>
   </section>
 
