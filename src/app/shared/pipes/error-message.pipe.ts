@@ -12,6 +12,7 @@ export class ErrorMessagePipe implements PipeTransform {
     }
 
     if (errors['maxlength']) {
+      
       const maxLength = errors['maxlength'].requiredLength;
       return `Máximo de caracteres ${maxLength} excedido.`;
     }

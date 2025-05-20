@@ -1,9 +1,29 @@
 <section class="properties">
   <h2 class="properties__title">Ubicaciones existentes</h2>
-  <!-- <div class="properties__filters">
-    <app-searchbar [control]="searchValue"></app-searchbar>
-    <app-order-select [control]="order" ></app-order-select>
-  </div> -->
+   <div class="properties__filters" *ngIf="pageResponseCategories | async as categories" >
+    <div class="properties__filters--container">
+      <app-searchbar [control]="searhcValue"></app-searchbar>
+     <app-select [name]="'una categoria'" [data]="categories.content" [control]="searchCategory"></app-select>
+    </div>
+     <div class="filters">
+      <button class="filters__btn" (click)="toggleService.toggle()">Filtros<app-icon [icon]="filtersIocn"></app-icon></button>
+     <div class="filters__container" *ngIf="collapse$ | async">
+      <app-counter [tag]="'Habitaciones'" [control]="countRooms"></app-counter>
+      <app-counter [tag]="'Banios'" [control]="countBaths"></app-counter>
+      <article class="price">
+        <label class="price__tag" for="priceRange">Precio</label>
+        <div class="price__container">
+          <input class="price__input" type="number" placeholder="Min" [formControl]="priceMinRange"/>
+        <input class="price__input" type="number" placeholder="Max" [formControl]="priceMaxRange"/>
+        </div>
+      </article>
+      <div class="actions">
+        <button class="actions__clean">Limpiar</button>
+        <button class="actions__submit" (click)="sendData()">Buscar</button>
+      </div>
+     </div>
+     </div>
+  </div>
   <div class="properties__table--container" *ngIf="pageResponseProperties | async as properties">
     <app-table [info]="info" ></app-table>
   </div>

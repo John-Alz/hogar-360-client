@@ -1,8 +1,13 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { map, Observable } from 'rxjs';
+import { FormControl } from '@angular/forms';
+import { faCircleChevronDown, faCircleChevronUp, faFilter } from '@fortawesome/free-solid-svg-icons';
+import { debounceTime, map, Observable } from 'rxjs';
+import { Category } from 'src/app/shared/models/category';
 import { Page } from 'src/app/shared/models/page';
 import { Property, PropertyResponse } from 'src/app/shared/models/property';
+import { CategoryService } from 'src/app/shared/services/category.service';
 import { PropertyService } from 'src/app/shared/services/property/property.service';
+import { ToggleService } from 'src/app/shared/services/toggle/toggle.service';
 
 @Component({
   selector: 'app-porperty-list',
@@ -10,7 +15,12 @@ import { PropertyService } from 'src/app/shared/services/property/property.servi
   styleUrls: ['./porperty-list.component.scss']
 })
 export class PorpertyListComponent implements OnInit {
-info: { headers: object[], data: PropertyResponse[] } = {
+
+
+
+  filtersIocn = faFilter;
+
+  info: { headers: object[], data: PropertyResponse[] } = {
     headers: [
       {
         key: 'id',
@@ -20,10 +30,10 @@ info: { headers: object[], data: PropertyResponse[] } = {
         key: 'name',
         header: 'Nombre'
       },
-      {
-        key: 'description',
-        header: 'Descripcion'
-      },
+      // {
+      //   key: 'description',
+      //   header: 'Descripcion'
+      // },
       {
         key: 'category.name',
         header: 'Categoria'
@@ -57,39 +67,94 @@ info: { headers: object[], data: PropertyResponse[] } = {
   }
 
   private propertyService = inject(PropertyService);
+  private categoryService = inject(CategoryService);
+  public toggleService = inject(ToggleService);
 
   pageResponseProperties!: Observable<Page<PropertyResponse>>;
+  pageResponseCategories!: Observable<Page<Category>>;
 
-    pageNumber = 0;
-    pageSize = 10;
-    ascendingOrder = true;
-    locationFilter = '';
-    categoryFilter = '';
-    minRooms = 2;
-    minBathrooms = 2;
-    minPrice = 300000000;
-    maxPrice = 500000000;
-    totalPages = 1;
-    pages: number[] = [];
+  pageNumber = 0;
+  pageSize = 100;
+  ascendingOrder = true;
+  locationFilter = '';
+  categoryFilter = '';
+  minRooms: number | null = null;
+  minBathrooms: number | null = null;
+  minPrice: number | null = null;
+  maxPrice: number | null = null;
+  totalPages = 1;
+  pages: number[] = [];
+
+  searhcValue = new FormControl('');
+  searchCategory = new FormControl('');
+  priceRange = new FormControl('');
+
+  collapse$ = this.toggleService.toggleState$;
+
+  countRooms = new FormControl(0);
+  countBaths = new FormControl(0);
+  priceMinRange = new FormControl(null);
+  priceMaxRange = new FormControl(null);
 
 
-    ngOnInit(): void {
-      this.getProperties();
-    }
+  ngOnInit(): void {
+    this.getProperties(this.categoryFilter, this.locationFilter, this.minRooms, this.minBathrooms, this.minPrice, this.maxPrice);
+    this.getCategories();
+     this.searhcValue.valueChanges
+          .pipe(debounceTime(300))
+          .subscribe((searchText: string | null) => {
+            this.pageNumber = 0;
+            this.locationFilter = searchText ?? '';
+            this.getProperties(this.categoryFilter, this.locationFilter, this.minRooms, this.minBathrooms,  this.minPrice, this.maxPrice);
+            console.log(searchText);
 
+          })
+    this.searchCategory.valueChanges.subscribe((categoryChange: string | null) => {
+      this.pageNumber = 0;
+      console.log(categoryChange);
+      this.categoryFilter = categoryChange ?? '';
+      this.getProperties(this.categoryFilter, this.locationFilter, this.minRooms, this.minBathrooms, this.minPrice, this.maxPrice)
+    })
 
-    getProperties(): void {
-      this.pageResponseProperties = this.propertyService.getProperties(this.pageNumber, this.pageSize, this.ascendingOrder, this.locationFilter, this.categoryFilter, this.minRooms, this.minBathrooms, this.minPrice, this.maxPrice).pipe(map((data) => {
+  }
+
+  getCategories(): void {
+    this.pageResponseCategories = this.categoryService.getData(this.pageNumber, this.pageSize).pipe(map((data) => {
+      this.totalPages = data.totalPages;
+      return data;
+    }));
+  }
+
+  getProperties(category: string, location: string, rooms: number | null, baths: number | null, minPrice: number | null, maxPrice: number | null): void {
+    this.pageResponseProperties = this.propertyService.getProperties(
+      this.pageNumber,
+      this.pageSize,
+      this.ascendingOrder,
+      location,
+      category,
+      this.minRooms !== 0 ? this.minRooms : null,
+      this.minBathrooms !== 0 ? this.minBathrooms : null,
+      this.minPrice !== 0 ? this.minPrice : null,
+      this.maxPrice !== 0 ? this.maxPrice : null
+    ).pipe(
+      map((data) => {
         this.totalPages = data.totalPages;
         this.info.data = data.content
-        let array = data.content
-        for (let i = 0; i < array.length; i++) {
-          const element = array[i];
-          console.log(element)
-        }
-
         return data;
       }))
-    }
+  }
+
+  sendData(): void {
+    console.log('rooms: ' + this.countRooms.value);
+    console.log('baths: ' + this.countRooms.value);
+    console.log('Price Min: ' + this.priceMinRange.value);
+    console.log('Price max: ' + this.priceMaxRange.value);
+     this.minRooms = this.countRooms.value;
+    this.minBathrooms = this.countBaths.value;
+    this.minPrice = this.priceMinRange.value;
+    this.maxPrice = this.priceMaxRange.value;
+    this.getProperties(this.categoryFilter, this.locationFilter, this.minRooms, this.minBathrooms, this.minPrice, this.maxPrice)
+
+  }
 
 }

@@ -17,20 +17,42 @@ private apiUrl: string = 'http://localhost:8081/api/v1/property';
     return this.http.post<Property>(this.apiUrl, data);
   }
 
-  getProperties(pageNumber: number, pageSize: number, ascendingOrder: boolean, locationFilter: string, categoryFilter: string, minRooms: number, minBathrooms: number, minPrice: number, maxPrice: number) {
-      const params = new HttpParams()
-        .set('pageNumber', pageNumber)
-        .set('pageSize', pageSize)
-        .set('ascendingOrder', ascendingOrder)
-        .set('locationFilter', locationFilter)
-        .set('categoryFilter', categoryFilter)
-        .set('minRooms', minRooms)
-        .set('minBathrooms', minBathrooms)
-        .set('minPrice', minPrice)
-        .set('maxPrice', maxPrice)
+  getProperties(
+  pageNumber: number,
+  pageSize: number,
+  ascendingOrder: boolean,
+  locationFilter: string,
+  categoryFilter: string | null,
+  minRooms: number | null,
+  minBathrooms: number | null,
+  minPrice: number | null,
+  maxPrice: number | null
+): Observable<Page<PropertyResponse>> {
+  let params = new HttpParams()
+    .set('pageNumber', pageNumber)
+    .set('pageSize', pageSize)
+    .set('ascendingOrder', ascendingOrder)
+    .set('locationFilter', locationFilter)
+    // .set('categoryFilter', categoryFilter);
 
-
-      return this.http.get<Page<PropertyResponse>>(this.apiUrl, { params });
-
+    if(categoryFilter !== null) {
+      params = params.set('categoryFilter', categoryFilter)
     }
+
+  if (minRooms !== null) {
+    params = params.set('minRooms', minRooms);
+  }
+  if (minBathrooms !== null) {
+    params = params.set('minBathrooms', minBathrooms);
+  }
+  if (minPrice !== null) {
+    params = params.set('minPrice', minPrice);
+  }
+  if (maxPrice !== null) {
+    params = params.set('maxPrice', maxPrice);
+  }
+
+  return this.http.get<Page<PropertyResponse>>(this.apiUrl, { params });
+}
+
 }
