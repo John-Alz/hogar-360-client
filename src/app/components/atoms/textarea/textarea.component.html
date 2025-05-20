@@ -5,6 +5,6 @@
 </div>
 <div class="textarea__errros" *ngIf="control?.touched && control?.invalid">
   <small class="textarea__errros--item"   *ngIf="control?.touched && control?.invalid && control?.errors">
-    {{control.errors | errorMessage}}
+    {{getError(control)}}
   </small>
 </div>

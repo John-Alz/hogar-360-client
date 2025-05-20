@@ -27,7 +27,7 @@ private apiUrl: string = 'http://localhost:8081/api/v1/property';
   minBathrooms: number | null,
   minPrice: number | null,
   maxPrice: number | null
-): Observable<Page<PropertyResponse>> {
+): Observable<Page<Property>> {
   let params = new HttpParams()
     .set('pageNumber', pageNumber)
     .set('pageSize', pageSize)
@@ -52,7 +52,7 @@ private apiUrl: string = 'http://localhost:8081/api/v1/property';
     params = params.set('maxPrice', maxPrice);
   }
 
-  return this.http.get<Page<PropertyResponse>>(this.apiUrl, { params });
+  return this.http.get<Page<Property>>(this.apiUrl, { params });
 }
 
 }

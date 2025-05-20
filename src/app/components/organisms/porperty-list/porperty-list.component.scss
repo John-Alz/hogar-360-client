@@ -15,6 +15,8 @@
     display        : flex;
     justify-content: space-between;
     gap            : 15px;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
   }
 
   &__filters--container {
@@ -26,8 +28,11 @@
 
 .filters {
   position: relative;
-  width: 170px;
 
+    &__actions--filters {
+    display: flex;
+    gap: 20px;
+  }
 
   &__btn {
   background: $secondary-color;
@@ -40,6 +45,8 @@
   display: flex;
   gap: 10px;
   justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
   }
 
   &__container {

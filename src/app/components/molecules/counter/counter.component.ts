@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { faCircleChevronDown, faCircleChevronUp } from '@fortawesome/free-solid-svg-icons';
+import { faCircleChevronDown, faCircleChevronUp, faCircleMinus, faCirclePlus, faMinus, faPlus } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-counter',
@@ -12,8 +12,8 @@ export class CounterComponent {
   @Input() tag!: string;
   @Input() control!: FormControl;
 
-  arrowUp = faCircleChevronUp;
-  arrowDown = faCircleChevronDown;
+  arrowUp = faCirclePlus;
+  arrowDown = faCircleMinus;
 
   count: number = 0;
 

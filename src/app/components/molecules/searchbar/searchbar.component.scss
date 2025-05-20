@@ -2,7 +2,7 @@
 
 .search {
   position  : relative;
-  background: #F9FBFF;
+  background: $primary-color;
 
   &__input {
     width        : 300px;
@@ -10,7 +10,7 @@
     padding      : 7px 7px;
     border-radius: 8px;
     border       : 2px solid $border-color;
-    background   : #F9FBFF;
+    background: $primary-color;
 
   }
 

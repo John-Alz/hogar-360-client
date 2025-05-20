@@ -9,5 +9,6 @@ import { FormControl } from '@angular/forms';
 export class OrderSelectComponent {
 
   @Input() control!: FormControl;
+  @Input() label!: string;
 
 }

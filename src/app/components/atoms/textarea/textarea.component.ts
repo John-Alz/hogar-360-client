@@ -1,5 +1,6 @@
 import { Component, forwardRef, Input } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { AbstractControl, FormControl } from '@angular/forms';
+import { getErrorMessage } from 'src/app/shared/helpers/error-message';
 
 @Component({
   selector: 'app-textarea',
@@ -20,5 +21,10 @@ export class TextareaComponent {
       this.count = value?.length || 0;
     });
   }
+
+  getError(control: AbstractControl | null): string | null {
+        if (!control || !control.errors || !control.touched) return null;
+        return getErrorMessage(control.errors)
+    }
 
 }

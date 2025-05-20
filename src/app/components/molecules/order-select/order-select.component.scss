@@ -1,7 +1,7 @@
 @import 'variables';
 
 .order-select {
-    background: #F9FBFF;
+    background: $primary-color;
   padding: 10px 7px;
   border-radius: 8px;
   border: 2px solid $border-color;
@@ -12,7 +12,7 @@
   }
 
   &__dropdown {
-    background: transparent;
+    background: $primary-color;
     border: none;
   }
 

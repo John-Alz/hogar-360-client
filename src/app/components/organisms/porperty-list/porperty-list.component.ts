@@ -20,7 +20,7 @@ export class PorpertyListComponent implements OnInit {
 
   filtersIocn = faFilter;
 
-  info: { headers: object[], data: PropertyResponse[] } = {
+  info: { headers: object[], data: Property[] } = {
     headers: [
       {
         key: 'id',
@@ -63,18 +63,18 @@ export class PorpertyListComponent implements OnInit {
         header: 'Status'
       },
     ],
-    data: [] as PropertyResponse[]
+    data: [] as Property[]
   }
 
   private propertyService = inject(PropertyService);
   private categoryService = inject(CategoryService);
   public toggleService = inject(ToggleService);
 
-  pageResponseProperties!: Observable<Page<PropertyResponse>>;
+  pageResponseProperties!: Observable<Page<Property>>;
   pageResponseCategories!: Observable<Page<Category>>;
 
   pageNumber = 0;
-  pageSize = 100;
+  pageSize = 5;
   ascendingOrder = true;
   locationFilter = '';
   categoryFilter = '';
@@ -85,37 +85,45 @@ export class PorpertyListComponent implements OnInit {
   totalPages = 1;
   pages: number[] = [];
 
-  searhcValue = new FormControl('');
+  searchValue = new FormControl<string | null>('');
   searchCategory = new FormControl('');
   priceRange = new FormControl('');
+  orderChange = new FormControl(true);
+  countRooms = new FormControl(0);
+  countBaths = new FormControl(0);
+  priceMinRange = new FormControl<number | null>(null);
+  priceMaxRange = new FormControl<number | null>(null)
 
   collapse$ = this.toggleService.toggleState$;
 
-  countRooms = new FormControl(0);
-  countBaths = new FormControl(0);
-  priceMinRange = new FormControl(null);
-  priceMaxRange = new FormControl(null);
-
 
   ngOnInit(): void {
-    this.getProperties(this.categoryFilter, this.locationFilter, this.minRooms, this.minBathrooms, this.minPrice, this.maxPrice);
+    this.getProperties(this.ascendingOrder, this.categoryFilter, this.locationFilter, this.minRooms, this.minBathrooms, this.minPrice, this.maxPrice);
     this.getCategories();
-     this.searhcValue.valueChanges
-          .pipe(debounceTime(300))
-          .subscribe((searchText: string | null) => {
-            this.pageNumber = 0;
-            this.locationFilter = searchText ?? '';
-            this.getProperties(this.categoryFilter, this.locationFilter, this.minRooms, this.minBathrooms,  this.minPrice, this.maxPrice);
-            console.log(searchText);
-
-          })
+    this.searchValue.valueChanges
+      .pipe(debounceTime(300))
+      .subscribe((searchText: string | null) => {
+        this.pageNumber = 0;
+        this.locationFilter = searchText ?? '';
+        this.getProperties(this.ascendingOrder, this.categoryFilter, this.locationFilter, this.minRooms, this.minBathrooms, this.minPrice, this.maxPrice);
+      })
     this.searchCategory.valueChanges.subscribe((categoryChange: string | null) => {
       this.pageNumber = 0;
       console.log(categoryChange);
       this.categoryFilter = categoryChange ?? '';
-      this.getProperties(this.categoryFilter, this.locationFilter, this.minRooms, this.minBathrooms, this.minPrice, this.maxPrice)
+      this.getProperties(this.ascendingOrder, this.categoryFilter, this.locationFilter, this.minRooms, this.minBathrooms, this.minPrice, this.maxPrice)
+    })
+    this.orderChange.valueChanges.subscribe((orderChangesSelect: boolean | null) => {
+      this.pageNumber = 0;
+      this.ascendingOrder = orderChangesSelect ?? true;
+      this.getProperties(this.ascendingOrder, this.categoryFilter, this.locationFilter, this.minRooms, this.minBathrooms, this.minPrice, this.maxPrice);
     })
 
+  }
+
+  onPageChanged(newPage: number): void {
+    this.pageNumber = newPage;
+    this.getProperties(this.ascendingOrder, this.categoryFilter, this.locationFilter, this.minRooms, this.minBathrooms, this.minPrice, this.maxPrice);
   }
 
   getCategories(): void {
@@ -125,11 +133,11 @@ export class PorpertyListComponent implements OnInit {
     }));
   }
 
-  getProperties(category: string, location: string, rooms: number | null, baths: number | null, minPrice: number | null, maxPrice: number | null): void {
+  getProperties(order: boolean, category: string, location: string, rooms: number | null, baths: number | null, minPrice: number | null, maxPrice: number | null): void {
     this.pageResponseProperties = this.propertyService.getProperties(
       this.pageNumber,
       this.pageSize,
-      this.ascendingOrder,
+      order,
       location,
       category,
       this.minRooms !== 0 ? this.minRooms : null,
@@ -139,21 +147,18 @@ export class PorpertyListComponent implements OnInit {
     ).pipe(
       map((data) => {
         this.totalPages = data.totalPages;
+        this.pages = Array.from({ length: this.totalPages }, (_, i) => i);
         this.info.data = data.content
         return data;
       }))
   }
 
   sendData(): void {
-    console.log('rooms: ' + this.countRooms.value);
-    console.log('baths: ' + this.countRooms.value);
-    console.log('Price Min: ' + this.priceMinRange.value);
-    console.log('Price max: ' + this.priceMaxRange.value);
-     this.minRooms = this.countRooms.value;
+    this.minRooms = this.countRooms.value;
     this.minBathrooms = this.countBaths.value;
     this.minPrice = this.priceMinRange.value;
     this.maxPrice = this.priceMaxRange.value;
-    this.getProperties(this.categoryFilter, this.locationFilter, this.minRooms, this.minBathrooms, this.minPrice, this.maxPrice)
+    this.getProperties(this.ascendingOrder, this.categoryFilter, this.locationFilter, this.minRooms, this.minBathrooms, this.minPrice, this.maxPrice)
 
   }
 

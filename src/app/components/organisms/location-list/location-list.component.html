@@ -2,7 +2,7 @@
   <h2 class="locations__title">Ubicaciones existentes</h2>
   <div class="locations__filters">
     <app-searchbar [control]="searchValue"></app-searchbar>
-    <app-order-select [control]="order" ></app-order-select>
+    <app-order-select [control]="order" [label]="'Ordernar por ciudad'"></app-order-select>
   </div>
   <div class="locations__table--container" *ngIf="pageResponseLocations | async as locations">
     <app-table [info]="info" ></app-table>

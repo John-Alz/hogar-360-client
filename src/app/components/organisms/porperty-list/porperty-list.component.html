@@ -2,14 +2,17 @@
   <h2 class="properties__title">Ubicaciones existentes</h2>
    <div class="properties__filters" *ngIf="pageResponseCategories | async as categories" >
     <div class="properties__filters--container">
-      <app-searchbar [control]="searhcValue"></app-searchbar>
+      <app-searchbar [control]="searchValue" ></app-searchbar>
      <app-select [name]="'una categoria'" [data]="categories.content" [control]="searchCategory"></app-select>
     </div>
      <div class="filters">
-      <button class="filters__btn" (click)="toggleService.toggle()">Filtros<app-icon [icon]="filtersIocn"></app-icon></button>
+      <div class="filters__actions--filters">
+        <button class="filters__btn" (click)="toggleService.toggle()">Filtros<app-icon [icon]="filtersIocn"></app-icon></button>
+      <app-order-select [control]="orderChange"  [label]="'Ordernar'"></app-order-select>
+      </div>
      <div class="filters__container" *ngIf="collapse$ | async">
       <app-counter [tag]="'Habitaciones'" [control]="countRooms"></app-counter>
-      <app-counter [tag]="'Banios'" [control]="countBaths"></app-counter>
+      <app-counter [tag]="'Baños'" [control]="countBaths"></app-counter>
       <article class="price">
         <label class="price__tag" for="priceRange">Precio</label>
         <div class="price__container">
@@ -27,11 +30,11 @@
   <div class="properties__table--container" *ngIf="pageResponseProperties | async as properties">
     <app-table [info]="info" ></app-table>
   </div>
-  <!-- <app-pagination
-  [page]="page"
-  [pages]="pages"
-  [totalPages]="totalPages"
-  [getFunction]="getproperties.bind(this, search, orderAsc)"
-  (pageChange)="onPageChanged($event)">
-</app-pagination> -->
+    <app-pagination
+    [page]="pageNumber"
+    [pages]="pages"
+    [totalPages]="totalPages"
+    [getFunction]="getProperties.bind(this, ascendingOrder, categoryFilter, locationFilter, minRooms, minBathrooms, minPrice, maxPrice)"
+    (pageChange)="onPageChanged($event)">
+  </app-pagination>
 </section>
