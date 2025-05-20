@@ -1,18 +1,14 @@
-import { Pipe, PipeTransform } from '@angular/core';
 
-@Pipe({
-  name: 'errorMessage'
-})
-export class ErrorMessagePipe implements PipeTransform {
-  transform(errors: any): string | null {
-    if (!errors) return null;
+export const getErrorMessage = (errors: any): string | null => {
+
+  if (!errors) return null;
 
     if (errors['required']) {
       return 'Este campo es obligatorio.';
     }
 
     if (errors['maxlength']) {
-      
+
       const maxLength = errors['maxlength'].requiredLength;
       return `Máximo de caracteres ${maxLength} excedido.`;
     }
@@ -36,5 +32,5 @@ export class ErrorMessagePipe implements PipeTransform {
     }
 
     return 'Campo inválido.';
-  }
+
 }

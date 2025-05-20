@@ -1,5 +1,6 @@
 import { Component, forwardRef, Input } from '@angular/core';
-import { ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { AbstractControl, ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { getErrorMessage } from 'src/app/shared/helpers/error-message';
 
 @Component({
   selector: 'app-input',
@@ -15,5 +16,9 @@ export class InputComponent {
   @Input() errorMessage!: string;
 
 
+  getError(control: AbstractControl | null): string | null {
+      if (!control || !control.errors || !control.touched) return null;
+      return getErrorMessage(control.errors)
+  }
 
 }

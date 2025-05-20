@@ -8,7 +8,7 @@ export class ToggleService {
 
   constructor() { }
 
-  private _toggleState = new BehaviorSubject<boolean>(true);
+  private _toggleState = new BehaviorSubject<boolean>(false);
   toggleState$ = this._toggleState.asObservable();
 
   setToggleState(state: boolean): void {

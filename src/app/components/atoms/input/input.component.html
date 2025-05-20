@@ -3,6 +3,6 @@
 }" />
 <div class="input__errros" *ngIf="control?.touched && control?.invalid">
   <small class="input__errros--item"   *ngIf="control?.touched && control?.invalid && control?.errors">
-    {{control.errors | errorMessage}}
+    {{getError(control)}}
   </small>
 </div>

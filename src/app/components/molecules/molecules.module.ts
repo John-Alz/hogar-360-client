@@ -12,6 +12,7 @@ import { PaginationComponent } from './pagination/pagination.component';
 import { SearchbarComponent } from './searchbar/searchbar.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { OrderSelectComponent } from './order-select/order-select.component';
+import { CounterComponent } from './counter/counter.component';
 
 
 
@@ -23,7 +24,8 @@ import { OrderSelectComponent } from './order-select/order-select.component';
     TableComponent,
     PaginationComponent,
     SearchbarComponent,
-    OrderSelectComponent
+    OrderSelectComponent,
+    CounterComponent
   ],
   imports: [
     CommonModule,
@@ -40,7 +42,8 @@ import { OrderSelectComponent } from './order-select/order-select.component';
     TableComponent,
     PaginationComponent,
     SearchbarComponent,
-    OrderSelectComponent
+    OrderSelectComponent,
+    CounterComponent
   ]
 })
 export class MoleculesModule { }

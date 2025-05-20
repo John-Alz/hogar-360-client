@@ -16,7 +16,7 @@ describe('ToggleService', () => {
 
   it('should have an initial toggleState of true', (done) => {
     service.toggleState$.subscribe(state => {
-      expect(state).toBe(true);
+      expect(state).toBe(false);
       done(); // Necesario para pruebas asíncronas
     });
   });
@@ -32,7 +32,7 @@ describe('ToggleService', () => {
   it('should toggle the state when toggle is called', (done) => {
     service.toggle(); // Cambia el estado de true a false
     service.toggleState$.subscribe(state => {
-      expect(state).toBe(false);
+      expect(state).toBe(true);
       done();
     });
   });
@@ -41,7 +41,7 @@ describe('ToggleService', () => {
     service.toggle(); // Cambia el estado de true a false
     service.toggle(); // Cambia el estado de false a true
     service.toggleState$.subscribe(state => {
-      expect(state).toBe(true);
+      expect(state).toBe(false);
       done();
     });
   });
