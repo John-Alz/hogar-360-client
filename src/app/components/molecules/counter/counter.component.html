@@ -1,7 +1,7 @@
 <article class="counter">
   <label class="counter__tag">{{tag}}</label>
   <div class="counter__container">
-    <button class="counter__btn" (click)="decrement()" ><app-icon [icon]="arrowDown"></app-icon></button>
+    <button class="counter__btn" (click)="decrement()" [disabled]="control.value === 0" ><app-icon [icon]="arrowDown"></app-icon></button>
     <p >{{control.value}}</p>
     <button class="counter__btn" (click)="increment()"><app-icon [icon]="arrowUp"></app-icon></button>
   </div>
