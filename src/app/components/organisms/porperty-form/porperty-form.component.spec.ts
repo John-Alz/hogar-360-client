@@ -97,7 +97,7 @@ const mockEmptyPropertyForm = {
     expect(mockNotificationService.success).toHaveBeenCalledWith('Propiedad creada.');
   });
 
-  it('Should call the service if the form is valid', () => {
+  it('Should call the service if the form is not valid', () => {
     component.propertyForm.patchValue(mockEmptyPropertyForm);
 
     component.sendData();

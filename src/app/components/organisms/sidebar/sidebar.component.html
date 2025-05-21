@@ -1,7 +1,7 @@
 <aside class="sidebar" >
   <nav class="sidebar__nav">
-    <ul class="sidebar__list">
-      <li class="sidebar__item" *ngFor="let item of data" routerLink="{{item.link}}" routerLinkActive="active">
+    <ul class="sidebar__list" *ngFor="let item of data" >
+      <li class="sidebar__item" routerLink="{{item.link}}" *ngIf="role === item.role" routerLinkActive="active">
         <app-icon [icon]="item.icon" class="sidebar__item--icon" ></app-icon>
         <p>{{item.label}}</p>
       </li>

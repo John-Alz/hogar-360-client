@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { REGEX_PATTERN } from 'src/app/shared/constants/constants';
 import { Login } from 'src/app/shared/models/login';
 import { AuthService } from 'src/app/shared/services/auth/auth.service';
@@ -17,7 +18,7 @@ export class LoginFormComponent {
 
     loginForm: FormGroup;
 
-    constructor(private formBuilder: FormBuilder, private authService: AuthService, private notifyService: NotificationService) {
+    constructor(private formBuilder: FormBuilder, private authService: AuthService, private notifyService: NotificationService, private router: Router) {
       this.loginForm = this.formBuilder.group({
         email: this.email,
         password: this.password
@@ -39,7 +40,9 @@ export class LoginFormComponent {
 
       this.authService.login(payload).subscribe({
         next: (res) => {
-          console.log(res);
+          console.log(res.token);
+          this.router.navigate(['/'])
+          localStorage.setItem('token', res.token)
           this.notifyService.success('Bienvenido.',)
           this.loginForm.reset();
         },

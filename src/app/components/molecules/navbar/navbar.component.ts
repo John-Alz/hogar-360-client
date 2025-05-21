@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { faBars, faXmark } from '@fortawesome/free-solid-svg-icons';
 import { Observable } from 'rxjs';
+import { AuthService } from 'src/app/shared/services/auth/auth.service';
 import { ToggleService } from 'src/app/shared/services/toggle/toggle.service';
 
 @Component({
@@ -16,4 +17,6 @@ export class NavbarComponent {
 
   constructor(public toggleService: ToggleService) {}
 
+  public authService = inject(AuthService);
+    role = this.authService.getUserInfo()?.role;
 }

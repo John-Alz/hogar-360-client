@@ -7,9 +7,16 @@
       <li class="header__nav-item">Renta</li>
       <li class="header__nav-item">Vende</li>
       <div class="header__btn">
-      <button routerLink="/login">Ingresar</button>
+      <button routerLink="/login" *ngIf="!isLogged">Ingresar</button>
+      <button (click)="setFlag()" *ngIf="isLogged">Ingresar</button>
     </div>
     </ul>
+    <section class="header__popup" *ngIf="flag">
+      <div class="header__popup-items">
+        <p class="header__popup-item" routerLink="{{accessLink}}">Administracion</p>
+      <p class="header__popup-item" (click)="logOut()">Cerrar sesion</p>
+      </div>
+    </section>
 
   </nav>
   </div>

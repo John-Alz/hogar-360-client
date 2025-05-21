@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { faTag, faHome, faUsers, faGear, faGauge, faT } from '@fortawesome/free-solid-svg-icons'
 import { ToggleService } from 'src/app/shared/services/toggle/toggle.service';
 import { navData } from './nav-data'
+import { AuthService } from 'src/app/shared/services/auth/auth.service';
 
 
 @Component({
@@ -20,7 +21,11 @@ export class SidebarComponent {
 
   collapse$ = this.toggleService.toggleState$;
 
-  constructor(public toggleService: ToggleService){}
+  role: any;
+
+  constructor(public toggleService: ToggleService, private authService: AuthService){
+    this.role = authService.getUserInfo()?.role;
+  }
 
 
 }

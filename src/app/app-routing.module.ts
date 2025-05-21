@@ -8,24 +8,35 @@ import { PropertiesComponent } from './components/pages/properties/properties.co
 import { LoginComponent } from './components/pages/login/login.component';
 import { HomeComponent } from './components/pages/home/home.component';
 import { AdminLayoutComponent } from './components/layouts/admin-layout/admin-layout.component';
+import { authGuard } from './core/guards/auth.guard';
+import { NotFoundComponent } from './components/pages/not-found/not-found.component';
 
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
-  { path: 'login', component: LoginComponent },
+  { path: 'login', component: LoginComponent, canActivate: [authGuard(null)]},
 
   {
     path: 'admin',
     component: AdminLayoutComponent,
+    canActivate: [authGuard('ADMIN')],
     children: [
       { path: 'categories', component: CategoryCreateComponent },
       { path: 'dashboard', component: DashboardComponent },
       { path: 'ubicaciones', component: LocationComponent },
       { path: 'usuarios', component: UsersComponent },
-      { path: 'propiedades', component: PropertiesComponent },
-      { path: 'login', component: LoginComponent },
     ]
-  }
+  },
+  {
+    path: 'seller',
+    component: AdminLayoutComponent,
+    canActivate: [authGuard('VENDEDOR')],
+    children: [
+      { path: 'propiedades', component: PropertiesComponent },
+    ]
+  },
+  {path: '**', component: NotFoundComponent},
+  { path: '404', component: NotFoundComponent },
 ];
 
 
