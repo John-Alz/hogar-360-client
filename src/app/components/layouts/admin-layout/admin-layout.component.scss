@@ -1,9 +1,12 @@
+@import 'variables';
+
 .main {
   &__container {
     display: flex;
     width: 100%;
     height: calc(100% - 57px - 1rem);
     overflow: hidden;
+    background: $background-color;
   }
   width: 100%;
   padding: 0 2rem;

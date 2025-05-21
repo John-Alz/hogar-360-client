@@ -5,36 +5,36 @@ export const navData = [
     id: 1,
     icon: faGauge,
     label: 'Dashboard',
-    link: '/dashboard'
+    link: '/admin/dashboard'
   },
   {
     id: 2,
     icon: faTag,
     label: 'Categorías',
-    link: '/categories'
+    link: '/admin/categories'
   },
   {
     id: 3,
     icon: faLocationDot,
     label: 'Ubicaciones',
-    link: '/ubicaciones'
+    link: '/admin/ubicaciones'
   },
   {
     id: 4,
     icon: faHome,
     label: 'Propiedades',
-    link: '/propiedades'
+    link: '/admin/propiedades'
   },
   {
     id: 5,
     icon: faUsers,
     label: 'Usuarios',
-    link: '/usuarios'
+    link: '/admin/usuarios'
   },
   {
     id: 6,
     icon: faGear,
     label: 'Configuración',
-    link: '/configuration'
+    link: '/admin/configuration'
   },
 ]

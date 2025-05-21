@@ -1,0 +1,57 @@
+@import 'variables';
+
+.header {
+
+  font-family: 'Poppins';
+  background : $primary-color;
+  box-shadow : rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+
+  &__container {
+    display        : flex;
+    justify-content: space-between;
+    align-items    : center;
+    height         : 72px;
+    width          : 90%;
+    margin         : 0 auto;
+  }
+
+  &__logo {
+    font-size  : 30px;
+    font-weight: bold;
+
+    span {
+      color: $secondary-color;
+    }
+  }
+
+  &__nav {
+
+    &-ul {
+      display    : flex;
+      align-items: center;
+      gap        : 20px;
+      list-style : none;
+    }
+
+  }
+
+  &__btn {
+    button {
+      background   : $secondary-color;
+      padding      : 10px 15px;
+      color        : $primary-color;
+      border       : 1px solid $secondary-color;
+      border-radius: 8px;
+      font-size    : 16px;
+      cursor       : pointer;
+      transition   : background-color 0.3s ease, transform 0.3s ease;
+    }
+
+    button:hover {
+      background-color: transparent;
+      color           : $secondary-color;
+    }
+
+  }
+
+}

@@ -48,7 +48,7 @@ export class PorpertyListComponent implements OnInit {
       },
       {
         key: 'bathroomCount',
-        header: 'Banios'
+        header: 'Baños'
       },
       {
         key: 'price',

@@ -1,0 +1,32 @@
+<form class="form" [formGroup]="loginForm" >
+  <header class="form__header">
+    <h2 class="form__header-title">Bienvenido de nuevo a Home360</h2>
+    <p class="form__header-paragraph">Inicia sesión en tu cuenta</p>
+  </header>
+  <div class="form__info">
+    <fieldset class="form__group">
+      <app-form-field class="form__input-group" [label]="'Email'">
+        <app-input class="form__input" [control]="email" [type]="'text'"
+          [placeholder]="'Escribe tu email.'"></app-input>
+      </app-form-field>
+    </fieldset>
+    <fieldset class="form__group">
+      <app-form-field class="form__input-group" [label]="'Contrasena'">
+        <app-input [control]="password" placeholder="Escriba la contrasena"></app-input>
+      </app-form-field>
+    </fieldset>
+    <section class="form__actions">
+      <div class="form__actions-remember">
+        <input type="checkbox" checked/>
+        <label for="">Recordarme</label>
+      </div>
+      <p class="form__actions-forgot">Olvidaste la contrasena?</p>
+    </section>
+  </div>
+  <footer class="form__btn">
+    <app-button [text]="'Iniciar sesion'" (buttonClick)="sendData()" class="form__btn-app"></app-button>
+  </footer>
+  <div class="form__register">
+    <p>No tienes una cuenta? <span>Registrate</span></p>
+  </div>
+</form>
