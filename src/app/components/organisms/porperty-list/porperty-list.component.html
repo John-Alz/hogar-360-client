@@ -1,4 +1,4 @@
-<section class="properties">
+<section class="properties" *ngIf="pageResponseProperties | async as properties">
   <h2 class="properties__title">Ubicaciones existentes</h2>
    <div class="properties__filters" *ngIf="pageResponseCategories | async as categories" >
     <div class="properties__filters--container">
@@ -21,16 +21,17 @@
         </div>
       </article>
       <div class="actions">
-        <button class="actions__clean">Limpiar</button>
         <button class="actions__submit" (click)="sendData()">Buscar</button>
       </div>
      </div>
      </div>
   </div>
-  <div class="properties__table--container" *ngIf="pageResponseProperties | async as properties">
-    <app-table [info]="info" ></app-table>
+  <div class="properties__table--container">
+    <h2 class="properties__table--empty" *ngIf="properties.content.length === 0">No hay propiedades con esas caracteristicas</h2>
+    <app-table *ngIf="properties.content.length !== 0" [info]="info" ></app-table>
   </div>
     <app-pagination
+    *ngIf="properties.content.length !== 0"
     [page]="pageNumber"
     [pages]="pages"
     [totalPages]="totalPages"

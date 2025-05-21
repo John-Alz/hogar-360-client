@@ -1,0 +1,44 @@
+@import 'variables';
+
+.notfound {
+  background: $primary-color;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  font-family: 'Poppins';
+
+  &__container {
+    align-self: center;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    text-align: center;
+  }
+
+  &__title {
+    font-size: 100px;
+  }
+
+  &__subtitle {
+    font-size: 20px;
+  }
+
+  &__paragraph {
+    font-size: 16px;
+  }
+
+  &__btn {
+    padding: 10px 15px;
+    border-radius: 10px;
+    background: $secondary-color;
+    border: 1px solid $secondary-color;
+    color: $primary-color;
+    cursor: pointer;
+  }
+
+  &__btn:hover {
+      background: $primary-color;
+      color: $secondary-color;
+    }
+
+}

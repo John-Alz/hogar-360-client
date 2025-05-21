@@ -13,6 +13,7 @@ import { LocationListComponent } from './location-list/location-list.component';
 import { UserFormComponent } from './user-form/user-form.component';
 import { PorpertyFormComponent } from './porperty-form/porperty-form.component';
 import { PorpertyListComponent } from './porperty-list/porperty-list.component';
+import { LoginFormComponent } from './login-form/login-form.component';
 
 
 
@@ -25,7 +26,8 @@ import { PorpertyListComponent } from './porperty-list/porperty-list.component';
     LocationListComponent,
     UserFormComponent,
     PorpertyFormComponent,
-    PorpertyListComponent
+    PorpertyListComponent,
+    LoginFormComponent
   ],
   imports: [
     CommonModule,
@@ -44,7 +46,8 @@ import { PorpertyListComponent } from './porperty-list/porperty-list.component';
     LocationListComponent,
     UserFormComponent,
     PorpertyFormComponent,
-    PorpertyListComponent
+    PorpertyListComponent,
+    LoginFormComponent
   ]
 })
 export class OrganismsModule { }

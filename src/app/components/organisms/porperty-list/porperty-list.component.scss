@@ -11,6 +11,11 @@
     overflow-x: auto;
   }
 
+  &__table--empty {
+    color: red;
+    text-align: center;
+  }
+
   &__filters {
     display        : flex;
     justify-content: space-between;

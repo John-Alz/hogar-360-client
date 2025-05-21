@@ -9,10 +9,10 @@
 
   </div>
   <div class="navbar__left-container">
-    <p class="navbar__title">Hogar <span class="navbar__title--highlight">360</span></p>
+    <p class="navbar__title" routerLink="/">Hogar <span class="navbar__title--highlight">360</span></p>
   </div>
   <div class="navbar__right-container">
-    <p class="navbar__welcome">Bienvenido, Admin</p>
+    <p class="navbar__welcome">Bienvenido, {{role?.toLocaleLowerCase()}}</p>
     <img class="navbar__icon-user" src="assets/images/img_profile.png" alt="Imagen de perfil">
   </div>
 </nav>

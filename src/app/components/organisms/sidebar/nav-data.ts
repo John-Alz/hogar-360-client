@@ -5,36 +5,41 @@ export const navData = [
     id: 1,
     icon: faGauge,
     label: 'Dashboard',
-    link: '/dashboard'
+    link: '/admin/dashboard',
+    role: 'ADMIN'
   },
   {
     id: 2,
     icon: faTag,
     label: 'Categorías',
-    link: '/categories'
+    link: '/admin/categories',
+    role: 'ADMIN'
   },
   {
     id: 3,
     icon: faLocationDot,
     label: 'Ubicaciones',
-    link: '/ubicaciones'
+    link: '/admin/ubicaciones',
+    role: 'ADMIN'
   },
   {
     id: 4,
     icon: faHome,
     label: 'Propiedades',
-    link: '/propiedades'
+    link: '/seller/propiedades',
+    role: 'VENDEDOR'
   },
   {
     id: 5,
     icon: faUsers,
     label: 'Usuarios',
-    link: '/usuarios'
+    link: '/admin/usuarios',
+    role: 'ADMIN'
   },
   {
     id: 6,
     icon: faGear,
     label: 'Configuración',
-    link: '/configuration'
+    link: '/admin/configuration'
   },
 ]

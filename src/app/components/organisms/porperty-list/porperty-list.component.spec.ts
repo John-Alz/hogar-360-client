@@ -66,7 +66,7 @@ describe('PorpertyListComponent', () => {
     expect(component.pageNumber).toBe(newPage);
   });
 
-   it('Sholud initialize and call getCategoires in ngOnInit', () => {
+   it('Sholud initialize and call getCategories in ngOnInit', () => {
     expect(mockCategoryService.getData).toHaveBeenCalled();
   });
 

@@ -1,0 +1,132 @@
+@import 'variables';
+@import 'fonts';
+
+
+.form {
+  padding: 20px;
+  background: $primary-color;
+  margin-bottom: 50px;
+  width: 80%;
+  margin: 0 auto;
+
+  &__header {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    &-title {
+      font-size: 35px;
+      font-weight: bold;
+    }
+
+    &-paragraph {
+      color: $text-color;
+    }
+
+  }
+
+   &__group {
+    border: none;
+    display: flex;
+    gap: 2rem;
+  }
+
+  &__group-select {
+    width: 100%;
+    border: none;
+  }
+
+  &__input-group {
+    width: 100%;
+  }
+
+  &__counters {
+    display: flex;
+    gap: 2rem;
+    width: 100%;
+  }
+
+  &__info {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  margin-top: 20px;
+}
+
+&__btn {
+  display: flex;
+  padding: 40px 0 20px 0;
+    margin-bottom: 20px;
+  width: 100%;
+
+  &-app {
+    width: 100%;
+  }
+}
+
+&__errros {
+  height: 1px;
+}
+
+&__errros--item {
+color: red;
+}
+
+&__actions {
+  display: flex;
+  justify-content: space-between;
+
+  &-remember {
+    display: flex;
+    gap: 5px;
+  }
+
+  &-forgot {
+    color: $text-color;
+    cursor: pointer;
+
+    &:hover {
+      color: #000;
+    }
+
+  }
+}
+
+&__register {
+  display: flex;
+  justify-content: center;
+  padding-top: 40px;
+  border-top: 1px solid $border-color;
+  p{
+    color: $text-color;
+  }
+  span {
+    color: $secondary-color;
+  }
+}
+
+}
+
+
+
+
+@media(max-width: 750px) {
+  .form {
+    &__group {
+      flex-direction: column;
+    }
+
+    &__input-group {
+    width: 100%;
+  }
+  }
+}
+
+
+@media(max-width: 650px) {
+  .form{
+    &__btn {
+      padding: 20px 0 0 0;
+    }
+  }
+}
