@@ -14,6 +14,8 @@ import { UserFormComponent } from './user-form/user-form.component';
 import { PorpertyFormComponent } from './porperty-form/porperty-form.component';
 import { PorpertyListComponent } from './porperty-list/porperty-list.component';
 import { LoginFormComponent } from './login-form/login-form.component';
+import { ScheduleFormComponent } from './schedule-form/schedule-form.component';
+import { PagesModule } from "../pages/pages.module";
 
 
 
@@ -27,7 +29,8 @@ import { LoginFormComponent } from './login-form/login-form.component';
     UserFormComponent,
     PorpertyFormComponent,
     PorpertyListComponent,
-    LoginFormComponent
+    LoginFormComponent,
+    ScheduleFormComponent
   ],
   imports: [
     CommonModule,
@@ -36,8 +39,8 @@ import { LoginFormComponent } from './login-form/login-form.component';
     FormsModule,
     RouterModule,
     AtomsModule,
-    MoleculesModule
-  ],
+    MoleculesModule,
+],
   exports: [
     SidebarComponent,
     CategoryFormComponent,
@@ -47,7 +50,8 @@ import { LoginFormComponent } from './login-form/login-form.component';
     UserFormComponent,
     PorpertyFormComponent,
     PorpertyListComponent,
-    LoginFormComponent
+    LoginFormComponent,
+    ScheduleFormComponent
   ]
 })
 export class OrganismsModule { }

@@ -14,7 +14,8 @@
     <section class="header__popup" *ngIf="flag">
       <div class="header__popup-items">
         <p class="header__popup-item" routerLink="{{accessLink}}">Administracion</p>
-      <p class="header__popup-item" (click)="logOut()">Cerrar sesion</p>
+        <a href="/"><p class="header__popup-item" (click)="logOut()" >Cerrar sesion</p></a>
+
       </div>
     </section>
 

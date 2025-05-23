@@ -11,6 +11,7 @@ export interface Property {
   price: number;
   locationId: number;
   activePublicationDate: Date;
+  userId: number | undefined;
 }
 
 export interface PropertyResponse {

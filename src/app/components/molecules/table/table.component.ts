@@ -1,5 +1,5 @@
-import { Component, Input } from '@angular/core';
-import { faTrash } from '@fortawesome/free-solid-svg-icons';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { faCalendar, faTrash } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-table',
@@ -9,12 +9,20 @@ import { faTrash } from '@fortawesome/free-solid-svg-icons';
 export class TableComponent {
 
   faTrash = faTrash;
+  faCalendar = faCalendar;
+  isOpen = false;
   @Input() info!: any;
+  @Output() greet = new EventEmitter<boolean>();
 
   getValueByPath(obj: any, path: string): any {
   return path.split('.').reduce((acc, part) => acc?.[part], obj);
+
 }
 
+  sendMessage(): void {
+    let def = this.isOpen = !this.isOpen
+    this.greet.emit(def)
+  }
 
 
 //  getValueByPath2(obj: any, path: string): any {

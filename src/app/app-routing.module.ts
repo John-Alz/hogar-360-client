@@ -10,6 +10,7 @@ import { HomeComponent } from './components/pages/home/home.component';
 import { AdminLayoutComponent } from './components/layouts/admin-layout/admin-layout.component';
 import { authGuard } from './core/guards/auth.guard';
 import { NotFoundComponent } from './components/pages/not-found/not-found.component';
+import { ScheduleComponent } from './components/pages/schedule/schedule.component';
 
 
 const routes: Routes = [
@@ -33,6 +34,7 @@ const routes: Routes = [
     canActivate: [authGuard('VENDEDOR')],
     children: [
       { path: 'propiedades', component: PropertiesComponent },
+      { path: 'horarios', component: ScheduleComponent },
     ]
   },
   {path: '**', component: NotFoundComponent},

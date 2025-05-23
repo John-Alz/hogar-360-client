@@ -1,0 +1,15 @@
+@import 'variables';
+@import 'fonts';
+
+.schedule {
+  font-family   : "Monrope";
+  width         : 93%;
+  margin        : 0 auto;
+  padding-bottom: 100px;
+
+
+  &__title {
+    margin: 20px 0;
+  }
+
+}

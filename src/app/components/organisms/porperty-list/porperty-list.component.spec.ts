@@ -18,7 +18,7 @@ describe('PorpertyListComponent', () => {
 
 
     const mockPage: Page<Property> = {
-      content: [{ id: 1, name: 'nombre property', description: 'description property', direction: 'direction property', categoryId: 1, roomCount: 2, bathroomCount: 3, price: 145000000, locationId: 1, activePublicationDate: new Date('2025-05-20')}],
+      content: [{ id: 1, name: 'nombre property', description: 'description property', direction: 'direction property', categoryId: 1, roomCount: 2, bathroomCount: 3, price: 145000000, locationId: 1, activePublicationDate: new Date('2025-05-20'), userId: 12}],
       pageNumber: 3,
       pageSize: 0,
       totalPages: 2,

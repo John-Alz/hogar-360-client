@@ -28,7 +28,13 @@
   </div>
   <div class="properties__table--container">
     <h2 class="properties__table--empty" *ngIf="properties.content.length === 0">No hay propiedades con esas caracteristicas</h2>
-    <app-table *ngIf="properties.content.length !== 0" [info]="info" ></app-table>
+    <app-table *ngIf="properties.content.length !== 0" [info]="info" (greet)="onGreet($event)" ></app-table>
+  </div>
+  <div *ngIf="isOpenModal" >
+    <div *ngFor="let property of properties.content">
+      <app-schedule-form [propertyId]="property.id" ></app-schedule-form>
+    </div>
+
   </div>
     <app-pagination
     *ngIf="properties.content.length !== 0"

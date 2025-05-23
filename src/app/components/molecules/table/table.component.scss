@@ -2,21 +2,21 @@
 
 .table {
   border-spacing: 0;
-  width: 100%;
-  text-align: left;
-  border-radius: 8px;
-  overflow: hidden;
-  box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.05);
-  min-width: 750px;
+  width         : 100%;
+  text-align    : left;
+  border-radius : 8px;
+  overflow      : hidden;
+  box-shadow    : 0px 1px 2px 0px rgba(0, 0, 0, 0.05);
+  min-width     : 750px;
 
   &__header-row {
     display: flex;
   }
 
   &__header {
-    background: $background-color;
+    background   : $background-color;
     border-radius: 28px;
-    text-align: left;
+    text-align   : left;
   }
 
   &__header th:last-child {
@@ -25,7 +25,7 @@
 
   &__header-item {
     padding: 10px;
-    color: $table-head-color;
+    color  : $table-head-color;
   }
 
 
@@ -35,17 +35,36 @@
 
 
   &__cell {
-    padding: 10px;
-    border-bottom: 2px solid $border-color;
+    padding       : 10px;
+    border-bottom : 2px solid $border-color;
     vertical-align: middle;
+
+    &-container {
+      display        : flex;
+      justify-content: space-around;
+    }
+
+    &-container--flag {
+      display: flex;
+      justify-content: end;
+    }
+
+    &-actions {
+      display        : flex;
+      justify-content: space-between;
+    }
 
     &-actions--delete {
       color: $delete-color;
     }
 
-    &:last-child {
-      text-align: end;
+    &-actions--schedule {
+      color: #38b000;
     }
+
+    // &:last-child {
+    //   text-align: end;
+    // }
 
   }
 
@@ -53,11 +72,8 @@
 
 @media(max-width: 650px) {
   .table {
-    &__cell  {
+    &__cell {
       font-size: 13px;
     }
   }
 }
-
-
-

@@ -1,14 +1,20 @@
 <table class="table">
   <thead class="table__header">
-      <th class="table__header-item" *ngFor="let header of info.headers">{{header.header}}</th>
+    <th class="table__header-item" *ngFor="let header of info.headers">{{header.header}}</th>
     <th class="table__header-item">Acciones</th>
   </thead>
   <tbody class="table__body">
     <tr class="table__row" *ngFor="let item of info.data">
-      <td class="table__cell" *ngFor="let header of info.headers" >{{ getValueByPath(item, header.key) }}
-</td>
+      <td class="table__cell" *ngFor="let header of info.headers">
+        {{ header.isCurrency
+        ? (getValueByPath(item, header.key) | currency)
+        : getValueByPath(item, header.key) }}
+      </td>
       <td class="table__cell">
+        <div class="table__cell-container" [ngClass]="info.isProperty ? 'table__cell-container' : 'table__cell-container--flag'">
+          <button (click)="sendMessage()"><app-icon [icon]="faCalendar" class="table__cell-actions--schedule" *ngIf="info.isProperty"></app-icon></button>
         <app-icon [icon]="faTrash" class="table__cell-actions--delete"></app-icon>
+        </div>
       </td>
     </tr>
   </tbody>
