@@ -97,7 +97,7 @@ const mockEmptyPropertyForm = {
     expect(mockNotificationService.success).toHaveBeenCalledWith('Propiedad creada.');
   });
 
-  it('Should call the service if the form is not valid', () => {
+  it('Should not call the service if the form is not valid', () => {
     component.propertyForm.patchValue(mockEmptyPropertyForm);
 
     component.sendData();
@@ -106,17 +106,41 @@ const mockEmptyPropertyForm = {
     expect(mockNotificationService.success).not.toHaveBeenCalled();
   });
 
-  it('Should handle errors from the postProperty service', () => {
-    mockPropertyService.postProperty.mockReturnValueOnce(
-      throwError(() => ({ error: { message: 'Error del backend' } }))
-    );
+  it('should display the backend message if it exists', () => {
 
-    component.propertyForm.patchValue(mockValidPropertyForm);
+    const backendError = {
+      error: {
+        message: 'Error del servidor'
+      }
+    };
 
-    component.sendData();
+      mockPropertyService.postProperty.mockReturnValueOnce(
+        throwError(() => backendError)
+      );
 
-    expect(mockNotificationService.error).toHaveBeenCalledWith('Error del backend');
-  });
+      component.propertyForm.patchValue(mockValidPropertyForm);
+
+      component.sendData();
+
+      expect(mockNotificationService.error).toHaveBeenCalledWith('Error del servidor');
+    });
+
+    it('should display the default message if there is no message from the backend', () => {
+
+    const backendError = {
+      error: {}
+    };
+
+      mockPropertyService.postProperty.mockReturnValueOnce(
+        throwError(() => backendError)
+      );
+
+      component.propertyForm.patchValue(mockValidPropertyForm);
+
+      component.sendData();
+
+      expect(mockNotificationService.error).toHaveBeenCalledWith('No se pudo crear la propiedad.');
+    });
 
   it('should call getCategories and getLocations on initialization', () => {
 

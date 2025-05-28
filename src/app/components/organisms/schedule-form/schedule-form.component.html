@@ -1,11 +1,11 @@
-<form class="form">
+<form class="form" [formGroup]="scheduleForm">
   <div class="form__info">
     <fieldset class="form__group">
       <app-form-field class="form__input-group" [label]="'Hora de inicio'">
-        <app-input class="form__input" [control]="start" [type]="'datetime-local'"></app-input>
+        <app-input class="form__input" [control]="scheduleForm.controls.startDate" [type]="'datetime-local'"></app-input>
       </app-form-field>
       <app-form-field class="form__input-group" [label]="'Hora de fin'">
-        <app-input class="form__input" [control]="end" [type]="'datetime-local'"></app-input>
+        <app-input class="form__input" [control]="scheduleForm.controls.endDate" [type]="'datetime-local'"></app-input>
       </app-form-field>
     </fieldset>
   </div>

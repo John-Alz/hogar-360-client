@@ -105,7 +105,6 @@ export class PorpertyListComponent implements OnInit {
 
   collapse$ = this.toggleService.toggleState$;
 
-  isOpenModal!: boolean;
   propertyId!: number;
 
   onGreetTwo(id: number): void {

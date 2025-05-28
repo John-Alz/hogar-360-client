@@ -1,5 +1,5 @@
 import { Component, inject, Input, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { map, Observable } from 'rxjs';
 import { Page } from 'src/app/shared/models/page';
 import { Property } from 'src/app/shared/models/property';
@@ -16,26 +16,38 @@ import { ScheduleService } from 'src/app/shared/services/schedule/schedule.servi
 })
 export class ScheduleFormComponent {
 
-  private propertyService = inject(PropertyService);
-  private scheduleService = inject(ScheduleService);
-  private authService = inject(AuthService);
-  private notifyService = inject(NotificationService);
-    pageResponseProperties!: Observable<Page<Property>>;
-    propertieByUser!: object[];
+  scheduleForm: FormGroup<{
+    startDate: FormControl<string>;
+    endDate: FormControl<string>;
+  }>;
+
+
+  constructor(private scheduleService: ScheduleService, private authService: AuthService, private notifyService: NotificationService, private formBuilder: FormBuilder) {
+    this.scheduleForm = formBuilder.group({
+      startDate: this.formBuilder.control('', { nonNullable: true, validators: [Validators.required] }),
+      endDate: this.formBuilder.control('', { nonNullable: true, validators: [Validators.required] }),
+    })
+  }
+
+  pageResponseProperties!: Observable<Page<Property>>;
+  propertieByUser!: object[];
 
   @Input() propertyId!: number | undefined;
   userId = this.authService.getUserInfo()?.id;
-  start = new FormControl('');
-  end = new FormControl('');
-
 
   sendData(): void {
 
+    if (!this.scheduleForm.valid) {
+      this.scheduleForm.markAllAsTouched();
+      return;
+    }
+
+    const { startDate, endDate } = this.scheduleForm.value;
 
     const payload: Schedule = {
       propertyId: this.propertyId,
-      startDate: this.start.value,
-      endDate: this.end.value,
+      startDate: startDate,
+      endDate: endDate,
     }
 
     console.log(payload);
@@ -44,7 +56,7 @@ export class ScheduleFormComponent {
       next: (response) => {
         console.log(response);
 
-        this.notifyService.success("Propiedad creada.")
+        this.notifyService.success("Horario creado.")
       },
       error: (e) => {
         const backendMessage = e.error?.message || "No se pudo crear la propiedad.";

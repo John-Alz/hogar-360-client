@@ -43,4 +43,22 @@ describe('TableComponent', () => {
     expect(cells[0].textContent).toContain('Pedro');
     expect(cells[1].textContent).toContain('40');
   });
+
+   it('should emit true on sendFlag()', () => {
+      jest.spyOn(component.greet, 'emit');
+
+      component.sendFlag();
+
+      expect(component.greet.emit).toHaveBeenCalledWith(true);
+    });
+
+    it('should emit the id on sendPropertyId()', () => {
+      jest.spyOn(component.greetTwo, 'emit');
+
+      component.sendPropertyId(123);
+
+      expect(component.greetTwo.emit).toHaveBeenCalledWith(123);
+    });
+
+
 });

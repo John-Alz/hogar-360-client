@@ -31,7 +31,7 @@
     <app-table *ngIf="properties.content.length !== 0" [info]="info" (greetTwo)="onGreetTwo($event)" (greet)="onGreet($event)" ></app-table>
     <div class="modal__backdrop" *ngIf="isOpen">
   <div class="modal__container">
-    <h2 class="modal__title">Crea horario de visitas - <p class="modal__id"> Prop. {{propertyId}}</p></h2>
+    <h2 class="modal__title">Crea horario de visitas <p class="modal__id"> Prop. {{propertyId}}</p></h2>
     <app-schedule-form [propertyId]="propertyId" ></app-schedule-form>
     <button  class="modal__close" (click)="handleCloseModal()"><app-icon class="modal__close-icon" [icon]="closeIcon"></app-icon></button>
   </div>

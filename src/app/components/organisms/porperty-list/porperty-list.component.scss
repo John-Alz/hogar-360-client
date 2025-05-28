@@ -110,13 +110,14 @@
   &__container {
     background: white;
   border-radius: 10px;
-  min-width: 300px;
+  width:800px;
   padding: 20px;
   position: relative;
   }
 
   &__title {
     display: flex;
+    gap: 10px;
   }
 
   &__id {

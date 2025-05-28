@@ -105,6 +105,42 @@ describe('LocationFormComponent', () => {
     expect(mockNotificationService.error).toHaveBeenCalledWith('Error del backend');
   });
 
+    // it('should display the backend message if it exists', () => {
+
+    // const backendError = {
+    //   error: {
+    //     message: 'Error del servidor'
+    //   }
+    // };
+
+    //   mockLocationService.postLocation.mockReturnValueOnce(
+    //     throwError(() => backendError)
+    //   );
+
+    //   component.locationForm.patchValue(mockLocationFormValid);
+
+    //   component.sendData();
+
+    //   expect(mockNotificationService.error).toHaveBeenCalledWith('Error del servidor');
+    // });
+
+    // it('should display the default message if there is no message from the backend', () => {
+
+    // const backendError = {
+    //   error: {}
+    // };
+
+    //   mockLocationService.postLocation.mockReturnValueOnce(
+    //     throwError(() => backendError)
+    //   );
+
+    //   component.locationForm.patchValue(mockLocationFormValid);
+
+    //   component.sendData();
+
+    //   expect(mockNotificationService.error).toHaveBeenCalledWith('No se pudo crear la ubicacion..');
+    // });
+
   it('should call cityService.getData and assign pageResponse and totalPages', (done) => {
   const fakeResponse = {
     content: [],

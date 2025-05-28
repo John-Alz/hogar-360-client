@@ -15,7 +15,7 @@ import { ScheduleComponent } from './components/pages/schedule/schedule.componen
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
-  { path: 'login', component: LoginComponent, canActivate: [authGuard(null)]},
+  { path: 'login', component: LoginComponent},
 
   {
     path: 'admin',

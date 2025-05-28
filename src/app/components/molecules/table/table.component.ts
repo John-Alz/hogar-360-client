@@ -25,7 +25,6 @@ export class TableComponent {
     this.greet.emit(def)
   }
 
-
   sendPropertyId(id: number): void {
     this.greetTwo.emit(id)
   }
