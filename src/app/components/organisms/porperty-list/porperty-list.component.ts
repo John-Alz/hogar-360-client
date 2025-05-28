@@ -1,6 +1,6 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, EventEmitter, inject, Input, OnInit, Output } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { faCalendar, faCircleChevronDown, faCircleChevronUp, faFilter, faTrash } from '@fortawesome/free-solid-svg-icons';
+import { faCalendar, faCircleChevronDown, faCircleChevronUp, faCircleXmark, faFilter, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { debounceTime, map, Observable } from 'rxjs';
 import { Category } from 'src/app/shared/models/category';
 import { Page } from 'src/app/shared/models/page';
@@ -22,6 +22,7 @@ export class PorpertyListComponent implements OnInit {
   filtersIocn = faFilter;
   calendarIcon = faCalendar;
   trashIcon = faTrash;
+  closeIcon = faCircleXmark;
 
   info: { headers: object[], data: Property[], isProperty: boolean } = {
     headers: [
@@ -105,12 +106,33 @@ export class PorpertyListComponent implements OnInit {
   collapse$ = this.toggleService.toggleState$;
 
   isOpenModal!: boolean;
+  propertyId!: number;
+
+  onGreetTwo(id: number): void {
+    // this.isOpenModal = message;
+    this.propertyId = id;
+    // console.log(this.isOpenModal);
+    console.log(this.propertyId);
+  }
+
+  //
+
+  @Input() title: string = 'Modal Title';
+  @Input() isOpen: boolean = false;
+  @Output() close = new EventEmitter<void>();
 
   onGreet(message: boolean): void {
-    this.isOpenModal = message;
-    console.log(this.isOpenModal);
-
+    this.isOpen = message;
+    console.log(this.isOpen);
   }
+
+  handleCloseModal(): void {
+    this.isOpen = false;
+  }
+
+
+  //
+
 
 
   ngOnInit(): void {

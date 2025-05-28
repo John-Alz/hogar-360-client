@@ -14,9 +14,7 @@ import { UserFormComponent } from './user-form/user-form.component';
 import { PorpertyFormComponent } from './porperty-form/porperty-form.component';
 import { PorpertyListComponent } from './porperty-list/porperty-list.component';
 import { LoginFormComponent } from './login-form/login-form.component';
-import { ScheduleFormComponent } from './schedule-form/schedule-form.component';
-import { PagesModule } from "../pages/pages.module";
-
+import { ScheduleFormComponent } from './schedule-form/schedule-form.component'
 
 
 @NgModule({

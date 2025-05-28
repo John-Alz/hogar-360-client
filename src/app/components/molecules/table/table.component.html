@@ -12,7 +12,7 @@
       </td>
       <td class="table__cell">
         <div class="table__cell-container" [ngClass]="info.isProperty ? 'table__cell-container' : 'table__cell-container--flag'">
-          <button (click)="sendMessage()"><app-icon [icon]="faCalendar" class="table__cell-actions--schedule" *ngIf="info.isProperty"></app-icon></button>
+          <button class="table__cell-button" (click)="sendFlag()" (click)="sendPropertyId(item.id)"><app-icon [icon]="faCalendar" class="table__cell-actions--schedule" *ngIf="info.isProperty"></app-icon></button>
         <app-icon [icon]="faTrash" class="table__cell-actions--delete"></app-icon>
         </div>
       </td>

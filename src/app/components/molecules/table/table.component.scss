@@ -49,6 +49,12 @@
       justify-content: end;
     }
 
+    &-button {
+      border: none;
+      background: transparent;
+      cursor: pointer;
+    }
+
     &-actions {
       display        : flex;
       justify-content: space-between;

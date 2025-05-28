@@ -13,27 +13,23 @@ export class TableComponent {
   isOpen = false;
   @Input() info!: any;
   @Output() greet = new EventEmitter<boolean>();
+  @Output() greetTwo = new EventEmitter<number>();
 
   getValueByPath(obj: any, path: string): any {
   return path.split('.').reduce((acc, part) => acc?.[part], obj);
 
 }
 
-  sendMessage(): void {
-    let def = this.isOpen = !this.isOpen
+  sendFlag(): void {
+    let def = true
     this.greet.emit(def)
   }
 
 
-//  getValueByPath2(obj: any, path: string): any {
-//   let elements = path.split('.');
-//   for (const element in obj) {
-//     console.log(obj[element]);
+  sendPropertyId(id: number): void {
+    this.greetTwo.emit(id)
+  }
 
-//   }
-//   console.log(elements);
-
-// }
 
 
 }
