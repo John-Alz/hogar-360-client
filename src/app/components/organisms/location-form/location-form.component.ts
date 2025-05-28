@@ -89,7 +89,7 @@ export class LocationFormComponent implements OnInit {
         this.locationForm.reset();
       },
       error: (e) => {
-        const backendMessage = e.error?.message ||"No se pudo crear la categoria.";
+        const backendMessage = e.error?.message ||"No se pudo crear la ubicacion.";
         this.notifyService.error(backendMessage)
       }
     });

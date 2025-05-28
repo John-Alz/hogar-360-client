@@ -32,7 +32,8 @@ describe('PropertyService', () => {
       bathroomCount: 2,
       price: 150000000,
       locationId: 2,
-      activePublicationDate: new Date('2025-05-20')
+      activePublicationDate: new Date('2025-05-20'),
+      userId: 13
     };
 
     service.postProperty(dummyProperty).subscribe(response => {
@@ -56,7 +57,7 @@ describe('PropertyService', () => {
       pageNumber: 0,
     };
 
-    service.getProperties(0, 10, true, 'Medellín', 'casa', 2, 1, 100000, 500000)
+    service.getProperties(0, 10, true, 1, 'Medellín', 'casa', 2, 1, 100000, 500000)
       .subscribe(res => {
         expect(res).toEqual(mockResponse);
       });
@@ -79,7 +80,7 @@ describe('PropertyService', () => {
   });
 
     it('should omit optional params when they are null', () => {
-    service.getProperties(1, 5, false, '', null, null, null, null, null)
+    service.getProperties(1, 5, false, 13, '', null, null, null, null, null)
       .subscribe();
 
     const req = httpMock.expectOne((request) =>

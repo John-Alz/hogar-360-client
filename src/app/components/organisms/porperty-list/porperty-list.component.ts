@@ -1,10 +1,11 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, EventEmitter, inject, Input, OnInit, Output } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { faCircleChevronDown, faCircleChevronUp, faFilter } from '@fortawesome/free-solid-svg-icons';
+import { faCalendar, faCircleChevronDown, faCircleChevronUp, faCircleXmark, faFilter, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { debounceTime, map, Observable } from 'rxjs';
 import { Category } from 'src/app/shared/models/category';
 import { Page } from 'src/app/shared/models/page';
 import { Property, PropertyResponse } from 'src/app/shared/models/property';
+import { AuthService } from 'src/app/shared/services/auth/auth.service';
 import { CategoryService } from 'src/app/shared/services/category.service';
 import { PropertyService } from 'src/app/shared/services/property/property.service';
 import { ToggleService } from 'src/app/shared/services/toggle/toggle.service';
@@ -19,8 +20,11 @@ export class PorpertyListComponent implements OnInit {
 
 
   filtersIocn = faFilter;
+  calendarIcon = faCalendar;
+  trashIcon = faTrash;
+  closeIcon = faCircleXmark;
 
-  info: { headers: object[], data: Property[] } = {
+  info: { headers: object[], data: Property[], isProperty: boolean } = {
     headers: [
       {
         key: 'id',
@@ -52,7 +56,8 @@ export class PorpertyListComponent implements OnInit {
       },
       {
         key: 'price',
-        header: 'Precio'
+        header: 'Precio',
+        isCurrency: true
       },
       {
         key: 'location.ciudad',
@@ -63,21 +68,25 @@ export class PorpertyListComponent implements OnInit {
         header: 'Status'
       },
     ],
-    data: [] as Property[]
+    data: [] as Property[],
+    isProperty: true
   }
 
   private propertyService = inject(PropertyService);
   private categoryService = inject(CategoryService);
+  private authService = inject(AuthService);
   public toggleService = inject(ToggleService);
 
   pageResponseProperties!: Observable<Page<Property>>;
   pageResponseCategories!: Observable<Page<Category>>;
+  userIdToken = this.authService.getUserInfo()?.id;
 
   pageNumber = 0;
   pageSize = 5;
   ascendingOrder = true;
   locationFilter = '';
   categoryFilter = '';
+  userId = this.userIdToken;
   minRooms: number | null = null;
   minBathrooms: number | null = null;
   minPrice: number | null = null;
@@ -95,6 +104,34 @@ export class PorpertyListComponent implements OnInit {
   priceMaxRange = new FormControl<number | null>(null)
 
   collapse$ = this.toggleService.toggleState$;
+
+  propertyId!: number;
+
+  onGreetTwo(id: number): void {
+    // this.isOpenModal = message;
+    this.propertyId = id;
+    // console.log(this.isOpenModal);
+    console.log(this.propertyId);
+  }
+
+  //
+
+  @Input() title: string = 'Modal Title';
+  @Input() isOpen: boolean = false;
+  @Output() close = new EventEmitter<void>();
+
+  onGreet(message: boolean): void {
+    this.isOpen = message;
+    console.log(this.isOpen);
+  }
+
+  handleCloseModal(): void {
+    this.isOpen = false;
+  }
+
+
+  //
+
 
 
   ngOnInit(): void {
@@ -138,6 +175,7 @@ export class PorpertyListComponent implements OnInit {
       this.pageNumber,
       this.pageSize,
       order,
+      this.userId,
       location,
       category,
       this.minRooms !== 0 ? this.minRooms : null,
@@ -148,7 +186,7 @@ export class PorpertyListComponent implements OnInit {
       map((data) => {
         this.totalPages = data.totalPages;
         this.pages = Array.from({ length: this.totalPages }, (_, i) => i);
-        this.info.data = data.content
+        this.info.data = data.content;
         return data;
       }))
   }

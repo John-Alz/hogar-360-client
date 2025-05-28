@@ -1,5 +1,5 @@
 <section class="properties" *ngIf="pageResponseProperties | async as properties">
-  <h2 class="properties__title">Ubicaciones existentes</h2>
+  <h2 class="properties__title">Propiedades existentes</h2>
    <div class="properties__filters" *ngIf="pageResponseCategories | async as categories" >
     <div class="properties__filters--container">
       <app-searchbar [control]="searchValue" ></app-searchbar>
@@ -28,8 +28,25 @@
   </div>
   <div class="properties__table--container">
     <h2 class="properties__table--empty" *ngIf="properties.content.length === 0">No hay propiedades con esas caracteristicas</h2>
-    <app-table *ngIf="properties.content.length !== 0" [info]="info" ></app-table>
+    <app-table *ngIf="properties.content.length !== 0" [info]="info" (greetTwo)="onGreetTwo($event)" (greet)="onGreet($event)" ></app-table>
+    <div class="modal__backdrop" *ngIf="isOpen">
+  <div class="modal__container">
+    <h2 class="modal__title">Crea horario de visitas <p class="modal__id"> Prop. {{propertyId}}</p></h2>
+    <app-schedule-form [propertyId]="propertyId" ></app-schedule-form>
+    <button  class="modal__close" (click)="handleCloseModal()"><app-icon class="modal__close-icon" [icon]="closeIcon"></app-icon></button>
   </div>
+</div>
+  </div>
+
+     <!-- <div *ngIf="isOpenModal" class="modal">
+      <button>X</button>
+    <div >
+      <app-schedule-form [propertyId]="propertyId" ></app-schedule-form>
+    </div>
+
+  </div> -->
+
+
     <app-pagination
     *ngIf="properties.content.length !== 0"
     [page]="pageNumber"

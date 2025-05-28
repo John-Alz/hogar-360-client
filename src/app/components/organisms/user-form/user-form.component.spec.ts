@@ -12,6 +12,17 @@ describe('UserFormComponent', () => {
   let mockUserService: any;
   let mockNotificationService: any;
 
+      const mockUserFormValid = {
+      firstName: 'John',
+      lastName: 'Angel',
+      identityNumber: 22664344,
+      phoneNumber: 12236234,
+      birthDate: '2000-07-25',
+      email: 'john@gmail.com',
+      password: 'password',
+      roleId: 13,
+    }
+
   beforeEach(async () => {
 
     mockUserService = {
@@ -50,6 +61,7 @@ describe('UserFormComponent', () => {
     component.userForm.controls['password'].setValue('password');
     component.userForm.controls['roleId'].setValue(13);
 
+
     component.sendData();
 
     expect(mockUserService.postUser).toHaveBeenCalledWith({
@@ -82,24 +94,41 @@ describe('UserFormComponent', () => {
     expect(mockNotificationService.success).not.toHaveBeenCalled();
   });
 
-  it('should handle errors from the postUser service', () => {
-    mockUserService.postUser.mockReturnValueOnce(
-      throwError(() => ({ error: { message: 'Error del backend' } }))
-    );
+  it('should display the backend message if it exists', () => {
 
-    component.userForm.controls['firstName'].setValue('John');
-    component.userForm.controls['lastName'].setValue('Angel');
-    component.userForm.controls['identityNumber'].setValue(22664344);
-    component.userForm.controls['phoneNumber'].setValue(12236234);
-    component.userForm.controls['birthDate'].setValue('2000-07-25');
-    component.userForm.controls['email'].setValue('john@gmail.com');
-    component.userForm.controls['password'].setValue('password');
-    component.userForm.controls['roleId'].setValue(13);
+    const backendError = {
+      error: {
+        message: 'Error del servidor'
+      }
+    };
 
-    component.sendData();
+      mockUserService.postUser.mockReturnValueOnce(
+        throwError(() => backendError)
+      );
 
-    expect(mockNotificationService.error).toHaveBeenCalledWith('Error del backend');
-  });
+      component.userForm.patchValue(mockUserFormValid);
+
+      component.sendData();
+
+      expect(mockNotificationService.error).toHaveBeenCalledWith('Error del servidor');
+    });
+
+    it('should display the default message if there is no message from the backend', () => {
+
+    const backendError = {
+      error: {}
+    };
+
+      mockUserService.postUser.mockReturnValueOnce(
+        throwError(() => backendError)
+      );
+
+      component.userForm.patchValue(mockUserFormValid);
+
+      component.sendData();
+
+      expect(mockNotificationService.error).toHaveBeenCalledWith('No se pudo crear el usuario.');
+    });
 
 
 });

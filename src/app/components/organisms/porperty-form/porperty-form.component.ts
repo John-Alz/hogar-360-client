@@ -5,6 +5,7 @@ import { Category } from 'src/app/shared/models/category';
 import { Location } from 'src/app/shared/models/location';
 import { Page } from 'src/app/shared/models/page';
 import { Property } from 'src/app/shared/models/property';
+import { AuthService } from 'src/app/shared/services/auth/auth.service';
 import { CategoryService } from 'src/app/shared/services/category.service';
 import { LocationService } from 'src/app/shared/services/location/location.service';
 import { NotificationService } from 'src/app/shared/services/notification/notification.service';
@@ -40,7 +41,7 @@ export class PorpertyFormComponent implements OnInit {
 
   propertyForm: FormGroup;
 
-  constructor(private formBuilder: FormBuilder, private propertyService: PropertyService, private categoryService: CategoryService, private locationService: LocationService, private notifyService: NotificationService) {
+  constructor(private formBuilder: FormBuilder, private propertyService: PropertyService, private categoryService: CategoryService, private locationService: LocationService, private notifyService: NotificationService, private authService: AuthService) {
     this.propertyForm = this.formBuilder.group({
       name: this.name,
       description: this.description,
@@ -80,6 +81,8 @@ export class PorpertyFormComponent implements OnInit {
       return;
     }
 
+    const userIdToken = this.authService.getUserInfo()?.id;
+
     const payload: Property = {
       name: this.propertyForm.value.name,
       description: this.propertyForm.value.description,
@@ -90,6 +93,7 @@ export class PorpertyFormComponent implements OnInit {
       price: this.propertyForm.value.price,
       locationId: this.propertyForm.value.locationId,
       activePublicationDate: this.propertyForm.value.activePublicationDate,
+      userId: userIdToken
     }
 
     console.log(payload);

@@ -21,6 +21,7 @@ private apiUrl: string = 'http://localhost:8081/api/v1/property';
   pageNumber: number,
   pageSize: number,
   ascendingOrder: boolean,
+  userId: number | undefined,
   locationFilter: string,
   categoryFilter: string | null,
   minRooms: number | null,
@@ -33,7 +34,11 @@ private apiUrl: string = 'http://localhost:8081/api/v1/property';
     .set('pageSize', pageSize)
     .set('ascendingOrder', ascendingOrder)
     .set('locationFilter', locationFilter)
-    // .set('categoryFilter', categoryFilter);
+    // .set('userId', userId);
+
+     if(userId !== undefined) {
+      params = params.set('userId', userId)
+    }
 
     if(categoryFilter !== null) {
       params = params.set('categoryFilter', categoryFilter)

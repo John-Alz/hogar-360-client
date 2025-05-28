@@ -18,7 +18,7 @@ describe('PorpertyListComponent', () => {
 
 
     const mockPage: Page<Property> = {
-      content: [{ id: 1, name: 'nombre property', description: 'description property', direction: 'direction property', categoryId: 1, roomCount: 2, bathroomCount: 3, price: 145000000, locationId: 1, activePublicationDate: new Date('2025-05-20')}],
+      content: [{ id: 1, name: 'nombre property', description: 'description property', direction: 'direction property', categoryId: 1, roomCount: 2, bathroomCount: 3, price: 145000000, locationId: 1, activePublicationDate: new Date('2025-05-20'), userId: 12}],
       pageNumber: 3,
       pageSize: 0,
       totalPages: 2,
@@ -88,7 +88,7 @@ describe('PorpertyListComponent', () => {
     component.getProperties = jest.fn();
 
     component.ngOnInit();
-    component.pageNumber = 5; // valor previo para confirmar que lo reinicia
+    component.pageNumber = 5;
 
     component.searchValue.setValue('test');
     tick(300); // simula debounceTime
@@ -102,7 +102,7 @@ describe('PorpertyListComponent', () => {
     component.getProperties = jest.fn();
 
     component.ngOnInit();
-    component.pageNumber = 5; // valor previo para confirmar que lo reinicia
+    component.pageNumber = 5;
 
     component.searchCategory.setValue('test');
 
@@ -115,7 +115,7 @@ describe('PorpertyListComponent', () => {
     component.getProperties = jest.fn();
 
     component.ngOnInit();
-    component.pageNumber = 5; // valor previo para confirmar que lo reinicia
+    component.pageNumber = 5;
 
     component.orderChange.setValue(true);
 
@@ -159,5 +159,28 @@ it('should set order to empty string if order value is null', fakeAsync(() => {
   tick(300);
   expect(component.ascendingOrder).toBe(true);
 }));
+
+it('should assign the ID in onGreetTwo', () => {
+  component.onGreetTwo(123)
+  expect(component.propertyId).toBe(123)
+});
+
+it('should set true to isOpen when onGreet(true)', () => {
+  component.onGreet(true)
+  expect(component.isOpen).toBe(true)
+});
+
+it('should set false to isOpen when onGreet(false)', () => {
+  component.onGreet(false)
+  expect(component.isOpen).toBe(false)
+});
+
+it('you should close the modal with handleCloseModal()', () => {
+  component.isOpen = true;
+  component.handleCloseModal();
+  expect(component.isOpen).toBe(false)
+});
+
+
 
 });

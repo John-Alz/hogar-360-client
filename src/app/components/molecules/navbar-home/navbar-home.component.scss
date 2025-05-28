@@ -62,8 +62,13 @@
     border-radius: 8px;
     width: 200px;
     position: absolute;
-    right: 75px;
+    right: 90px;
     margin-top: 10px;
+
+    a {
+      text-decoration: none;
+      color: #000;
+    }
 
     &-items {
       padding: 20px;

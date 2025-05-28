@@ -1,4 +1,4 @@
-import { faGauge, faGear, faHome, faLocationDot, faTag, faUsers } from "@fortawesome/free-solid-svg-icons";
+import { faCalendar, faGauge, faGear, faHome, faLocationDot, faTag, faUsers } from "@fortawesome/free-solid-svg-icons";
 
 export const navData = [
   {
@@ -40,6 +40,14 @@ export const navData = [
     id: 6,
     icon: faGear,
     label: 'Configuración',
-    link: '/admin/configuration'
+    link: '/admin/configuration',
+    role: 'ADMIN'
+  },
+  {
+    id: 7,
+    icon: faCalendar,
+    label: 'Horarios',
+    link: '/seller/horarios',
+    role: 'VENDEDOR'
   },
 ]
