@@ -100,7 +100,6 @@ export class ScheduleListComponent implements OnInit {
   }
 
   sendData(): void {
-
     const startDateFormat = this.date.value + 'T' + this.startHour.value;
     const endDateFormat = this.date.value + 'T' + this.endHour.value;
     console.log(startDateFormat);

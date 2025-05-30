@@ -16,6 +16,7 @@ describe('PropertyCardComponent', () => {
   });
 
   it('should create', () => {
+
     expect(component).toBeTruthy();
   });
 });
