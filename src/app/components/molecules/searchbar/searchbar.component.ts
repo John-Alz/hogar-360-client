@@ -12,4 +12,5 @@ export class SearchbarComponent {
   searchIcon = faSearch;
 
   @Input() control!: FormControl;
+  @Input() placeholder!: string;
 }

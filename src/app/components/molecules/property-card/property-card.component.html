@@ -1,0 +1,26 @@
+<article class="product-card">
+  <header class="product-card__header">
+    <img
+      src="../../../../assets/images/img_card.png"
+      alt="Nombre del producto"
+      class="product-card__image"
+    />
+  </header>
+
+  <section class="product-card__details">
+    <h2 class="product-card__name">{{property.name}}</h2>
+    <p class="product-card__location">{{property.location.ciudad}}</p>
+    <p class="product-card__price">{{property.price | currency}}</p>
+    <div class="product-card__counts">
+    <div class="product-card__count">
+      <app-icon [icon]="bedIcon"></app-icon>
+      <p >{{property.roomCount}}</p>
+    </div>
+    <div class="product-card__count">
+      <app-icon [icon]="bathIcon"></app-icon>
+    <p >{{property.bathroomCount}}</p>
+    </div>
+  </div>
+  </section>
+
+</article>

@@ -1,0 +1,119 @@
+@import 'variables';
+
+.schedules {
+
+  position: relative;
+
+  &__title {
+    margin-bottom: 20px;
+  }
+
+  &__table--container {
+    overflow-x: auto;
+  }
+
+  &__table--empty {
+    color: red;
+    text-align: center;
+  }
+
+  &__filters {
+    display        : flex;
+    justify-content: space-between;
+    gap            : 15px;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+  }
+
+  &__filters--container {
+    display: flex;
+    gap: 15px;
+  }
+
+}
+
+.filters {
+  position: relative;
+
+
+    &__actions--filters {
+    display: flex;
+    gap: 20px;
+  }
+
+  &__btn {
+  background: $secondary-color;
+  color: $primary-color;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  display: flex;
+  gap: 10px;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  }
+
+  &__container {
+      width: 200px;
+    background: #FFFFFF;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  border: 1px solid $border-color;
+  padding: 20px;
+  margin-top: 10px;
+  border-radius: 20px;
+  position: absolute;
+  left: 0;
+  }
+}
+
+.price {
+
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+
+  &__tag {
+    font-size: 14px;
+  }
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  &__input {
+    padding: 10px 10px;
+    border-radius:10px;
+    border: 1px solid $border-color;
+    background: $primary-color;
+    box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+  }
+}
+
+.actions {
+  display: flex;
+  justify-content: end;
+  gap: 10px;
+  margin-top: 15px;
+
+  &__clean {
+    padding: 5px 10px;
+    background: $primary-color;
+    border: 1px solid $secondary-color;
+    border-radius: 10px;
+    cursor: pointer;
+  }
+
+  &__submit {
+    padding: 5px 10px;
+    background: $secondary-color;
+    border: none;
+    border-radius: 10px;
+    color: $primary-color;
+    cursor: pointer;
+  }
+}

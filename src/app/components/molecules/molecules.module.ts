@@ -14,6 +14,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { OrderSelectComponent } from './order-select/order-select.component';
 import { CounterComponent } from './counter/counter.component';
 import { NavbarHomeComponent } from './navbar-home/navbar-home.component';
+import { PropertyCardComponent } from './property-card/property-card.component';
 
 
 
@@ -27,7 +28,8 @@ import { NavbarHomeComponent } from './navbar-home/navbar-home.component';
     SearchbarComponent,
     OrderSelectComponent,
     CounterComponent,
-    NavbarHomeComponent
+    NavbarHomeComponent,
+    PropertyCardComponent
   ],
   imports: [
     CommonModule,
@@ -46,7 +48,8 @@ import { NavbarHomeComponent } from './navbar-home/navbar-home.component';
     SearchbarComponent,
     OrderSelectComponent,
     CounterComponent,
-    NavbarHomeComponent
+    NavbarHomeComponent,
+    PropertyCardComponent
   ]
 })
 export class MoleculesModule { }

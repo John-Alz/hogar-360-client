@@ -175,13 +175,13 @@ export class PorpertyListComponent implements OnInit {
       this.pageNumber,
       this.pageSize,
       order,
-      this.userId,
       location,
       category,
       this.minRooms !== 0 ? this.minRooms : null,
       this.minBathrooms !== 0 ? this.minBathrooms : null,
       this.minPrice !== 0 ? this.minPrice : null,
-      this.maxPrice !== 0 ? this.maxPrice : null
+      this.maxPrice !== 0 ? this.maxPrice : null,
+      this.userId,
     ).pipe(
       map((data) => {
         this.totalPages = data.totalPages;

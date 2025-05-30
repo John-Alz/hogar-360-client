@@ -21,20 +21,19 @@ private apiUrl: string = 'http://localhost:8081/api/v1/property';
   pageNumber: number,
   pageSize: number,
   ascendingOrder: boolean,
-  userId: number | undefined,
   locationFilter: string,
   categoryFilter: string | null,
   minRooms: number | null,
   minBathrooms: number | null,
   minPrice: number | null,
-  maxPrice: number | null
+  maxPrice: number | null,
+  userId?: number | undefined
 ): Observable<Page<Property>> {
   let params = new HttpParams()
     .set('pageNumber', pageNumber)
     .set('pageSize', pageSize)
     .set('ascendingOrder', ascendingOrder)
     .set('locationFilter', locationFilter)
-    // .set('userId', userId);
 
      if(userId !== undefined) {
       params = params.set('userId', userId)
