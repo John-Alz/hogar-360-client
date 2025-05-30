@@ -1,0 +1,47 @@
+<main class="properties">
+  <div class="properties__container">
+    <h2 class="properties__title">Encuentra tu casa perfecta</h2>
+  <form class="properties__search" *ngIf="pageResponseCategories | async as categories" >
+      <app-select [control]="categoryId" [name]="'una categoria'" [data]="categories.content"></app-select>
+      <app-input class="properties__search-input" [placeholder]="'Buscar por ubicación'" [type]="'text'" [control]="searchLocation"></app-input>
+      <button class="properties__search-button" (click)="sendData()">Buscar</button>
+  </form>
+  <div *ngIf="pageResponseProperties | async as properties">
+    <div class="properties__filters">
+      <button class="properties__filters-btn" (click)="openFilters()"><app-icon [size]="'xl'" [icon]="filtersIcon"></app-icon></button>
+    </div>
+    <section class="properties__cards">
+    <app-property-card *ngFor="let property of properties.content"  [property]="property"></app-property-card>
+  </section>
+  </div>
+  <div class="filters" *ngIf="isOpenFilters">
+    <div class="filters__close">
+      <button (click)="closeFilters()" class="filters__close-btn"><app-icon [icon]="closeIcon"></app-icon></button>
+    </div>
+    <div class="filters__container">
+      <app-counter [tag]="'Habitaciones'" [control]="countRooms"></app-counter>
+      <app-counter [tag]="'Baños'" [control]="countBaths"></app-counter>
+      <article class="price">
+        <label class="price__tag" for="priceRange">Precio</label>
+        <div class="price__container">
+          <input class="price__input" type="number" placeholder="Min" [formControl]="priceMinRange"/>
+        <input class="price__input" type="number" placeholder="Max" [formControl]="priceMaxRange"/>
+        </div>
+      </article>
+      <!-- <article class="price2">
+        <label class="price__tag">Dia y hora de la visita</label>
+        <div class="price__container">
+          <input class="price__input" type="date" placeholder="Min" [formControl]="dateDay"/>
+        <input class="price__input" type="time" placeholder="Max" [formControl]="startHour"/>
+        <input class="price__input" type="time" placeholder="Max" [formControl]="endHour"/>
+        </div>
+      </article> -->
+
+      <div class="filters__actions">
+        <button class="filters__submit" (click)="sendDataFilters()">Buscar</button>
+        <button class="filters__clean" (click)="cleanFilters()">Limpiar filtros</button>
+      </div>
+     </div>
+  </div>
+  </div>
+</main>

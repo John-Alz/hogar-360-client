@@ -55,8 +55,8 @@ export class ScheduleFormComponent {
     this.scheduleService.postData(payload).subscribe({
       next: (response) => {
         console.log(response);
-
         this.notifyService.success("Horario creado.")
+        this.scheduleForm.reset()
       },
       error: (e) => {
         const backendMessage = e.error?.message || "No se pudo crear la propiedad.";

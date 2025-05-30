@@ -14,7 +14,10 @@ import { UserFormComponent } from './user-form/user-form.component';
 import { PorpertyFormComponent } from './porperty-form/porperty-form.component';
 import { PorpertyListComponent } from './porperty-list/porperty-list.component';
 import { LoginFormComponent } from './login-form/login-form.component';
-import { ScheduleFormComponent } from './schedule-form/schedule-form.component'
+import { ScheduleFormComponent } from './schedule-form/schedule-form.component';
+import { ScheduleListComponent } from './schedule-list/schedule-list.component';
+import { PropertyListHomeComponent } from './property-list-home/property-list-home.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 
 @NgModule({
@@ -28,12 +31,15 @@ import { ScheduleFormComponent } from './schedule-form/schedule-form.component'
     PorpertyFormComponent,
     PorpertyListComponent,
     LoginFormComponent,
-    ScheduleFormComponent
+    ScheduleFormComponent,
+    ScheduleListComponent,
+    PropertyListHomeComponent
   ],
   imports: [
     CommonModule,
     AppRoutingModule,
     ReactiveFormsModule,
+    FontAwesomeModule,
     FormsModule,
     RouterModule,
     AtomsModule,
@@ -49,7 +55,9 @@ import { ScheduleFormComponent } from './schedule-form/schedule-form.component'
     PorpertyFormComponent,
     PorpertyListComponent,
     LoginFormComponent,
-    ScheduleFormComponent
+    ScheduleFormComponent,
+    ScheduleListComponent,
+    PropertyListHomeComponent
   ]
 })
 export class OrganismsModule { }

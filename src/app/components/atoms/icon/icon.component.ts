@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { IconDefinition } from '@fortawesome/fontawesome-svg-core'
+import { IconDefinition, SizeProp } from '@fortawesome/fontawesome-svg-core'
 
 @Component({
   selector: 'app-icon',
@@ -8,6 +8,7 @@ import { IconDefinition } from '@fortawesome/fontawesome-svg-core'
 })
 export class IconComponent {
   @Input() icon: any;
+  @Input() size: SizeProp = 'lg';
   @Input() class: string = '';
 
 }

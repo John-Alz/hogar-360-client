@@ -10,5 +10,7 @@ export class OrderSelectComponent {
 
   @Input() control!: FormControl;
   @Input() label!: string;
+  @Input() optionLabelOne: string = "A-Z";
+  @Input() optionLabelTwo: string = "Z-A";
 
 }
