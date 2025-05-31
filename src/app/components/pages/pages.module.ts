@@ -16,6 +16,7 @@ import { HomeComponent } from './home/home.component';
 import { RouterModule } from '@angular/router';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { ScheduleComponent } from './schedule/schedule.component';
+import { PropertyComponent } from './property/property.component';
 
 
 
@@ -29,7 +30,8 @@ import { ScheduleComponent } from './schedule/schedule.component';
     LoginComponent,
     HomeComponent,
     NotFoundComponent,
-    ScheduleComponent
+    ScheduleComponent,
+    PropertyComponent
   ],
   imports: [
     CommonModule,

@@ -1,5 +1,5 @@
 export interface Schedule {
-  id?: number;
+  scheduleId?: number;
   // vendorId: number;
   propertyId?: number;
   startDate?: string;

@@ -11,11 +11,13 @@ import { AdminLayoutComponent } from './components/layouts/admin-layout/admin-la
 import { authGuard } from './core/guards/auth.guard';
 import { NotFoundComponent } from './components/pages/not-found/not-found.component';
 import { ScheduleComponent } from './components/pages/schedule/schedule.component';
+import { PropertyComponent } from './components/pages/property/property.component';
 
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'login', component: LoginComponent},
+  { path: 'detail/:id', component: PropertyComponent},
 
   {
     path: 'admin',

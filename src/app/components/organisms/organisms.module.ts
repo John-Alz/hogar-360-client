@@ -18,6 +18,7 @@ import { ScheduleFormComponent } from './schedule-form/schedule-form.component';
 import { ScheduleListComponent } from './schedule-list/schedule-list.component';
 import { PropertyListHomeComponent } from './property-list-home/property-list-home.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { PropertyDetailComponent } from './property-detail/property-detail.component';
 
 
 @NgModule({
@@ -33,7 +34,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     LoginFormComponent,
     ScheduleFormComponent,
     ScheduleListComponent,
-    PropertyListHomeComponent
+    PropertyListHomeComponent,
+    PropertyDetailComponent
   ],
   imports: [
     CommonModule,
@@ -57,7 +59,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     LoginFormComponent,
     ScheduleFormComponent,
     ScheduleListComponent,
-    PropertyListHomeComponent
+    PropertyListHomeComponent,
+    PropertyDetailComponent
   ]
 })
 export class OrganismsModule { }

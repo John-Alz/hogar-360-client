@@ -17,6 +17,10 @@ private apiUrl: string = 'http://localhost:8081/api/v1/property';
     return this.http.post<Property>(this.apiUrl, data);
   }
 
+  getProperty(propertyId: string) {
+    return this.http.get<Property>(`http://localhost:8081/api/v1/property/${propertyId}`)
+  }
+
   getProperties(
   pageNumber: number,
   pageSize: number,

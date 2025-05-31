@@ -11,7 +11,7 @@
       <button class="properties__filters-btn" (click)="openFilters()"><app-icon [size]="'xl'" [icon]="filtersIcon"></app-icon></button>
     </div>
     <section class="properties__cards">
-    <app-property-card *ngFor="let property of properties.content"  [property]="property"></app-property-card>
+    <app-property-card routerLink="/detail/{{property.id}}" *ngFor="let property of properties.content"  [property]="property"></app-property-card>
   </section>
   </div>
   <div class="filters" *ngIf="isOpenFilters">
@@ -39,7 +39,7 @@
 
       <div class="filters__actions">
         <button class="filters__submit" (click)="sendDataFilters()">Buscar</button>
-        <button class="filters__clean" (click)="cleanFilters()">Limpiar filtros</button>
+        <!-- <button class="filters__clean" (click)="cleanFilters()">Limpiar filtros</button> -->
       </div>
      </div>
   </div>

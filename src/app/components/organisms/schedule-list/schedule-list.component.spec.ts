@@ -15,7 +15,7 @@ describe('ScheduleListComponent', () => {
 
 
   const mockPage: Page<Schedule> = {
-    content: [{ id: 1, propertyId: 123, startDate: "2025-06-19T10:45:00", endDate: "2025-06-19T12:46:00" }],
+    content: [{ scheduleId: 1, propertyId: 123, startDate: "2025-06-19T10:45:00", endDate: "2025-06-19T12:46:00" }],
     pageNumber: 3,
     pageSize: 0,
     totalPages: 2,

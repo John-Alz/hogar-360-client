@@ -56,9 +56,6 @@ export class PropertyListHomeComponent implements OnInit {
   startHour= new FormControl('');
   endHour = new FormControl('');
 
-  onFiltersChanged(filters: any) {
-    console.log(filters);
-  }
 
   ngOnInit(): void {
     this.getProperties(this.ascendingOrder, this.categoryFilter, this.locationFilter, this.minRooms, this.minBathrooms, this.minPrice, this.maxPrice);
@@ -119,13 +116,13 @@ export class PropertyListHomeComponent implements OnInit {
     this.getProperties(this.ascendingOrder, this.categoryFilter, this.locationFilter, this.minRooms, this.minBathrooms, this.minPrice, this.maxPrice)
   }
 
-  cleanFilters(): void{
-    this.minRooms = this.countRooms.value;
-    this.minBathrooms = this.countBaths.value;
-    this.minPrice = this.priceMinRange.value;
-    this.maxPrice = this.priceMaxRange.value;
-    this.getProperties(this.ascendingOrder, this.categoryFilter, this.locationFilter, this.minRooms, this.minBathrooms, this.minPrice, this.maxPrice)
-  }
+  // cleanFilters(): void{
+  //   this.minRooms = this.countRooms.value;
+  //   this.minBathrooms = this.countBaths.value;
+  //   this.minPrice = this.priceMinRange.value;
+  //   this.maxPrice = this.priceMaxRange.value;
+  //   this.getProperties(this.ascendingOrder, this.categoryFilter, this.locationFilter, this.minRooms, this.minBathrooms, this.minPrice, this.maxPrice)
+  // }
 
 }
 

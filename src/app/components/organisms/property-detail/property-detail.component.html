@@ -1,0 +1,66 @@
+<main class="property" *ngIf="pageResponse | async as schedules">
+  <section class="property__content">
+    <div class="property__images">
+      <img class="property__image"
+        src="https://images.unsplash.com/photo-1580587771525-78b9dba3b914?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3Dg"
+        alt="imgDetailProperty">
+      <img class="property__image"
+        src="https://images.unsplash.com/photo-1605276374104-dee2a0ed3cd6?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+        alt="imgDetailProperty">
+    </div>
+    <div class="property__header">
+      <h3>{{propertyData?.category?.name}}</h3>
+      <div class="property__header-details">
+        <h2>{{propertyData?.name}}</h2>
+        <h2>{{propertyData?.price | currency}} </h2>
+      </div>
+    </div>
+    <article class="property__details">
+      <div>
+        <p>Características</p>
+        <div class="property__features">
+          <span class="property__features-item"><app-icon [icon]="bedIcon"></app-icon> {{propertyData?.roomCount}}
+            camas</span>
+          <span class="property__features-item"><app-icon [icon]="bathIcon"></app-icon> {{propertyData?.bathroomCount}}
+            banios</span>
+        </div>
+      </div>
+      <div class="property__location">
+        <p>Direccion</p>
+        <div>
+          <span class="property__location-item"><app-icon
+              [icon]="locationIcon"></app-icon>{{propertyData?.direction}}</span>
+        </div>
+      </div>
+    </article>
+    <article class="property__description">
+      <p class="property__description-title">Descripcion</p>
+      <p>{{propertyData?.description}}</p>
+    </article>
+    <form class="property__schedules" [formGroup]="visitForm">
+  <h2>Horarios de visita disponibles:</h2>
+  <div class="property__schedules-main">
+    <div *ngFor="let schedule of schedules.content" class="property__schedules-content">
+      <div class="property__schedules-container">
+        <input
+          type="radio"
+          [value]="schedule.scheduleId"
+          formControlName="scheduleId"
+        />
+        <div class="property__schedules-item">
+          <label><span>Día:</span> {{ schedule.startDate?.slice(0, 10) }}</label>
+          <div class="property__schedules-hours">
+            <label><span>Hora de inicio:</span> {{ schedule.startDate?.slice(11) }}</label>
+            <label><span>Hora de fin:</span> {{ schedule.endDate?.slice(11) }}</label>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="property__btn">
+    <app-button [text]="'Agendar visita.'" (buttonClick)="sendData()"></app-button>
+  </div>
+</form>
+
+  </section>
+</main>

@@ -1,0 +1,110 @@
+@import 'variables';
+
+.property {
+  margin: 20px 0 40px 0;
+
+  &__content {
+    width: 90%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  &__images {
+    display: flex;
+    gap: 10px;
+    width: 100%;
+  }
+
+  &__image {
+    width: 50%;
+    height: 400px;
+    border-radius: 20px;
+  }
+
+  &__header {
+    display: flex;
+    flex-direction: column;
+    border-bottom: 1px solid $border_color;
+    padding-bottom: 20px;
+
+    &-details {
+      display: flex;
+      justify-content: space-between;
+    }
+
+  }
+
+  &__details {
+    display: flex;
+    gap: 80px;
+  }
+
+  &__features {
+    display: flex;
+    gap: 15px;
+
+    &-item {
+      display: flex;
+      gap: 10px;
+    }
+
+  }
+
+  &__location {
+    &-item {
+      display: flex;
+      gap: 10px;
+    }
+  }
+
+  &__description {
+
+    &-title {
+      font-size: 20px;
+    }
+  }
+
+  &__schedules {
+
+    &-main {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 30px;
+    }
+
+    &-content {
+      display: flex;
+    }
+
+    &-container {
+      display: flex;
+      gap: 10px;
+      border: 1px solid;
+      padding: 10px;
+      border-radius: 8px;
+      box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    }
+
+    &-item {
+      display: flex;
+      flex-direction: column;
+    }
+    &-hours {
+      display: flex;
+      flex-direction: column;
+    }
+
+    span {
+      font-weight: bold;
+    }
+
+  }
+
+  &__btn {
+    width: 200px;
+    margin-top: 30px;
+  }
+
+}
