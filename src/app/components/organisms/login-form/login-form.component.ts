@@ -26,10 +26,11 @@ export class LoginFormComponent {
     }
 
     sendData(): void {
-      if(!this.loginForm.valid) {
-        this.loginForm.markAllAsTouched;
-        return;
-      }
+
+      if (!this.loginForm.valid) {
+      this.loginForm.markAllAsTouched();
+      return;
+    }
 
       const payload: Login = {
         email: this.loginForm.value.email,

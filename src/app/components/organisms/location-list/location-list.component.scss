@@ -11,10 +11,47 @@
     overflow-x: auto;
   }
 
+  &__table--empty {
+    color: red;
+    text-align: center;
+    margin-top: 50px;
+  }
+
   &__filters {
     display        : flex;
     justify-content: end;
     gap            : 15px;
+
+    &-search {
+      width: 350px;
+    }
+
   }
 
+  &__loading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 0;
+
+    &-spinner {
+      width: 40px;
+      height: 40px;
+    }
+
+  }
+
+}
+
+@media(max-width: 600px) {
+  .locations {
+    &__filters {
+      flex-direction: column;
+
+      &-search {
+        width: 100%;
+      }
+
+    }
+  }
 }

@@ -1,6 +1,6 @@
 import { Component, EventEmitter, inject, Input, OnInit, Output } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { faCalendar, faCircleChevronDown, faCircleChevronUp, faCircleXmark, faFilter, faTrash } from '@fortawesome/free-solid-svg-icons';
+import { faCalendar, faCircleChevronDown, faCircleChevronUp, faCircleXmark, faFilter, faL, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { debounceTime, map, Observable } from 'rxjs';
 import { Category } from 'src/app/shared/models/category';
 import { Page } from 'src/app/shared/models/page';
@@ -23,6 +23,7 @@ export class PorpertyListComponent implements OnInit {
   calendarIcon = faCalendar;
   trashIcon = faTrash;
   closeIcon = faCircleXmark;
+  loading: boolean = true;
 
   info: { headers: object[], data: Property[], isProperty: boolean } = {
     headers: [
@@ -75,7 +76,7 @@ export class PorpertyListComponent implements OnInit {
   private propertyService = inject(PropertyService);
   private categoryService = inject(CategoryService);
   private authService = inject(AuthService);
-  public toggleService = inject(ToggleService);
+  // public toggleService = inject(ToggleService);
 
   pageResponseProperties!: Observable<Page<Property>>;
   pageResponseCategories!: Observable<Page<Category>>;
@@ -103,7 +104,7 @@ export class PorpertyListComponent implements OnInit {
   priceMinRange = new FormControl<number | null>(null);
   priceMaxRange = new FormControl<number | null>(null)
 
-  collapse$ = this.toggleService.toggleState$;
+  // collapse$ = this.toggleService.toggleState$;
 
   propertyId!: number;
 
@@ -112,6 +113,16 @@ export class PorpertyListComponent implements OnInit {
     this.propertyId = id;
     // console.log(this.isOpenModal);
     console.log(this.propertyId);
+  }
+
+  //
+
+  //
+
+  isOpenFilters = false;
+
+  handleOpenFilters(): void {
+    this.isOpenFilters = !this.isOpenFilters
   }
 
   //

@@ -1,47 +1,54 @@
 <main class="properties">
   <div class="properties__container">
     <h2 class="properties__title">Encuentra tu casa perfecta</h2>
-  <form class="properties__search" *ngIf="pageResponseCategories | async as categories" >
-      <app-select [control]="categoryId" [name]="'una categoria'" [data]="categories.content"></app-select>
-      <app-input class="properties__search-input" [placeholder]="'Buscar por ubicación'" [type]="'text'" [control]="searchLocation"></app-input>
+    <form class="properties__search" *ngIf="pageResponseCategories | async as categories">
+      <app-select [control]="categoryId" [name]="'categoria'" [data]="categories.content"></app-select>
+      <app-input class="properties__search-input" [placeholder]="'Buscar por ubicación'" [type]="'text'"
+        [control]="searchLocation"></app-input>
       <button class="properties__search-button" (click)="sendData()">Buscar</button>
-  </form>
-  <div *ngIf="pageResponseProperties | async as properties">
-    <div class="properties__filters">
-      <button class="properties__filters-btn" (click)="openFilters()"><app-icon [size]="'xl'" [icon]="filtersIcon"></app-icon></button>
-    </div>
-    <section class="properties__cards">
-    <app-property-card routerLink="/detail/{{property.id}}" *ngFor="let property of properties.content"  [property]="property"></app-property-card>
-  </section>
-  </div>
-  <div class="filters" *ngIf="isOpenFilters">
-    <div class="filters__close">
-      <button (click)="closeFilters()" class="filters__close-btn"><app-icon [icon]="closeIcon"></app-icon></button>
-    </div>
-    <div class="filters__container">
-      <app-counter [tag]="'Habitaciones'" [control]="countRooms"></app-counter>
-      <app-counter [tag]="'Baños'" [control]="countBaths"></app-counter>
-      <article class="price">
-        <label class="price__tag" for="priceRange">Precio</label>
-        <div class="price__container">
-          <input class="price__input" type="number" placeholder="Min" [formControl]="priceMinRange"/>
-        <input class="price__input" type="number" placeholder="Max" [formControl]="priceMaxRange"/>
-        </div>
-      </article>
-      <!-- <article class="price2">
-        <label class="price__tag">Dia y hora de la visita</label>
-        <div class="price__container">
-          <input class="price__input" type="date" placeholder="Min" [formControl]="dateDay"/>
-        <input class="price__input" type="time" placeholder="Max" [formControl]="startHour"/>
-        <input class="price__input" type="time" placeholder="Max" [formControl]="endHour"/>
-        </div>
-      </article> -->
-
-      <div class="filters__actions">
-        <button class="filters__submit" (click)="sendDataFilters()">Buscar</button>
-        <!-- <button class="filters__clean" (click)="cleanFilters()">Limpiar filtros</button> -->
+    </form>
+    <ng-container *ngIf="pageResponseProperties | async as properties; else loading">
+      <div class="properties__filters">
+        <button class="properties__filters-btn" (click)="openFilters()"><app-icon [size]="'xl'"
+            [icon]="filtersIcon"></app-icon></button>
       </div>
-     </div>
+      <section class="properties__cards">
+        <app-property-card routerLink="/detail/{{property.id}}" *ngFor="let property of properties.content"
+          [property]="property"></app-property-card>
+      </section>
+      <app-pagination *ngIf="properties.content.length !== 0" [page]="pageNumber" [pages]="pages"
+        [totalPages]="totalPages"
+        [getFunction]="getProperties.bind(this, ascendingOrder, categoryFilter, locationFilter, minRooms, minBathrooms, minPrice, maxPrice)"
+        (pageChange)="onPageChanged($event)">
+      </app-pagination>
+    </ng-container>
+    <ng-template #loading>
+      <div class="properties__loading">
+        <img class="properties__loading-spinner" src="../../../../assets/images/180-ring-with-bg.svg"
+          alt="spinnerLoading">
+        <p>Cargando..</p>
+      </div>
+    </ng-template>
+    <div class="filters" *ngIf="isOpenFilters">
+      <div class="filters__close">
+        <button (click)="closeFilters()" class="filters__close-btn"><app-icon [icon]="closeIcon"></app-icon></button>
+      </div>
+      <div class="filters__container">
+        <app-counter [tag]="'Habitaciones'" [control]="countRooms"></app-counter>
+        <app-counter [tag]="'Baños'" [control]="countBaths"></app-counter>
+        <article class="price">
+          <label class="price__tag" for="priceRange">Precio</label>
+          <div class="price__container">
+            <input class="price__input" type="number" placeholder="Min" [formControl]="priceMinRange" />
+            <input class="price__input" type="number" placeholder="Max" [formControl]="priceMaxRange" />
+          </div>
+        </article>
+        <div class="filters__actions">
+          <button class="filters__submit" (click)="sendDataFilters()">Buscar</button>
+          <!-- <button class="filters__clean" (click)="cleanFilters()">Limpiar filtros</button> -->
+        </div>
+      </div>
+    </div>
   </div>
-  </div>
+
 </main>

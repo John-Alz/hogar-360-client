@@ -1,4 +1,4 @@
-<aside class="sidebar" >
+<aside class="sidebar" *ngIf="collapse$ | async">
   <nav class="sidebar__nav">
     <ul class="sidebar__list" *ngFor="let item of data" >
       <li class="sidebar__item" routerLink="{{item.link}}" *ngIf="role === item.role" routerLinkActive="active">

@@ -38,13 +38,6 @@ export const navData = [
   },
   {
     id: 6,
-    icon: faGear,
-    label: 'Configuración',
-    link: '/admin/configuration',
-    role: 'ADMIN'
-  },
-  {
-    id: 7,
     icon: faCalendar,
     label: 'Horarios',
     link: '/seller/horarios',

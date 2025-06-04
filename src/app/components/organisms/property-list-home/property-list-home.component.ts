@@ -7,6 +7,7 @@ import { Page } from 'src/app/shared/models/page';
 import { Property } from 'src/app/shared/models/property';
 import { CategoryService } from 'src/app/shared/services/category.service';
 import { PropertyService } from 'src/app/shared/services/property/property.service';
+import { images } from './images';
 
 @Component({
   selector: 'app-property-list-home',
@@ -17,8 +18,10 @@ export class PropertyListHomeComponent implements OnInit {
 
   filtersIcon = faList;
   closeIcon = faCircleXmark;
+  images = images;
 
   isOpenFilters = false;
+  loading: boolean = true;
 
   openFilters(): void {
     this.isOpenFilters = true;
@@ -68,6 +71,11 @@ export class PropertyListHomeComponent implements OnInit {
     })
   }
 
+   onPageChanged(newPage: number): void {
+    this.pageNumber = newPage;
+    this.getProperties(this.ascendingOrder, this.categoryFilter, this.locationFilter, this.minRooms, this.minBathrooms, this.minPrice, this.maxPrice);
+  }
+
   getCategories(): void {
     this.pageResponseCategories = this.categoryService.getData(this.pageNumber, this.pageSize).pipe(map((data) => {
       this.totalPages = data.totalPages;
@@ -94,7 +102,6 @@ export class PropertyListHomeComponent implements OnInit {
         this.totalPages = data.totalPages;
         this.pages = Array.from({ length: this.totalPages }, (_, i) => i);
         console.log(data);
-
         return data;
       }))
   }

@@ -1,4 +1,5 @@
-<main class="property" *ngIf="pageResponse | async as schedules">
+<main class="property">
+  <ng-container  *ngIf="pageResponse | async as schedules; else loading">
   <section class="property__content">
     <div class="property__images">
       <img class="property__image"
@@ -9,26 +10,26 @@
         alt="imgDetailProperty">
     </div>
     <div class="property__header">
-      <h3>{{propertyData?.category?.name}}</h3>
+      <h3 class="property__category">{{propertyData?.category?.name}}</h3>
       <div class="property__header-details">
         <h2>{{propertyData?.name}}</h2>
-        <h2>{{propertyData?.price | currency}} </h2>
+        <h2 class="property__price">{{propertyData?.price | currency}} </h2>
       </div>
     </div>
     <article class="property__details">
       <div>
-        <p>Características</p>
+        <p class="property__subtitle">Características</p>
         <div class="property__features">
-          <span class="property__features-item"><app-icon [icon]="bedIcon"></app-icon> {{propertyData?.roomCount}}
+          <span class="property__features-item"><app-icon class="property__icons" [icon]="bedIcon"></app-icon> {{propertyData?.roomCount}}
             camas</span>
-          <span class="property__features-item"><app-icon [icon]="bathIcon"></app-icon> {{propertyData?.bathroomCount}}
-            banios</span>
+          <span class="property__features-item"><app-icon class="property__icons" [icon]="bathIcon"></app-icon> {{propertyData?.bathroomCount}}
+            baños</span>
         </div>
       </div>
       <div class="property__location">
-        <p>Direccion</p>
+        <p class="property__subtitle">Direccion</p>
         <div>
-          <span class="property__location-item"><app-icon
+          <span class="property__location-item"><app-icon class="property__icons"
               [icon]="locationIcon"></app-icon>{{propertyData?.direction}}</span>
         </div>
       </div>
@@ -61,6 +62,13 @@
     <app-button [text]="'Agendar visita.'" (buttonClick)="sendData()"></app-button>
   </div>
 </form>
-
   </section>
+  </ng-container>
+  <ng-template #loading>
+      <div class="property__loading">
+        <img class="property__loading-spinner" src="../../../../assets/images/180-ring-with-bg.svg"
+          alt="spinnerLoading">
+        <p>Cargando..</p>
+      </div>
+    </ng-template>
 </main>

@@ -1,5 +1,5 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { faFilter } from '@fortawesome/free-solid-svg-icons';
 import { debounceTime, map, Observable } from 'rxjs';
 import { Page } from 'src/app/shared/models/page';
@@ -12,6 +12,8 @@ import { ScheduleService } from 'src/app/shared/services/schedule/schedule.servi
   styleUrls: ['./schedule-list.component.scss']
 })
 export class ScheduleListComponent implements OnInit {
+
+  loading: boolean = true;
 
   info: { headers: object[], data: Schedule[] } = {
     headers: [
@@ -59,9 +61,19 @@ export class ScheduleListComponent implements OnInit {
   searchValue = new FormControl('');
   orderChange = new FormControl(true);
   dateComplete = new FormControl('');
-  date = new FormControl('');
-  startHour = new FormControl('');
-  endHour = new FormControl('');
+  date = new FormControl('', [Validators.required]);
+  startHour = new FormControl('', [Validators.required]);
+  endHour = new FormControl('', [Validators.required]);
+
+  dateForm: FormGroup;
+
+  constructor(private formBuilder: FormBuilder) {
+     this.dateForm = this.formBuilder.group({
+        date: this.date,
+        startHour: this.startHour,
+        endHour: this.endHour,
+      });
+  }
 
   onPageChanged(newPage: number): void {
     this.page = newPage;
@@ -100,6 +112,7 @@ export class ScheduleListComponent implements OnInit {
   }
 
   sendData(): void {
+
     const startDateFormat = this.date.value + 'T' + this.startHour.value;
     const endDateFormat = this.date.value + 'T' + this.endHour.value;
     console.log(startDateFormat);

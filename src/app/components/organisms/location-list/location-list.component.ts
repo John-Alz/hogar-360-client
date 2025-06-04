@@ -47,6 +47,8 @@ export class LocationListComponent implements OnInit {
   searchValue = new FormControl('');
   order = new FormControl('true');
 
+  loading: boolean = true;
+
   ngOnInit(): void {
     this.getLocations(this.search, this.orderAsc);
     this.searchValue.valueChanges

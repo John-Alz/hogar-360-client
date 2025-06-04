@@ -23,6 +23,7 @@ export class PropertyDetailComponent implements OnInit {
   bedIcon = faBed;
   bathIcon = faBath;
   locationIcon = faLocationDot;
+  loading: boolean = true;
 
   scheduleSelectedId = new FormControl('')
 
@@ -39,14 +40,14 @@ export class PropertyDetailComponent implements OnInit {
 
   pageResponse!: Observable<Page<Schedule>>;
 
-   visitForm: FormGroup<{
+  visitForm: FormGroup<{
     scheduleId: FormControl<number>;
   }>;
 
   constructor(private activeRoute: ActivatedRoute, private propertyService: PropertyService, private scheduleService: ScheduleService, private visitService: VisitsService, private formBuilder: FormBuilder, private notifyService: NotificationService, private authService: AuthService) {
     this.visitForm = formBuilder.group({
-          scheduleId: this.formBuilder.control(0, { nonNullable: true}),
-        })
+      scheduleId: this.formBuilder.control(0, { nonNullable: true }),
+    })
   }
 
   ngOnInit(): void {
@@ -61,39 +62,39 @@ export class PropertyDetailComponent implements OnInit {
   }
 
   getSchedules(order: boolean, location: string, startDate: string, endDate: string): void {
-      this.pageResponse = this.scheduleService.getData(this.page, this.size, order, location, startDate, endDate).pipe(map((data) => {
-        console.log(data);
-        this.totalPages = data.totalPages;
-        return data
-      }))
-    }
-
- sendData(): void {
-
-  if (!this.authService.isLoggedIn()) {
-    this.notifyService.error('Debes estar logueado para poder agendar la visita');
+    this.pageResponse = this.scheduleService.getData(this.page, this.size, order, location, startDate, endDate).pipe(map((data) => {
+      console.log(data);
+      this.totalPages = data.totalPages;
+      return data
+    }))
   }
 
-     const payload: Visit = {
-       scheduleId: this.visitForm.value.scheduleId
-     }
+  sendData(): void {
 
-     console.log(payload);
+    if (!this.authService.isLoggedIn()) {
+      this.notifyService.error('Debes estar logueado para poder agendar la visita');
+    }
+
+    const payload: Visit = {
+      scheduleId: this.visitForm.value.scheduleId
+    }
+
+    console.log(payload);
 
 
-     this.visitService.postData(payload).subscribe({
-       next: (response) => {
-         console.log(response);
-         this.notifyService.success('Visita agendada.');
-         this.visitForm.reset();
-       },
-       error: (e) => {
-         console.log(e.error);
-         const backendMessage = e.error?.message ||"No se pudo crear la categoria.";
-         this.notifyService.error(backendMessage)
-       }
-     })
+    this.visitService.postData(payload).subscribe({
+      next: (response) => {
+        console.log(response);
+        this.notifyService.success('Visita agendada.');
+        this.visitForm.reset();
+      },
+      error: (e) => {
+        console.log(e.error);
+        const backendMessage = e.error?.message || "No se pudo crear la categoria.";
+        this.notifyService.error(backendMessage)
+      }
+    })
 
-   }
+  }
 
 }

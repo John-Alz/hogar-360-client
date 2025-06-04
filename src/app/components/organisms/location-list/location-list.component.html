@@ -1,17 +1,24 @@
 <section class="locations">
   <h2 class="locations__title">Ubicaciones existentes</h2>
   <div class="locations__filters">
-    <app-searchbar [control]="searchValue"></app-searchbar>
+    <div class="locations__filters-search">
+      <app-searchbar  [control]="searchValue" [placeholder]="'Buscar por ciudad'"></app-searchbar>
+    </div>
     <app-order-select [control]="order" [label]="'Ordernar por ciudad'"></app-order-select>
   </div>
-  <div class="locations__table--container" *ngIf="pageResponseLocations | async as locations">
-    <app-table [info]="info" ></app-table>
-  </div>
-  <app-pagination
-  [page]="page"
-  [pages]="pages"
-  [totalPages]="totalPages"
-  [getFunction]="getLocations.bind(this, search, orderAsc)"
-  (pageChange)="onPageChanged($event)">
-</app-pagination>
+  <ng-container class="locations__table--container" *ngIf="pageResponseLocations | async as locations; else loading">
+    <h2 class="locations__table--empty" *ngIf="locations.content.length === 0">No hay ubicaciones con esas
+      caracteristicas</h2>
+    <app-table *ngIf="locations.content.length !== 0" [info]="info"></app-table>
+    <app-pagination *ngIf="locations.content.length !== 0" [page]="page" [pages]="pages" [totalPages]="totalPages"
+      [getFunction]="getLocations.bind(this, search, orderAsc)" (pageChange)="onPageChanged($event)">
+    </app-pagination>
+  </ng-container>
+  <ng-template #loading>
+      <div class="locations__loading">
+        <img class="locations__loading-spinner" src="../../../../assets/images/180-ring-with-bg.svg"
+          alt="spinnerLoading">
+        <p>Cargando..</p>
+      </div>
+    </ng-template>
 </section>

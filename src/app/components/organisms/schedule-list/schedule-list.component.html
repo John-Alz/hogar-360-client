@@ -1,5 +1,4 @@
 <section class="schedules">
-  <!-- <h2 class="locations__title">Ubicaciones existentes</h2> -->
   <div class="schedules__filters"  >
     <div class="schedules__filters--container">
       <app-searchbar [placeholder]="'Buscar por ubicacion'" [control]="searchValue" ></app-searchbar>
@@ -10,28 +9,36 @@
       <app-order-select [control]="orderChange" [optionLabelOne]="'Fecha de incio descendente'" [optionLabelTwo]="'Fecha de incio ascendente'"  [label]="'Ordernar'"></app-order-select>
       </div>
      <div class="filters__container" *ngIf="isOpen">
-      <article class="price">
+      <form [formGroup]="dateForm"  class="price">
         <label class="price__tag" for="priceRange">Fechas</label>
         <div class="price__container">
           <input class="price__input" type="date" [formControl]="date"/>
           <input class="price__input" type="time" [formControl]="startHour" />
         <input class="price__input" type="time" [formControl]="endHour" />
         </div>
-      </article>
-      <div class="actions">
-        <button class="actions__submit" (click)="sendData()">Buscar</button>
+        <div class="actions">
+        <button class="actions__submit" (click)="sendData()" [disabled]="dateForm.invalid">Buscar</button>
       </div>
+      </form>
+
      </div>
      </div>
   </div>
-  <div class="locations__table--container" *ngIf="pageResponse | async as schedules">
+  <ng-container class="schedules__table--container" *ngIf="pageResponse | async as schedules; else loading">
     <app-table [info]="info" ></app-table>
-  </div>
-  <app-pagination
+     <app-pagination
   [page]="page"
   [pages]="pages"
   [totalPages]="totalPages"
   [getFunction]="getSchedules.bind(this,orderAsc, location, startDate, endDate)"
   (pageChange)="onPageChanged($event)">
 </app-pagination>
+  </ng-container>
+<ng-template #loading>
+      <div class="schedules__loading">
+        <img class="schedules__loading-spinner" src="../../../../assets/images/180-ring-with-bg.svg"
+          alt="spinnerLoading">
+        <p>Cargando..</p>
+      </div>
+    </ng-template>
 </section>
