@@ -35,6 +35,7 @@ export class PropertyDetailComponent implements OnInit {
   location = '';
   startDate = '';
   endDate = '';
+  propertyIdFilter = '';
   totalPages = 1;
   pages: number[] = [];
 
@@ -51,8 +52,12 @@ export class PropertyDetailComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getSchedules(this.orderAsc, this.location, this.startDate, this.endDate)
-    let propertyId = this.activeRoute.snapshot.paramMap.get("id");
+
+    let propertyId: string | null = this.activeRoute.snapshot.paramMap.get("id");
+    if(propertyId !== null) {
+      this.propertyIdFilter = propertyId;
+      this.getSchedules(this.orderAsc, this.location, this.startDate, this.endDate, this.propertyIdFilter)
+    }
     console.log(propertyId);
     propertyId && this.propertyService.getProperty(propertyId).subscribe((data) => {
       console.log(data);
@@ -61,8 +66,8 @@ export class PropertyDetailComponent implements OnInit {
     })
   }
 
-  getSchedules(order: boolean, location: string, startDate: string, endDate: string): void {
-    this.pageResponse = this.scheduleService.getData(this.page, this.size, order, location, startDate, endDate).pipe(map((data) => {
+  getSchedules(order: boolean, location: string, startDate: string, endDate: string, propertyId: string): void {
+    this.pageResponse = this.scheduleService.getData(this.page, this.size, order, location, startDate, endDate, propertyId).pipe(map((data) => {
       console.log(data);
       this.totalPages = data.totalPages;
       return data
@@ -86,6 +91,7 @@ export class PropertyDetailComponent implements OnInit {
       next: (response) => {
         console.log(response);
         this.notifyService.success('Visita agendada.');
+        this.getSchedules(this.orderAsc, this.location, this.startDate, this.endDate, this.propertyIdFilter)
         this.visitForm.reset();
       },
       error: (e) => {

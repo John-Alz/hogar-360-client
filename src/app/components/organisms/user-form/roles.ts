@@ -10,7 +10,7 @@ export const roles = [
     description: "descripcion vendedor"
   },
   {
-    id: 13,
+    id: 14,
     name: 'COMPRADOR',
     description: "descripcion comprador"
   },

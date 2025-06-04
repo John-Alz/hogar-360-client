@@ -17,7 +17,7 @@ export class ScheduleService {
     return this.http.post<Schedule>(this.apiUrl, data);
   }
 
-  getData(page: number, size: number, orderAsc: boolean, location: string, startDate: string, endDate: string): Observable<Page<Schedule>> {
+  getData(page: number, size: number, orderAsc: boolean, location: string, startDate: string, endDate: string, propertyId: string): Observable<Page<Schedule>> {
     const params = {
       page: page.toString(),
       size: size.toString(),
@@ -25,7 +25,11 @@ export class ScheduleService {
       location: location,
       startDate: startDate,
       endDate: endDate,
+      propertyId: propertyId,
     }
+    console.log(params);
+
+
     return this.http.get<Page<Schedule>>(this.apiUrl, { params });
   }
 }

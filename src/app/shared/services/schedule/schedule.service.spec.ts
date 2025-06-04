@@ -51,7 +51,7 @@ describe('ScheduleService', () => {
       totalPages: 1
     };
 
-    service.getData(0, 10, true, 'bogota', "2025-06-19T10:45:00", "2025-06-19T12:46:00").subscribe((data) => {
+    service.getData(0, 10, true, 'bogota', "2025-06-19T10:45:00", "2025-06-19T12:46:00", '123').subscribe((data) => {
       expect(data).toEqual(mockResponse);
     });
 

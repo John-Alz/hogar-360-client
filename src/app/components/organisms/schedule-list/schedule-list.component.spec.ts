@@ -61,14 +61,14 @@ describe('ScheduleListComponent', () => {
   it('Sholud initialize and call getSchedules in ngOnInit', () => {
     const spy = jest.spyOn(component, 'getSchedules');
     component.ngOnInit();
-    expect(spy).toHaveBeenCalledWith(component.orderAsc, component.location, component.startDate, component.endDate);
+    expect(spy).toHaveBeenCalledWith(component.orderAsc, component.location, component.startDate, component.endDate, component.propertyId);
   });
 
   it('should to change the page and call getSchedules', () => {
     const spy = jest.spyOn(component, 'getSchedules');
     let newPage = 2;
     component.onPageChanged(newPage);
-    expect(spy).toHaveBeenCalledWith(component.orderAsc, component.location, component.startDate, component.endDate);
+    expect(spy).toHaveBeenCalledWith(component.orderAsc, component.location, component.startDate, component.endDate, component.propertyId);
     expect(component.page).toBe(newPage);
   });
 
@@ -81,7 +81,8 @@ describe('ScheduleListComponent', () => {
       true,
       'Bogotá',
       '2025-06-19T10:45:00',
-      '2025-06-19T12:00:00'
+      '2025-06-19T12:00:00',
+      '',
     );
   });
 
@@ -96,7 +97,7 @@ describe('ScheduleListComponent', () => {
 
     expect(component.page).toBe(0);
     expect(component.location).toBe('test')
-    expect(component.getSchedules).toHaveBeenCalledWith(component.orderAsc, component.location, component.startDate, component.endDate);
+    expect(component.getSchedules).toHaveBeenCalledWith(component.orderAsc, component.location, component.startDate, component.endDate, component.propertyId);
   }));
 
   it('should set location to empty string if search value is null', fakeAsync(() => {

@@ -1,7 +1,7 @@
 <section class="schedules">
   <div class="schedules__filters"  >
     <div class="schedules__filters--container">
-      <app-searchbar [placeholder]="'Buscar por ubicacion'" [control]="searchValue" ></app-searchbar>
+      <app-searchbar class="schedules__filters-search" [placeholder]="'Buscar por ubicacion'" [control]="searchValue" ></app-searchbar>
     </div>
      <div class="filters">
       <div class="filters__actions--filters">
@@ -30,7 +30,7 @@
   [page]="page"
   [pages]="pages"
   [totalPages]="totalPages"
-  [getFunction]="getSchedules.bind(this,orderAsc, location, startDate, endDate)"
+  [getFunction]="getSchedules.bind(this,orderAsc, location, startDate, endDate, propertyId)"
   (pageChange)="onPageChanged($event)">
 </app-pagination>
   </ng-container>

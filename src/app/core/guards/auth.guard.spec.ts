@@ -37,7 +37,7 @@ describe('authGuard (Jest)', () => {
       authGuard('ADMIN')(mockRoute, mockState)
     );
 
-    expect(result).toBe(true);
+    expect(result).toBe(false);
   });
 
   it('should allow if logged in AND has expected role', () => {

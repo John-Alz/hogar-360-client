@@ -49,6 +49,7 @@ export class ScheduleListComponent implements OnInit {
   location = '';
   startDate = '';
   endDate = '';
+  propertyId = '';
   totalPages = 1;
   pages: number[] = [];
 
@@ -77,7 +78,7 @@ export class ScheduleListComponent implements OnInit {
 
   onPageChanged(newPage: number): void {
     this.page = newPage;
-    this.getSchedules(this.orderAsc, this.location, this.startDate, this.endDate);
+    this.getSchedules(this.orderAsc, this.location, this.startDate, this.endDate, this.propertyId);
   }
 
   onChangeOpen(): void {
@@ -85,24 +86,27 @@ export class ScheduleListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getSchedules(this.orderAsc, this.location, this.startDate, this.endDate);
+    this.getSchedules(this.orderAsc, this.location, this.startDate, this.endDate, this.propertyId);
+    console.log(this.propertyId);
     this.searchValue.valueChanges
       .pipe(debounceTime(300))
       .subscribe((searchText: string | null) => {
         this.page = 0;
         this.location = searchText ?? '';
-        this.getSchedules(this.orderAsc, this.location, this.startDate, this.endDate);
+        this.getSchedules(this.orderAsc, this.location, this.startDate, this.endDate, this.propertyId);
       })
     this.orderChange.valueChanges.subscribe((orderSelected: boolean | null) => {
       console.log(orderSelected);
       this.page = 0;
       this.orderAsc = orderSelected ?? true;
-      this.getSchedules(this.orderAsc, this.location, this.startDate, this.endDate);
+      this.getSchedules(this.orderAsc, this.location, this.startDate, this.endDate, this.propertyId);
     })
   }
 
-  getSchedules(order: boolean, location: string, startDate: string, endDate: string): void {
-    this.pageResponse = this.scheduleService.getData(this.page, this.size, order, location, startDate, endDate).pipe(map((data) => {
+  getSchedules(order: boolean, location: string, startDate: string, endDate: string, propertyId: string): void {
+    console.log(propertyId);
+
+    this.pageResponse = this.scheduleService.getData(this.page, this.size, order, location, startDate, endDate, propertyId).pipe(map((data) => {
       console.log(data);
       this.totalPages = data.totalPages;
       this.pages = Array.from({ length: this.totalPages }, (_, i) => i);
@@ -119,7 +123,7 @@ export class ScheduleListComponent implements OnInit {
     console.log(endDateFormat);
     this.startDate = startDateFormat;
     this.endDate = endDateFormat;
-    this.getSchedules(this.orderAsc, this.location, this.startDate, this.endDate)
+    this.getSchedules(this.orderAsc, this.location, this.startDate, this.endDate, this.propertyId)
   }
 
 }

@@ -27,6 +27,8 @@ export class NavbarHomeComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    console.log(this.role);
+
     if (this.role === "ADMIN") {
       this.accessLink = '/admin/dashboard'
     } else if (this.role === "VENDEDOR") {

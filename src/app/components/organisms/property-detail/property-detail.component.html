@@ -40,7 +40,7 @@
     </article>
     <form class="property__schedules" [formGroup]="visitForm">
   <h2>Horarios de visita disponibles:</h2>
-  <div class="property__schedules-main">
+  <div class="property__schedules-main" *ngIf="schedules.content.length > 0" >
     <div *ngFor="let schedule of schedules.content" class="property__schedules-content">
       <div class="property__schedules-container">
         <input
@@ -58,7 +58,8 @@
       </div>
     </div>
   </div>
-  <div class="property__btn">
+  <h2 class="property__schedules-empty"  *ngIf="schedules?.content?.length === 0">No hay horarios de visita aún, revisa más tarde.</h2>
+  <div class="property__btn" *ngIf="schedules?.content?.length !== 0">
     <app-button [text]="'Agendar visita.'" (buttonClick)="sendData()"></app-button>
   </div>
 </form>

@@ -24,8 +24,15 @@ describe('PropertyDetailComponent', () => {
   beforeEach(async () => {
 
     mockScheduleService = {
-      getData: jest.fn().mockReturnValue(of({}))
-    } as unknown as jest.Mocked<ScheduleService>;
+  getData: jest.fn().mockReturnValue(of({
+    content: [], // puede estar vacío o con datos
+    totalElements: 0,
+    totalPages: 0,
+    pageNumber: 0,
+    pageSize: 10
+  }))
+} as unknown as jest.Mocked<ScheduleService>;
+
 
     propertyServiceMock = {
   getProperty: jest.fn().mockReturnValue(of({ id: 123, name: 'Propiedad Test' }))
@@ -137,7 +144,8 @@ describe('PropertyDetailComponent', () => {
       component.orderAsc,
       component.location,
       component.startDate,
-      component.endDate
+      component.endDate,
+      component.propertyIdFilter
     );
   });
 

@@ -12,13 +12,15 @@ return () => {
   const isLogged = authService.isLoggedIn();
 
 
-  if (isLogged === false) {
-    return true;
+  if (!isLogged) {
+    router.navigate(['/']);
+    return false;
   }
 
   if (role === expectRole) {
     return true;
   }
+
 
   router.navigate(['/404'])
 

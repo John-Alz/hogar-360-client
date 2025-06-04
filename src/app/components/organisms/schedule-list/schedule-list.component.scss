@@ -23,11 +23,17 @@
     gap            : 15px;
     flex-wrap: wrap;
     margin-bottom: 20px;
+
+    &-search {
+      width: 100%;
+    }
+
   }
 
   &__filters--container {
     display: flex;
     gap: 15px;
+    width: 400px;
   }
 
   &__loading {
@@ -70,7 +76,7 @@
   }
 
   &__container {
-      width: 200px;
+      width: 100%;
     background: #FFFFFF;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   border: 1px solid $border-color;
