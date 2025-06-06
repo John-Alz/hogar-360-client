@@ -13,7 +13,7 @@
     </ul>
     <section class="header__popup" *ngIf="flag">
       <div class="header__popup-items">
-        <p class="header__popup-item" *ngIf="role === 'VENDEDOR'" routerLink="{{accessLink}}">Administracion</p>
+        <p class="header__popup-item" *ngIf="role !== 'COMPRADOR'"  routerLink="{{accessLink}}">Administracion</p>
         <a href="/"><p class="header__popup-item" (click)="logOut()" >Cerrar sesion</p></a>
 
       </div>

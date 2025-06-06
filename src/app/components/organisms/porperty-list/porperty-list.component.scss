@@ -23,7 +23,13 @@
     gap            : 15px;
     flex-wrap: wrap;
     margin-bottom: 20px;
+
+    &-search {
+      width: 100%;
+    }
+
   }
+
 
   &__filters--container {
     display: flex;
@@ -46,6 +52,8 @@
 
 .filters {
   position: relative;
+
+
 
     &__actions--filters {
     display: flex;

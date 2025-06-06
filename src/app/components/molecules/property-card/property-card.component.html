@@ -1,14 +1,14 @@
 <article class="product-card">
   <header class="product-card__header">
     <img
-      src="../../../../assets/images/img_card.png"
+      [src]="selectedImage"
       alt="Nombre del producto"
       class="product-card__image"
     />
   </header>
 
   <section class="product-card__details">
-    <h2 class="product-card__name">{{property?.name}}</h2>
+    <h2 class="product-card__name">{{property?.name.slice(0, 25)}}...</h2>
     <p class="product-card__location">{{property?.location.ciudad}}</p>
     <p class="product-card__price">{{property?.price | currency}}</p>
     <div class="product-card__counts">

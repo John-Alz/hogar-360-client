@@ -3,7 +3,9 @@
   <h2 class="properties__title">Propiedades existentes</h2>
    <div class="properties__filters" *ngIf="pageResponseCategories | async as categories" >
     <div class="properties__filters--container">
-      <app-searchbar [control]="searchValue" [placeholder]="'Busca ciudad o departamento'" ></app-searchbar>
+      <div class="properties__filters-search">
+        <app-searchbar [control]="searchValue" [placeholder]="'Busca ciudad o departamento'" ></app-searchbar>
+      </div>
      <app-select [name]="'una categoria'" [data]="categories.content" [control]="searchCategory"></app-select>
     </div>
      <div class="filters">

@@ -7,7 +7,6 @@ import { Page } from 'src/app/shared/models/page';
 import { Property } from 'src/app/shared/models/property';
 import { CategoryService } from 'src/app/shared/services/category.service';
 import { PropertyService } from 'src/app/shared/services/property/property.service';
-import { images } from './images';
 
 @Component({
   selector: 'app-property-list-home',
@@ -18,7 +17,6 @@ export class PropertyListHomeComponent implements OnInit {
 
   filtersIcon = faList;
   closeIcon = faCircleXmark;
-  images = images;
 
   isOpenFilters = false;
   loading: boolean = true;

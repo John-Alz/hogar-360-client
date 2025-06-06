@@ -12,11 +12,12 @@ import { authGuard } from './core/guards/auth.guard';
 import { NotFoundComponent } from './components/pages/not-found/not-found.component';
 import { ScheduleComponent } from './components/pages/schedule/schedule.component';
 import { PropertyComponent } from './components/pages/property/property.component';
+import { loginGuard } from './core/guards/login/login.guard';
 
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
-  { path: 'login', component: LoginComponent},
+  { path: 'login', component: LoginComponent, canActivate: [loginGuard]},
   { path: 'detail/:id', component: PropertyComponent},
 
   {

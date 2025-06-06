@@ -4,6 +4,7 @@ import { faFilter } from '@fortawesome/free-solid-svg-icons';
 import { debounceTime, map, Observable } from 'rxjs';
 import { Page } from 'src/app/shared/models/page';
 import { Schedule } from 'src/app/shared/models/schedule';
+import { AuthService } from 'src/app/shared/services/auth/auth.service';
 import { ScheduleService } from 'src/app/shared/services/schedule/schedule.service';
 
 @Component({
@@ -20,10 +21,6 @@ export class ScheduleListComponent implements OnInit {
       {
         key: 'scheduleId',
         header: 'ID'
-      },
-      {
-        key: 'vendorId',
-        header: 'Vendedor'
       },
       {
         key: 'propertyId',
@@ -43,6 +40,10 @@ export class ScheduleListComponent implements OnInit {
 
   pageResponse!: Observable<Page<Schedule>>;
 
+  private authService = inject(AuthService)
+
+  vendorIdAuth = this.authService.getUserInfo()?.id;
+
   page = 0;
   size = 5;
   orderAsc = true;
@@ -50,6 +51,7 @@ export class ScheduleListComponent implements OnInit {
   startDate = '';
   endDate = '';
   propertyId = '';
+  vendorId = this.vendorIdAuth;
   totalPages = 1;
   pages: number[] = [];
 
@@ -106,7 +108,7 @@ export class ScheduleListComponent implements OnInit {
   getSchedules(order: boolean, location: string, startDate: string, endDate: string, propertyId: string): void {
     console.log(propertyId);
 
-    this.pageResponse = this.scheduleService.getData(this.page, this.size, order, location, startDate, endDate, propertyId).pipe(map((data) => {
+    this.pageResponse = this.scheduleService.getData(this.page, this.size, order, location, startDate, endDate, propertyId, this.vendorId).pipe(map((data) => {
       console.log(data);
       this.totalPages = data.totalPages;
       this.pages = Array.from({ length: this.totalPages }, (_, i) => i);

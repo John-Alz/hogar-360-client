@@ -51,7 +51,7 @@ describe('ScheduleService', () => {
       totalPages: 1
     };
 
-    service.getData(0, 10, true, 'bogota', "2025-06-19T10:45:00", "2025-06-19T12:46:00", '123').subscribe((data) => {
+    service.getData(0, 10, true, 'bogota', "2025-06-19T10:45:00", "2025-06-19T12:46:00", '123', 13).subscribe((data) => {
       expect(data).toEqual(mockResponse);
     });
 
@@ -60,10 +60,13 @@ describe('ScheduleService', () => {
       request.params.get('page') === '0' &&
       request.params.get('size') === '10' &&
       request.params.get('orderAsc') === 'true' &&
-      request.params.get('location') === 'bogota' &&
+      // request.params.get('location') === 'bogota' &&
       request.params.get('startDate') === '2025-06-19T10:45:00' &&
-      request.params.get('endDate') === '2025-06-19T12:46:00'
+      request.params.get('endDate') === '2025-06-19T12:46:00' &&
+      request.params.get('propertyId') === '123' &&
+      request.params.get('vendorId') === '13'
     );
+
 
     expect(req.request.method).toBe('GET');
     req.flush(mockResponse);

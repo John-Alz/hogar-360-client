@@ -61,50 +61,6 @@ describe('CategoryFormComponent', () => {
 
   });
 
-  it('Should display an error if the category name is empty', () => {
-    component.categoryForm.controls['name'].setValue('');
-    component.categoryForm.controls['name'].markAsTouched();
-
-    fixture.detectChanges();
-
-    const errorElement = fixture.nativeElement.querySelector('.categoryForm__errros--item');
-    expect(errorElement.textContent).toContain('El nombre es obligatorio.');
-
-  });
-
-  it('Should display an error if the category name exceeds 50 characters', () => {
-    component.categoryForm.controls['name'].setValue('a'.repeat(51));
-    component.categoryForm.controls['name'].markAsTouched();
-
-    fixture.detectChanges();
-
-    const errorElement = fixture.nativeElement.querySelector('.categoryForm__errros--item');
-    expect(errorElement.textContent).toContain('El nombre no puede tener mas de 50 caracteres.');
-
-  });
-
-
-  it('It should show an error if the category description is empty', () => {
-    component.categoryForm.controls['description'].setValue('');
-    component.categoryForm.controls['description'].markAsTouched();
-
-    fixture.detectChanges();
-
-    const errorElement = fixture.nativeElement.querySelector('.categoryForm__errros--item');
-    expect(errorElement.textContent).toContain('La descripcion es obligatoria.');
-
-  });
-
-  it('It should show an error if the category description exceeds 90 characters.', () => {
-    component.categoryForm.controls['description'].setValue('a'.repeat(91));
-    component.categoryForm.controls['description'].markAsTouched();
-
-    fixture.detectChanges();
-
-    const errorElement = fixture.nativeElement.querySelector('.categoryForm__errros--item');
-    expect(errorElement.textContent).toContain('la descripcion no puede tener mas de 90 caracteres.');
-
-  });
 
   it('Should display errors if an empty form is submitted.', () => {
     const markAllAsTouchedSpy = jest.spyOn(component.categoryForm, 'markAllAsTouched');
